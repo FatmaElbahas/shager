@@ -1,7 +1,7 @@
 @echo off
 
 REM Navigate to the React frontend directory
-cd react-frontend
+cd frontend
 
 REM Install dependencies if node_modules doesn't exist
 if not exist "node_modules" (
