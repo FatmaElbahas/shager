@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <title>الدفع عبر ميسر</title>
+</head>
+
+<body>
+    <h1>اختبار الدفع</h1>
+    <button id="payBtn">💳 ادفع الآن</button>
+
+    <script>
+        const API_BASE = "https://mediumblue-seahorse-369825.hostingersite.com"; // رابط الباك إند Laravel
+
+        document.getElementById('payBtn').addEventListener('click', async () => {
+            try {
+                const res = await fetch(`${API_BASE}/create-payment`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        // لو عندك JWT Token أو Auth لازم تضيفه هنا
+                        // "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                const data = await res.json();
+                console.log("Response:", data);
+
+                if (data.source && data.source.transaction_url) {
+                    // لو فيه transaction URL من ميسر
+                    window.location.href = data.source.transaction_url;
+                } else if (data.url) {
+                    // رابط دفع مباشر
+                    window.location.href = data.url;
+                } else {
+                    alert("❌ حصل خطأ أثناء إنشاء الدفع");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("⚠️ حصل خطأ في الاتصال بالسيرفر");
+            }
+        });
+    </script>
+</body>
+
+</html>

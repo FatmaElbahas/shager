@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انضم الينا</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/joinus.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" dir="rtl" style="background-color: rgba(248, 247, 247, 1);">
+        <div class="container-fluid">
+
+            <!-- الشعار على اليمين -->
+            <a class="navbar-brand mx-4" href="#">
+                <img src="images/Asset 80.svg" alt="logo" width="190">
+            </a>
+
+            <!-- زر القائمة للجوال -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-dark"></i>
+            </button>
+
+            <!-- محتوى الشريط -->
+            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
+
+                <!-- القائمة في المنتصف -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="Home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="families.html">العائلات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new.html"> الأخبار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">اتصل بنا</a>
+                    </li>
+                </ul>
+
+                <!-- Before sign in -->
+                <div id="before">
+                    <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                        <a href="login.html">
+                            <button class="btn btn-custom">تسجيل الدخول</button>
+                        </a>
+                        <a href="register.html">
+                            <button class="btn btn-outline-custom">إنشاء حساب</button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- after sign in  -->
+                <div id="after">
+                    <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                        <div class="user-bar">
+                            <a href="profile.html">
+                                <img src="images/image (25).png" alt="User" class="profile">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <header>
+        <div class="content">
+            <div class="text-content">
+                <h1 class="text-left"> انضم الينا </h1>
+                <nav class="navbar navbar-expand-lg ">
+                    <div class="container-fluid ">
+                        <span>
+                            <a class="navbar-brand" href="home.html">الرئيسية</a>
+                            / انضم الينا
+                        </span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ================== الاشتراكات ================== -->
+    <div class="container-fluid">
+        <div class="container py-5">
+            <h2 class="text-end my-4" style="font-size: 32px; font-weight: 700;">خططنا المميزة</h2>
+            <p class="text-end text-muted mb-5">اختر الباقة المناسبة لك وتمتع بصلاحيات إضافية ومميزات حصرية.</p>
+            <!-- Banner العروض الترويجية -->
+            <div class="container-fluid my-4" id="activePromotionsContainer">
+                <!-- العروض هتتضاف هنا ديناميكياً -->
+            </div>
+
+            <div class="row">
+                <!-- الخطة الأساسية -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card subscription-card h-100">
+                        <div class="card-header text-dark text-end py-3">
+                            <h4 class="py-4 px-3">الأساسية</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <span class="price">0 <img src="images/Saudi_Riyal_Symbol-1.png" class="img-fluid"
+                                        width="30"></span>
+                                <span class="period">/<i class="fa-solid fa-infinity"></i></span>
+                            </div>
+                            <ul class="features-list">
+                                <li>طلب موافقة من الادمن</li>
+                                <li>قوالب مجانية</li>
+                                <li>اضافة حتى 50 فرد للعائلة</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center py-3 bg-transparent">
+                            <button class="btn btn-custom rounded-pill" data-bs-toggle="modal"
+                                data-bs-target="#freeJoinModal">
+                                انضم مجاناً
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الخطة المتقدمة -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card subscription-card h-100">
+                        <div class="card-header text-dark text-end py-3">
+                            <h4 class="py-4 px-3">متقدمة</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <span class="price">50 <img src="images/Saudi_Riyal_Symbol-1.png" class="img-fluid"
+                                        width="30"></span>
+                                <span class="period">/3 أشهر</span>
+                            </div>
+                            <ul class="features-list">
+                                <li> منشئ شجرة فورياً دون انتظار موافقة الأدمن</li>
+                                <li>قوالب مدفوعة</li>
+                                <li>حتى 500 فرد في الشجرة</li>
+                                <li>رفع سجلات عائلية</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center bg-transparent py-3">
+                            <button class="btn btn-custom rounded-pill" data-plan="advanced">الترقية الآن</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الخطة المميزة -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card subscription-card h-100" style="background-color: rgba(39, 58, 65, 1);">
+                        <div class="card-header text-white text-end">
+                            <h4 style="color: rgba(222, 192, 128, 1);" class="py-4 px-3">مميزة</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <span class="price text-white">100 <img src="images/Saudi_Riyal_Symbol-1.png"
+                                        class="img-fluid" width="30"></span>
+                                <span class="period">/سنة</span>
+                            </div>
+                            <ul class="features-list text-white">
+                                <li> منشئ شجرة فورياً دون انتظار موافقة الأدمن</li>
+                                <li>قوالب مدفوعة</li>
+                                <li>رفع سجلات عائلية</li>
+                                <li>حتى 1000 فرد في الشجرة</li>
+                                <li>حجز دومين لعائلتك</li>
+                                <li>إضافة معالم خاصة بالعائلة</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center py-3 bg-transparent">
+                            <button class="btn btn-custom rounded-pill" data-plan="custom">الترقية الآن</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الخطة المخصصة -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card subscription-card h-100"
+                        style="background: linear-gradient(135deg, rgba(211, 171, 85, 1), rgba(211, 171, 85, 0.8));">
+                        <div class="card-header text-white text-end">
+                            <h4 style="color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);" class="py-4 px-3">مخصصة
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <span class="price text-white">200 <img src="images/Saudi_Riyal_Symbol-1.png"
+                                        class="img-fluid" width="30"></span>
+                                <span class="period">/سنة</span>
+                            </div>
+                            <ul class="features-list text-white">
+                                <li>عدد لا محدود من الأفراد</li>
+                                <li>رفع سجلات عائلية</li>
+                                <li>إعدادات خصوصية متقدمة</li>
+                                <li>تعاون مع أفراد العائلة في التعديل</li>
+                                <li>إضافة معالم خاصة بالعائلة</li>
+                                <li>إمكانية مقابر خاصة بالعائلة</li>
+                                <li>دعم فني مخصص 24/7</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center py-3 bg-transparent">
+                            <button class="btn btn-outline-light px-5 py-3 rounded-pill" data-plan="featured">الترقية
+                                الآن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال فورم التسجيل المجاني -->
+    <div class="modal fade" id="freeJoinModal" tabindex="-1" aria-labelledby="freeJoinModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 32px;">
+                <div class="modal-header border-0 bg-white justify-content-start">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-container">
+                        <h3 class="form-title text-end">انضم الينا</h3>
+                        <p class="mb-5">أنشئ شجرتك الخاصة وشاركها مع أفراد عائلتك عبر الأجيال.</p>
+                        <div id="mainSuccessAlert" class="alert alert-success" style="display: none;"></div>
+                        <div id="mainErrorAlert" class="alert alert-error" style="display: none;"></div>
+                        <form id="activityForm">
+                            <div class="mb-3">
+                                <input type="text" name="user_name" id="user_name" class="form-control"
+                                    placeholder="الأسم بالكامل" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="email" name="user_email" id="user_email" class="form-control"
+                                            placeholder="الإيميل" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="number" name="user_phone" id="user_phone" class="form-control"
+                                            placeholder="رقم الجوال" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" name="family_name" id="family_name" class="form-control"
+                                    placeholder="اسم العائلة / القبيلة" required>
+                            </div>
+
+                            <!-- ✅ إضافة حقل الباقة -->
+                            <!-- <div class="mb-3">
+                                <label for="plan" class="form-label">اختر الباقة</label>
+                                <select id="plan" name="plan" class="form-control" required>
+                                    <option value="primary">الباقة الأساسية</option>
+                                    <option value="premium">الباقة المميزة</option>
+                                </select> -->
+                            <!-- أو إذا كانت باقة واحدة فقط -->
+                            <input type="hidden" id="plan" name="plan" value="primary">
+                            <!-- </div> -->
+
+                            <div class="mb-3">
+                                <textarea name="user_message" id="user_message" class="form-control" rows="3"
+                                    placeholder="اذكر نبذة مختصرة عن العائلة ..." required></textarea>
+                            </div>
+                            <div class="card-footer text-center py-3 bg-transparent">
+                                <button type="submit" class="btn btn-custom px-5 py-3 rounded-pill">
+                                    ارسال
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال فورم التسجيل -->
+    <!-- <div class="modal fade" id="joinFormModal" tabindex="-1" aria-labelledby="joinFormModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 32px;">
+                <div class="modal-header border-0 bg-white justify-content-start">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-container">
+                        <h3 class="form-title text-end">انضم الينا</h3>
+                        <p class="mb-5">أنشئ شجرتك الخاصة وشاركها مع أفراد عائلتك عبر الأجيال.</p>
+                        <div id="successAlert" class="alert alert-success"></div>
+                        <div id="errorAlert" class="alert alert-error"></div>
+                        <form id="activityForm">
+                            <div class="mb-3">
+                                <input type="text" name="user_name" id="user_name" class="form-control"
+                                    placeholder="الأسم بالكامل" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="email" name="user_email" id="user_email" class="form-control"
+                                            placeholder="الإيميل" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="number" name="user_phone" id="user_phone" class="form-control"
+                                            placeholder="رقم الجوال" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" name="family_name" id="family_name" class="form-control"
+                                    placeholder="اسم العائلة / القبيلة" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea name="user_message" id="user_message" class="form-control" rows="3"
+                                    placeholder="اذكر نبذة مختصرة عن العائلة ..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-custom my-3">
+                                ارسال <img src="images/fluent_arrow-up-24-regular.png" alt="">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- ================== نهاية الاشتراكات ================== -->
+
+    <!-- Footer -->
+    <footer class="mt-2">
+        <div class="container">
+            <div class="row">
+                <!-- Column 1 -->
+                <!-- Column 1 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>تواصل معنا</h6>
+                    <p class="d-flex align-items-center gap-2" style="direction: rtl; color: rgba(123, 123, 123, 1);">
+                        <img src="images/ph_phone-call (1).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerPhone" dir="ltr">+966
+                            59
+                            533
+                            8665</span>
+                    </p>
+                    <p class="d-flex align-items-center gap-2"
+                        style="direction: rtl; color: rgba(123, 123, 123, 1) !important; "> <img
+                            src="images/carbon_email (3).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerEmail"
+                            dir="ltr">shaigratech@gmail.com</span>
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" id="footerYoutube"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" id="footerTwitter"><img src="images/bxl-twitter.png" alt="Twitter"></a>
+                        <a href="#" id="footerInstagram"><img src="images/instagram-logo.png" alt="Instagram"></a>
+                        <a href="#" id="footerFacebook"><img src="images/bxl-facebook.png" alt="Facebook"></a>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>المزيد</h6>
+                    <ul>
+                        <li><a href="contactus.html">تواصل معنا</a></li>
+                        <li><a href="#">السياسات</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>الصفحات</h6>
+                    <ul>
+                        <li><a href="Home.html">الرئيسية</a></li>
+                        <li><a href="aboutus.html">من نحن</a></li>
+                        <li><a href="families.html">العائلات</a></li>
+                        <li><a href="new.html">الأخبار</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="col-md-3 footer-column mb-4 text-center px-5">
+                    <div class="footer-logo mb-3">
+                        <img src="images/Asset 80.svg" alt="ShajaraTech Logo" class="img-fluid" width="270px">
+                    </div>
+                    <p class="text-muted" style="color: rgba(123, 123, 123, 1);" id="description">منصة رقمية تجمع
+                        القبائل والعائلات في
+                        مكان واحد، تتيح لك بناء شجرة عائلتك،
+                        استكشاف الجذور، متابعة المناسبات، والتواصل مع مجتمعك بكل سهولة.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-4">
+                جميع الحقوق محفوظة © ShajaraTech 2025
+            </div>
+        </div>
+    </footer>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moyasar-payment-form@2.1.1/dist/moyasar.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moyasar-payment-form@2.1.1/dist/moyasar.css" />
+    <script src="js/joinus.js"></script>
+
+
+</body>
+
+</html>

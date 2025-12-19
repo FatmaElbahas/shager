@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلبات الانضمام</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/requsets.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- CSS TreeAnt -->
+    <link rel="stylesheet" href="treant-js-master/treant-js-master/Treant.css">
+    <script src="https://balkan.app/js/familytree.js"></script>
+
+    <!-- tossify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <div class="custom-container mt-4">
+        <div class="d-flex align-items-center bg-white py-3 rounded-pill">
+            <div class="search-bar d-flex align-items-center position-relative">
+                <i class="bi bi-search search-icon px-3 position-absolute"></i> <input type="search" name=""
+                    id="activitySearch" class="form-control search-input rounded-pill" placeholder="البحث ..">
+            </div>
+            <div class="d-flex align-items-center gap-3 mx-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.svg" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class=" nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="usermessages.html" class="nav-link">الرسائل</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="upgrade.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-user-plus icon" style="color: rgba(39, 58, 65, 1);"></i>
+                <a href="requests.html" class="nav-link">طلبات الانضمام</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">طلبات الانضمام</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+
+            <div class="container-fluid">
+
+                <div class="container-fluid">
+                    <h1 class="my-4" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                        طلبات الانضمام
+                    </h1>
+                    <!-- Table -->
+                    <div class="programmes-table table-responsive">
+
+                        <div id="tableContainer" style="position: relative;">
+                            <table class="table table-responsive table-borderless bg-white shadow-sm">
+                                <thead class="text-center">
+                                    <tr>
+                                        <th>اسم المستخدم</th>
+                                        <th>الوظيفة</th>
+                                        <th>تاريخ الميلاد</th>
+                                        <th>رقم الجوال</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="activityTableBody">
+                                    <!-- بيانات الأنشطة ستضاف هنا -->
+                                </tbody>
+                            </table>
+
+                            <!-- عناصر التحميل فوق الجدول -->
+                            <div class="loading-overlay" id="loadingOverlay"></div>
+                            <div class="loading-spinner" id="loadingSpinner">
+                                <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"
+                                    role="status">
+                                    <span class="visually-hidden">جاري التحميل...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Pagination -->
+                    <div class="pagination-controls d-flex justify-content-between align-items-center flex-wrap mt-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span id="items-info">عرض 0-0 من 0 الطلبات</span>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center gap-2">
+                            <button id="prev-page" class="btn btn-link p-0">
+                                <i class="bi bi-chevron-right" style="color: gold;"></i>
+                            </button>
+                            <span class="fw-bold" id="current-page">1</span>
+                            <span class="text-muted">من <span id="total-pages">1</span> صفحات</span>
+                            <button id="next-page" class="btn btn-link p-0">
+                                <i class="bi bi-chevron-left text-muted"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- tossify -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/notify.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/requests.js"></script>
+</body>
+
+</html>

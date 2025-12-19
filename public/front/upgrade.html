@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انضم الينا</title>
+
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/joinus.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moyasar-payment-form@2.1.1/dist/moyasar.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرئيسية</title>
+
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/userdash.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvyWEUlGGtwKKr54fstMGMJz1N6ZtKZvo&libraries=places&callback=initUserDashMap"></script>
+
+
+    <script src="https://balkan.app/js/familytree.js"></script>
+
+    <style>
+        /* خلفية المودال */
+        .payment-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* الكارت الأساسي */
+        .payment-card {
+            background: #f9f9f9;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0 !important;
+        }
+
+        /* الهيدر العلوي */
+        .payment-header-custom {
+            background-color: #273a41;
+            color: #d3ab55;
+            padding: 15px 20px;
+            text-align: right;
+            position: relative;
+        }
+
+        .payment-header-custom h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* زر الإغلاق */
+        .close-payment-custom {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+        .close-payment-custom:hover { opacity: 1; }
+
+        .payment-body-custom {
+            padding: 20px 30px;
+        }
+
+        .payment-summary-title {
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .payment-summary-subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* قسم الكوبون */
+        .coupon-section {
+            margin-bottom: 20px;
+        }
+        .coupon-label {
+            display: block;
+            text-align: right;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .coupon-input-group {
+            display: flex;
+            gap: 0;
+        }
+        .coupon-input {
+            flex-grow: 1;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 0 5px 5px 0;
+            text-align: right;
+            outline: none;
+        }
+        .coupon-btn {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px 0 0 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .coupon-btn:hover { background-color: #0b5ed7; }
+
+        /* تفاصيل الأسعار */
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #333;
+        }
+        .total-row {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .mysr-form {
+            margin-top: 20px;
+            min-height: 200px;
+        }
+        
+        /* Ensure payment form is always visible when amount > 0 */
+        #moyasarForm {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Only hide when explicitly set to none */
+        #moyasarForm[style*="display: none"] {
+            display: none !important;
+        }
+
+        /* زر الإلغاء */
+        .cancel-btn-container {
+            margin-top: 15px;
+            text-align: right;
+        }
+        .cancel-btn {
+            background: none;
+            border: 1px solid #ccc;
+            padding: 5px 15px;
+            border-radius: 4px;
+            color: #666;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .security-badge {
+            text-align: right;
+            font-size: 10px;
+            color: #999;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+
+        /* ============= إضافات السيناريو المجاني ============= */
+
+        /* رسائل النجاح والخطأ */
+        .msg-box {
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: right;
+            display:none;
+        }
+        .msg-error { color: #dc3545; }
+        .msg-success { color: #198754; font-weight: bold; }
+
+        /* صندوق الاشتراك المجاني (مخفي افتراضياً) */
+        .free-subscription-box {
+            display: none; /* مخفي */
+            background-color: #d1e7dd; /* لون أخضر فاتح مثل الصورة */
+            border: 1px solid #badbcc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .free-subscription-box h5 {
+            color: #0f5132;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* زر التفعيل الأخضر */
+        .btn-activate-free {
+            background-color: #198754; /* أخضر غامق */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-activate-free:hover {
+            background-color: #157347;
+        }
+
+        /* انيميشن بسيط للتحميل */
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid #fff;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin 1s linear infinite; /* Safari */
+            animation: spin 1s linear infinite;
+            display: none; /* مخفي */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .payment-card {
+                max-width: 95%;
+                margin: 10px;
+            }
+
+            .payment-body-custom {
+                padding: 15px 20px;
+            }
+
+            .payment-header-custom h2 {
+                font-size: 20px;
+            }
+
+            .subscription-card {
+                margin-bottom: 20px;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .payment-card {
+                max-width: 100%;
+                border-radius: 10px;
+            }
+
+            .payment-body-custom {
+                padding: 15px;
+            }
+
+            .coupon-input-group {
+                flex-direction: column;
+            }
+
+            .coupon-btn {
+                border-radius: 5px;
+                margin-bottom: 5px;
+            }
+
+            .coupon-input {
+                border-radius: 5px;
+            }
+
+            .price-row {
+                font-size: 14px;
+            }
+        }
+
+        /* Dynamic animations */
+        .subscription-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .subscription-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-custom {
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+        }
+
+        /* Smooth price updates */
+        #originalPrice, #totalValue, #discountValue {
+            transition: color 0.3s ease;
+        }
+
+        .price-row.total-row {
+            animation: highlightPrice 0.5s ease;
+        }
+
+        @keyframes highlightPrice {
+            0% { background-color: transparent; }
+            50% { background-color: rgba(211, 171, 85, 0.1); }
+            100% { background-color: transparent; }
+        }
+
+    </style>
+</head>
+
+<body style="height: 100vh;">
+        <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.svg" alt="Logo" class="img-fluid">
+        </div>
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="active nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="upgrade.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-user-plus" style="color: rgba(39, 58, 65, 1);"></i>
+                <a href="requests.html" class="nav-link">طلبات الانضمام</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+<div class="content">
+
+    <div class="container-fluid d-flex justify-content-center ">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card subscription-card h-100">
+                        <div class="card-header text-dark text-end py-3">
+                            <h4 class="py-4 px-3">متقدمة</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <span class="price">50
+                                    <img src="images/Saudi_Riyal_Symbol-1.png" class="img-fluid" width="30">
+                                </span>
+                                <span class="period">/3 أشهر</span>
+                            </div>
+                            <ul class="features-list">
+                                <li> منشئ شجرة فورياً دون انتظار موافقة الأدمن</li>
+                                <li>قوالب مدفوعة</li>
+                                <li>حتى 500 فرد في الشجرة</li>
+                                <li>رفع سجلات عائلية</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center bg-transparent py-3">
+                            <button class="btn btn-custom rounded-pill" data-plan="advanced">الترقية الآن</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card subscription-card h-100" style="background-color: rgba(39, 58, 65, 1);">
+                        <div class="card-header text-white text-end">
+                            <h4 style="color: rgba(222, 192, 128, 1);" class="py-4 px-3">مميزة</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <span class="price text-white">100
+                                    <img src="images/Saudi_Riyal_Symbol-1.png" class="img-fluid" width="30">
+                                </span>
+                                <span class="period">/سنة</span>
+                            </div>
+                            <ul class="features-list text-white">
+                                <li> منشئ شجرة فورياً دون انتظار موافقة الأدمن</li>
+                                <li>قوالب مدفوعة</li>
+                                <li>رفع سجلات عائلية</li>
+                                <li>حتى 1000 فرد في الشجرة</li>
+                                <li>حجز دومين لعائلتك</li>
+                                <li>إضافة معالم خاصة بالعائلة</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center py-3 bg-transparent">
+                            <button class="btn btn-custom rounded-pill" data-plan="custom">الترقية الآن</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card subscription-card h-100"
+                        style="background: linear-gradient(135deg, rgba(211, 171, 85, 1), rgba(211, 171, 85, 0.8));">
+                        <div class="card-header text-white text-end">
+                            <h4 style="color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);" class="py-4 px-3">مخصصة</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <span class="price text-white">200
+                                    <img src="images/Saudi_Riyal_Symbol-1.png" class="img-fluid" width="30">
+                                </span>
+                                <span class="period">/سنة</span>
+                            </div>
+                            <ul class="features-list text-white">
+                                <li>عدد لا محدود من الأفراد</li>
+                                <li>رفع سجلات عائلية</li>
+                                <li>إعدادات خصوصية متقدمة</li>
+                                <li>تعاون مع أفراد العائلة في التعديل</li>
+                                <li>إضافة معالم خاصة بالعائلة</li>
+                                <li>إمكانية مقابر خاصة بالعائلة</li>
+                                <li>دعم فني مخصص 24/7</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center py-3 bg-transparent">
+                            <button class="btn btn-outline-light px-5 py-3 rounded-pill" data-plan="featured">الترقية الآن</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    <div class="modal fade" id="freeJoinModal" tabindex="-1" aria-labelledby="freeJoinModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 32px;">
+                <div class="modal-header border-0 bg-white justify-content-start">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-container">
+                        <h3 class="form-title text-end">انضم الينا</h3>
+                        <p class="mb-5">أنشئ شجرتك الخاصة وشاركها مع أفراد عائلتك عبر الأجيال.</p>
+                        <div id="mainSuccessAlert" class="alert alert-success" style="display: none;"></div>
+                        <div id="mainErrorAlert" class="alert alert-error" style="display: none;"></div>
+                        <form id="activityForm">
+                            <div class="mb-3">
+                                <input type="text" name="user_name" id="user_name" class="form-control"
+                                    placeholder="الأسم بالكامل" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="email" name="user_email" id="user_email" class="form-control"
+                                            placeholder="الإيميل" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="number" name="user_phone" id="user_phone" class="form-control"
+                                            placeholder="رقم الجوال" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" name="family_name" id="family_name" class="form-control"
+                                    placeholder="اسم العائلة / القبيلة" required>
+                            </div>
+
+                            <input type="hidden" id="plan" name="plan" value="primary">
+
+                            <div class="mb-3">
+                                <textarea name="user_message" id="user_message" class="form-control" rows="3"
+                                    placeholder="اذكر نبذة مختصرة عن العائلة ..." required></textarea>
+                            </div>
+                            <div class="card-footer text-center py-3 bg-transparent">
+                                <button type="submit" class="btn btn-custom px-5 py-3 rounded-pill">
+                                    ارسال
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="payment-container" id="paymentContainer">
+        <div class="payment-card">
+
+            <div class="payment-header-custom">
+                <h2>إكمال عملية الدفع</h2>
+                <span class="close-payment-custom" id="closePayment">&times;</span>
+            </div>
+
+            <div class="payment-body-custom">
+
+                <div class="payment-summary-title">ملخص الدفع</div>
+                <div class="payment-summary-subtitle">راجع تفاصيل المبلغ قبل إتمام العملية</div>
+
+                <div class="coupon-section">
+                    <label class="coupon-label">هل لديك كوبون خصم؟</label>
+                    <div class="coupon-input-group">
+                        <button class="coupon-btn" id="applyCouponBtn">تطبيق</button>
+                        <input type="text" class="coupon-input" id="couponInput" placeholder="ادخل الكود هنا">
+                    </div>
+
+                    <div class="msg-box msg-error" id="couponError">
+                        <i class="fas fa-times"></i> الكوبون غير صحيح
+                    </div>
+                    <div class="msg-box msg-success" id="couponSuccess">
+                        <i class="fas fa-check-circle"></i> تم تطبيق الخصم بنجاح: 20 ريال
+                    </div>
+                </div>
+
+                <div class="price-row">
+                    <span>السعر الأصلي:</span>
+                    <span id="originalPrice">0 ريال</span>
+                </div>
+                <div class="price-row">
+                    <span>الخصم:</span>
+                    <span id="discountValue">0 ريال</span>
+                </div>
+                <div class="price-row total-row">
+                    <span>المبلغ المطلوب:</span>
+                    <span id="totalValue">0 ريال</span>
+                </div>
+
+                <div class="mysr-form" id="moyasarForm"></div>
+
+                <div class="free-subscription-box" id="freeSubscriptionBox">
+                    <h5>تهانينا! اشتراكك مجاني بالكامل <span style="font-size: 20px;">🎉</span></h5>
+                    <button class="btn-activate-free" id="activateFreeBtn">
+                        <span class="btn-text">تفعيل الاشتراك الان</span>
+                        <div class="spinner"></div>
+                    </button>
+                </div>
+
+
+                <div class="cancel-btn-container">
+                     <button class="cancel-btn" onclick="document.getElementById('paymentContainer').style.display='none'">إلغاء</button>
+                </div>
+                <div class="security-badge">
+                    Moyasar الدفع مؤمن بواسطة <i class="fas fa-lock"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moyasar-payment-form@2.1.1/dist/moyasar.umd.min.js"></script>
+    <script src="js/joinus.js"></script>
+
+    <script>
+        // متغيرات عامة لتخزين السعر الحالي
+        let currentPlanPrice = 0;
+        let currentDiscount = 0;
+
+        // دالة لتحديث الأسعار في المودال
+        function updatePaymentPrices(planPrice) {
+            currentPlanPrice = planPrice;
+            currentDiscount = 0; // إعادة تعيين الخصم عند تغيير الخطة
+            
+            const originalPriceEl = document.getElementById('originalPrice');
+            const discountValueEl = document.getElementById('discountValue');
+            const totalValueEl = document.getElementById('totalValue');
+            const couponError = document.getElementById('couponError');
+            const couponSuccess = document.getElementById('couponSuccess');
+            const couponInput = document.getElementById('couponInput');
+            const applyBtn = document.getElementById('applyCouponBtn');
+            const moyasarForm = document.getElementById('moyasarForm');
+            const freeBox = document.getElementById('freeSubscriptionBox');
+
+            if (originalPriceEl) {
+                originalPriceEl.textContent = `${planPrice} ريال`;
+            }
+            
+            // حساب المبلغ النهائي بعد الخصم
+            const finalAmount = Math.max(0, planPrice - currentDiscount);
+            
+            if (discountValueEl) {
+                discountValueEl.textContent = `${currentDiscount} ريال`;
+            }
+            
+            if (totalValueEl) {
+                totalValueEl.textContent = `${finalAmount} ريال`;
+            }
+
+            // إعادة تعيين حالة الكوبون
+            if (couponError) couponError.style.display = 'none';
+            if (couponSuccess) couponSuccess.style.display = 'none';
+            if (couponInput) {
+                couponInput.disabled = false;
+                couponInput.value = '';
+            }
+            if (applyBtn) {
+                applyBtn.disabled = false;
+                applyBtn.textContent = 'تطبيق';
+                applyBtn.style.backgroundColor = '';
+            }
+            if (moyasarForm) {
+                moyasarForm.style.display = 'block';
+                moyasarForm.style.visibility = 'visible';
+                moyasarForm.style.opacity = '1';
+            }
+            if (freeBox) freeBox.style.display = 'none';
+        }
+
+        // دالة لتهيئة Moyasar payment
+        function initializeMoyasarPayment(amount) {
+            const moyasarForm = document.getElementById('moyasarForm');
+            if (!moyasarForm) {
+                console.warn('Moyasar form container not found');
+                return;
+            }
+            
+            // Only hide if amount is exactly 0
+            if (amount <= 0) {
+                console.warn('Cannot initialize Moyasar: amount is zero or negative');
+                moyasarForm.style.display = 'none';
+                moyasarForm.style.visibility = 'hidden';
+                return;
+            }
+
+            // Ensure form is visible before initializing
+            moyasarForm.style.display = 'block';
+            moyasarForm.style.visibility = 'visible';
+            moyasarForm.style.opacity = '1';
+            moyasarForm.style.height = 'auto';
+            moyasarForm.style.minHeight = '200px';
+
+            // تدمير instance Moyasar السابق إذا كان موجوداً
+            if (window.currentMoyasarInstance) {
+                try {
+                    if (typeof window.currentMoyasarInstance.destroy === 'function') {
+                        window.currentMoyasarInstance.destroy();
+                    } else if (typeof window.currentMoyasarInstance.remove === 'function') {
+                        window.currentMoyasarInstance.remove();
+                    }
+                } catch (e) {
+                    console.warn('Error destroying previous Moyasar instance:', e);
+                }
+                window.currentMoyasarInstance = null;
+            }
+            
+            // أيضاً محاولة تدمير أي instances أخرى قد تكون موجودة
+            try {
+                // البحث عن أي عناصر Moyasar موجودة وإزالتها
+                const existingForms = document.querySelectorAll('.mysr-form > *');
+                existingForms.forEach(el => {
+                    try {
+                        if (el.remove) el.remove();
+                    } catch (e) {
+                        console.warn('Error removing element:', e);
+                    }
+                });
+            } catch (e) {
+                console.warn('Error cleaning up Moyasar elements:', e);
+            }
+
+            // مسح النموذج السابق
+            moyasarForm.innerHTML = '';
+            
+            // Add loading indicator while initializing
+            moyasarForm.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">جاري تحميل نموذج الدفع...</div>';
+
+            // انتظار قليلاً لضمان جاهزية DOM
+            setTimeout(() => {
+                try {
+                    if (typeof Moyasar === 'undefined') {
+                        console.error('Moyasar is not loaded');
+                        moyasarForm.innerHTML = '<div style="color: red; text-align: center; padding: 20px;">خطأ في تحميل بوابة الدفع</div>';
+                        return;
+                    }
+
+                    // Clear loading message
+                    moyasarForm.innerHTML = '';
+
+                    window.currentMoyasarInstance = Moyasar.init({
+                        element: ".mysr-form",
+                        amount: amount * 100, // تحويل إلى halalas
+                        currency: "SAR",
+                        description: "Subscription Payment",
+                        publishable_api_key: "pk_test_WeLyc8N5AuE4Nya2kab2nhmjLPnDts4mZvYAsF7Y",
+                        callback_url: window.location.origin + "/front/upgrade.html",
+                        supported_networks: ["visa", "mastercard", "mada"],
+                        methods: ["creditcard"],
+                        on_completed: async function(payment) {
+                            console.log("Payment completed:", payment);
+                            try {
+                                // حفظ معلومات الدفع في Backend
+                                const token = localStorage.getItem('authToken');
+                                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                                const selectedPlan = localStorage.getItem('selectedPlan') || 'advanced';
+                                
+                                if (token && payment.status === 'paid') {
+                                    // Get the final amount after discount
+                                    const finalAmountAfterDiscount = Math.max(0, currentPlanPrice - (currentDiscount || 0));
+                                    
+                                    const paymentData = {
+                                        payment_id: payment.id,
+                                        amount: finalAmountAfterDiscount, // Use discounted amount
+                                        status: 'paid',
+                                        plan: selectedPlan,
+                                        coupon_code: document.getElementById('couponInput')?.value || null,
+                                        discount: currentDiscount || 0,
+                                        description: `Subscription Payment - ${selectedPlan} Plan`,
+                                    };
+
+                                    const paymentResponse = await fetch("/api/payment", {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                            "Authorization": `Bearer ${token}`,
+                                            "Accept": "application/json",
+                                        },
+                                        body: JSON.stringify(paymentData),
+                                    });
+
+                                    if (paymentResponse.ok) {
+                                        alert(`تم الدفع والاشتراك في خطة ${selectedPlan} بنجاح ✅`);
+                                        document.getElementById("paymentContainer").style.display = "none";
+                                        setTimeout(() => {
+                                            window.location.reload();
+                                        }, 1500);
+                                    }
+                                }
+                            } catch (error) {
+                                console.error("Error processing payment:", error);
+                            }
+                        },
+                        on_failed: function(payment) {
+                            console.error("Payment failed:", payment);
+                            alert("فشل في عملية الدفع. يرجى المحاولة مرة أخرى.");
+                        }
+                    });
+                    
+                    // Ensure form stays visible after initialization
+                    setTimeout(() => {
+                        if (moyasarForm) {
+                            moyasarForm.style.display = 'block';
+                            moyasarForm.style.visibility = 'visible';
+                            moyasarForm.style.opacity = '1';
+                            // Force reflow
+                            moyasarForm.offsetHeight;
+                        }
+                    }, 500);
+                } catch (e) {
+                    console.error("Error initializing Moyasar:", e);
+                    moyasarForm.innerHTML = '<div style="color: red; text-align: center; padding: 20px;">حدث خطأ في تحميل نموذج الدفع</div>';
+                }
+            }, 200);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyBtn = document.getElementById('applyCouponBtn');
+            const couponInput = document.getElementById('couponInput');
+            const couponError = document.getElementById('couponError');
+            const couponSuccess = document.getElementById('couponSuccess');
+
+            const moyasarForm = document.getElementById('moyasarForm');
+            const freeBox = document.getElementById('freeSubscriptionBox');
+
+            const discountValue = document.getElementById('discountValue');
+            const totalValue = document.getElementById('totalValue');
+            const originalPrice = document.getElementById('originalPrice');
+
+            const activateBtn = document.getElementById('activateFreeBtn');
+
+            // الاستماع لأزرار الترقية لتحديث السعر
+            // Note: يتم التعامل مع هذا في joinus.js أيضاً، لكن نضيف هنا للتأكد
+            const upgradeButtons = document.querySelectorAll('.btn[data-plan]');
+            upgradeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const plan = this.getAttribute('data-plan');
+                    let price = 0;
+                    
+                    // تحديد السعر حسب الخطة
+                    if (plan === 'advanced') {
+                        price = 50;
+                    } else if (plan === 'custom') {
+                        price = 100;
+                    } else if (plan === 'featured') {
+                        price = 200;
+                    }
+                    
+                    // تحديث الأسعار عند فتح المودال
+                    setTimeout(() => {
+                        updatePaymentPrices(price);
+                    }, 300); // زيادة الوقت قليلاً لضمان تحميل المودال
+                });
+            });
+
+            // عند الضغط على زر تطبيق الكوبون
+            applyBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const code = couponInput.value.trim();
+
+                if (!code) {
+                    couponError.textContent = 'يرجى إدخال كود الكوبون';
+                    couponError.style.display = 'block';
+                    couponSuccess.style.display = 'none';
+                    return;
+                }
+
+                // إظهار حالة التحميل
+                applyBtn.disabled = true;
+                applyBtn.textContent = 'جاري التحقق...';
+
+                try {
+                    const token = localStorage.getItem('authToken');
+                    
+                    if (!token) {
+                        couponError.textContent = 'يجب تسجيل الدخول أولاً';
+                        couponError.style.display = 'block';
+                        couponSuccess.style.display = 'none';
+                        applyBtn.disabled = false;
+                        applyBtn.textContent = 'تطبيق';
+                        return;
+                    }
+
+                    // إذا كان currentPlanPrice صفر، نحاول الحصول على السعر من العنصر
+                    if (!currentPlanPrice || currentPlanPrice === 0) {
+                        const originalPriceEl = document.getElementById('originalPrice');
+                        if (originalPriceEl) {
+                            const priceText = originalPriceEl.textContent || originalPriceEl.innerText;
+                            const priceMatch = priceText.match(/(\d+(?:\.\d+)?)/);
+                            if (priceMatch) {
+                                currentPlanPrice = parseFloat(priceMatch[1]);
+                            }
+                        }
+                    }
+
+                    // التحقق من الكوبون من Backend
+                    const response = await fetch('/api/check-coupon', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`,
+                            'Accept': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            code: code,
+                            amount: currentPlanPrice
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.valid) {
+                        // نجاح - تطبيق الخصم
+                        couponError.style.display = 'none';
+                        couponSuccess.style.display = 'block';
+                        couponSuccess.innerHTML = `<i class="fas fa-check-circle"></i> ${data.message || 'تم تطبيق الخصم بنجاح'}`;
+
+                        // تحديث الخصم
+                        currentDiscount = parseFloat(data.discount) || 0;
+                        const finalAmount = Math.max(0, currentPlanPrice - currentDiscount);
+
+                        discountValue.textContent = `${currentDiscount.toFixed(2)} ريال`;
+                        totalValue.textContent = `${finalAmount.toFixed(2)} ريال`;
+
+                        // إذا كان المبلغ النهائي صفر، إظهار صندوق الاشتراك المجاني
+                        if (finalAmount === 0 || finalAmount <= 0) {
+                            if (moyasarForm) {
+                                moyasarForm.style.display = 'none';
+                                moyasarForm.style.visibility = 'hidden';
+                            }
+                            if (freeBox) freeBox.style.display = 'block';
+                        } else {
+                            // Keep payment form visible - DO NOT reinitialize Moyasar
+                            if (moyasarForm) {
+                                // Force visibility - payment fields must stay visible when amount > 0
+                                moyasarForm.style.display = 'block';
+                                moyasarForm.style.visibility = 'visible';
+                                moyasarForm.style.opacity = '1';
+                                moyasarForm.style.height = 'auto';
+                                moyasarForm.style.minHeight = '200px';
+                                
+                                // DON'T reinitialize - keep existing Moyasar form visible
+                                // The backend will handle the discount calculation on payment submission
+                                // If Moyasar supports updateAmount, try to update it
+                                if (window.currentMoyasarInstance && typeof window.currentMoyasarInstance.updateAmount === 'function') {
+                                    try {
+                                        window.currentMoyasarInstance.updateAmount(finalAmount * 100);
+                                    } catch (e) {
+                                        console.warn('Moyasar updateAmount not supported, keeping original amount');
+                                    }
+                                }
+                            }
+                            if (freeBox) freeBox.style.display = 'none';
+                        }
+
+                        // تعطيل حقل الإدخال والزر
+                        couponInput.disabled = true;
+                        applyBtn.disabled = true;
+                        applyBtn.textContent = 'تم';
+                        applyBtn.style.backgroundColor = '#198754';
+
+                    } else {
+                        // فشل
+                        couponSuccess.style.display = 'none';
+                        couponError.style.display = 'block';
+                        couponError.innerHTML = `<i class="fas fa-times"></i> ${data.message || 'الكوبون غير صحيح'}`;
+
+                        // إعادة الوضع الطبيعي
+                        currentDiscount = 0;
+                        const finalAmount = currentPlanPrice;
+                        
+                        discountValue.textContent = '0 ريال';
+                        totalValue.textContent = `${finalAmount.toFixed(2)} ريال`;
+                        if (moyasarForm) moyasarForm.style.display = 'block';
+                        if (freeBox) freeBox.style.display = 'none';
+                        
+                        applyBtn.disabled = false;
+                        applyBtn.textContent = 'تطبيق';
+                    }
+                } catch (error) {
+                    console.error('Coupon validation error:', error);
+                    couponSuccess.style.display = 'none';
+                    couponError.style.display = 'block';
+                    couponError.innerHTML = '<i class="fas fa-times"></i> حدث خطأ في التحقق من الكوبون';
+                    
+                    applyBtn.disabled = false;
+                    applyBtn.textContent = 'تطبيق';
+                }
+            });
+
+            // عند الضغط على تفعيل الاشتراك الان
+            activateBtn.addEventListener('click', function() {
+                const btnText = this.querySelector('.btn-text');
+                const spinner = this.querySelector('.spinner');
+
+                // تغيير شكل الزر لـ "جاري التفعيل"
+                btnText.textContent = 'جاري التفعيل...';
+                spinner.style.display = 'block';
+                this.style.opacity = '0.8';
+                this.style.pointerEvents = 'none'; // منع الضغط مرتين
+
+                // محاكاة عملية تفعيل (انتظار 2 ثانية)
+                setTimeout(() => {
+                    // هنا يمكنك وضع كود التحويل لصفحة النجاح أو إغلاق المودال
+                    alert("تم تفعيل اشتراكك بنجاح!");
+                    document.getElementById('paymentContainer').style.display = 'none';
+
+                    // إعادة الزر لحالته (اختياري)
+                    btnText.textContent = 'تفعيل الاشتراك الان';
+                    spinner.style.display = 'none';
+                    this.style.opacity = '1';
+                    this.style.pointerEvents = 'auto';
+                }, 2000);
+            });
+        });
+    </script>
+
+</body>
+</html>

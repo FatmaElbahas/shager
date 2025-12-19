@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> المدفوعات والعروض</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/payments.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- select -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+</head>
+
+<body style="height: 100vh;">
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="AdminDashboard.html" class="nav-link">لوحة تحكم</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="messages.html" class="nav-link">الرسائل</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="content.html" class="nav-link">إدارة الاشجار</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/Users Icon.png" alt="" class="icon">
+                <a href="users.html" class="nav-link">المستخدمين</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="invitations.html" class="nav-link">الدعوات</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/Sales Icon.png" alt="" class="icon">
+                <a href="reports.html" class="nav-link">التقارير</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="subscriptions.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2">
+                <img src="images/190 (1).png" alt="" class="icon">
+                <a href="payments.html" class="nav-link">المدفوعات والعروض </a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="settings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold"> المدفوعات والعروض </span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- coupons -->
+
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="my-3" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                    الكوبونات
+                </h4>
+
+                <button class="btn btn-custom rounded-pill px-4 py-2" data-bs-toggle="modal"
+                    data-bs-target="#addCouponModal">
+                    + إضافة كوبون
+                </button>
+
+                <div class="modal fade" id="addCouponModal" tabindex="-1" aria-labelledby="joinModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content p-4 rounded-4" style="border-radius: 32px;">
+                            <div class="modal-header border-0">
+                                <h3 class="modal-title" id="addCouponModal"
+                                    style="color: rgba(39, 58, 65, 1); font-size: 32px;"> كوبون جديد</h3>
+                                <div class="modal-header border-0">
+                                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                                        aria-label="إغلاق"></button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <form id="couponForm" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label><strong>كود الكوبون (حروف انجليزية وارقام وبدون مسافات)</strong></label>
+                                        <input type="text" class="form-control" name="code" placeholder="مثال : 8562"
+                                            required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>نوع الخصم للعميل</strong></label>
+                                        <select class="form-select custom-select" name="client_discount_type" required>
+                                            <option value="" disabled selected>نوع الخصم للعميل</option>
+                                            <option value="percentage">نسبة مئوية</option>
+                                            <option value="fixed">قيمة ثابتة</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>نوع الخصم على المنتج</strong></label>
+                                        <select class="form-select custom-select" name="product_discount_type" required>
+                                            <option value="" disabled selected>نوع الخصم على المنتج</option>
+                                            <option value="subscription">اشتراك</option>
+                                            <option value="plan">خطة</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>تاريخ بداية الكوبون</strong></label>
+                                        <input type="date" class="form-control" name="start_date" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>تاريخ انتهاء الكوبون</strong></label>
+                                        <input type="date" class="form-control" name="end_date" required>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label><strong>عدد مرات الاستخدام للجميع</strong></label>
+                                            <input type="number" class="form-control" name="usage_limit_total"
+                                                placeholder="مثال : 20" required>
+                                        </div>
+                                        <div class="col">
+                                            <label><strong>عدد مرات الاستخدام للعميل الواحد</strong></label>
+                                            <input type="number" class="form-control" name="usage_limit_per_user"
+                                                placeholder="مثال : 20" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>قيمة الخصم</strong></label>
+                                        <input type="text" class="form-control" name="discount_value"
+                                            placeholder="مثال: 25%" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>تاريخ انتهاء صلاحية الكوبون</strong></label>
+                                        <input type="date" class="form-control" name="expiry_date" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>شعار الكوبون (اختياري)</strong></label>
+                                        <input type="file" class="form-control" name="logo" accept="image/*">
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center g-3">
+                                        <button type="submit" class="btn btn-custom rounded-pill px-4 w-50">
+                                            حفظ
+                                        </button>
+                                        <button type="button" class="btn btn-outline-dark py-3 rounded-pill px-4 w-50"
+                                            data-bs-dismiss="modal">
+                                            إلغاء
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="couponsContainer">
+                <!-- الكوبونات ستظهر هنا ديناميكياً -->
+            </div>
+
+        </div>
+
+        <!-- promotions -->
+
+        <div class="container-fluid my-3">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="my-3" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                    العروض الترويجية
+                </h4>
+
+                <button class="btn btn-custom rounded-pill px-4 py-2" data-bs-toggle="modal"
+                    data-bs-target="#addPromotionModal">
+                    + عرض جديد
+                </button>
+
+
+                <div class="modal fade" id="addPromotionModal" tabindex="-1" aria-labelledby="addModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content p-4 rounded-4" style="border-radius: 32px;">
+                            <div class="modal-header border-0">
+                                <h3 class="modal-title" id="addPromotionModal"
+                                    style="color: rgba(39, 58, 65, 1); font-size: 32px;"> عرض جديد</h3>
+                                <div class="modal-header border-0">
+                                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                                        aria-label="إغلاق"></button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <form id="promotionForm">
+                                    <div class="mb-3">
+                                        <label><strong>عنوان العرض</strong></label>
+                                        <input type="text" class="form-control" name="title"
+                                            placeholder="مثال : عرض الساعة" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>تاريخ بداية العرض</strong></label>
+                                        <input type="date" class="form-control" name="start_date" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label><strong>تاريخ انتهاء العرض</strong></label>
+                                        <input type="date" class="form-control" name="end_date" required>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label><strong>نوع الخصم</strong></label>
+                                            <select class="form-select custom-select" name="discount_type" required>
+                                                <option value="" disabled selected>اختر نوع الخصم</option>
+                                                <option value="percentage">خصم بنسبة</option>
+                                                <option value="fixed">خصم ثابت</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <label><strong>نسبة الخصم</strong></label>
+                                            <input type="number" class="form-control" name="discount_value"
+                                                placeholder="مثال: 30" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label><strong>نص رسالة العرض</strong></label>
+                                        <textarea class="form-control" name="message" rows="4"
+                                            placeholder="ادخل تفاصيل العرض" required></textarea>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center g-3">
+                                        <button type="submit" class="btn btn-custom rounded-pill px-4 w-50">حفظ</button>
+                                        <button type="button" class="btn btn-outline-dark py-3 rounded-pill px-4 w-50"
+                                            data-bs-dismiss="modal">إلغاء</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="promotionsContainer">
+                <!-- العروض الترويجية ستظهر هنا ديناميكياً -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/payments.js"></script>
+</body>
+
+</html>

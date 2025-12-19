@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Family Tree</title>
+    <script src="https://balkan.app/js/familytree.js"></script>
+    <style>
+        #tree {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Tahoma", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tree"></div>
+
+    <script>
+
+        // القالب الأساسي
+        FamilyTree.templates.card = Object.assign({}, FamilyTree.templates.base);
+        FamilyTree.templates.card.size = [180, 260];
+
+        // ===== الشكل الأساسي للذكر =====
+        FamilyTree.templates.card_male = Object.assign({}, FamilyTree.templates.card);
+        FamilyTree.templates.card_male.node = `
+        <rect x="0" y="0" width="{w}" height="{h}" rx="30" ry="30" fill="rgba(233, 229, 213, 1)" stroke="rgba(0, 0, 0, 0.04)" stroke-width="1"></rect>
+    `;
+
+        // ===== الشكل الأساسي للأنثى =====
+        FamilyTree.templates.card_female = Object.assign({}, FamilyTree.templates.card);
+        FamilyTree.templates.card_female.node = `
+        <rect x="0" y="0" width="{w}" height="{h}" rx="30" ry="30" fill="rgba(236, 167, 193, 1)" stroke="rgba(0, 0, 0, 0.04)" stroke-width="1"></rect>
+    `;
+
+        // الصورة (في النص فوق)
+        FamilyTree.templates.card_male.img_0 = `
+        <clipPath id="maleImg">
+            <rect x="40" y="15" width="100" height="100" rx="15" ry="15"></rect>
+        </clipPath>
+        <image x="40" y="15" width="100" height="100" preserveAspectRatio="xMidYMid slice"
+            clip-path="url(#maleImg)" xlink:href="{val}"></image>
+    `;
+        FamilyTree.templates.card_female.img_0 = `
+        <clipPath id="femaleImg">
+            <rect x="40" y="15" width="100" height="100" rx="15" ry="15"></rect>
+        </clipPath>
+        <image x="40" y="15" width="100" height="100" preserveAspectRatio="xMidYMid slice"
+            clip-path="url(#femaleImg)" xlink:href="{val}"></image>
+    `;
+        // الاسم (تحت الصورة)
+        FamilyTree.templates.card_male.field_0 = `<text style="font-size: 18px; font-weight: bold;" fill="#000"
+            x="90" y="140" text-anchor="middle">{val}</text>`;
+        FamilyTree.templates.card_female.field_0 = `<text style="font-size: 18px; font-weight: bold;" fill="#000"
+            x="90" y="140" text-anchor="middle">{val}</text>`;
+
+        // العلاقة
+        FamilyTree.templates.card_male.field_2 = `<rect x="50" y="150" width="80" height="25" rx="8" ry="8" fill="#000"></rect>
+         <text style="font-size: 14px; font-weight: bold;" fill="#fff" x="90" y="167" text-anchor="middle">{val}</text>`;
+        FamilyTree.templates.card_female.field_2 = `<rect x="50" y="150" width="80" height="25" rx="8" ry="8" fill="#000"></rect>
+         <text style="font-size: 14px; font-weight: bold;" fill="#fff" x="90" y="167" text-anchor="middle">{val}</text>`;
+
+        // تاريخ الميلاد
+        FamilyTree.templates.card_male.field_1 = `<text style="font-size: 14px;" fill="#333" x="90" y="200" text-anchor="middle">🎂 {val}</text>`;
+        FamilyTree.templates.card_female.field_1 = `<text style="font-size: 14px;" fill="#333" x="90" y="200" text-anchor="middle">🎂 {val}</text>`;
+
+        // الهاتف
+        FamilyTree.templates.card_male.field_3 = `<text style="font-size: 14px;" fill="#333" x="90" y="225" text-anchor="middle">📞 {val}</text>`;
+        FamilyTree.templates.card_female.field_3 = `<text style="font-size: 14px;" fill="#333" x="90" y="225" text-anchor="middle">📞 {val}</text>`;
+
+        // ======================= جلب البيانات من الـ API ======================= //
+        fetch("https://mediumblue-seahorse-369825.hostingersite.com/api/test-tree", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer 297|HgyRAir30DGUyR8s4cjdXHg1IHjhJRKft7oK3qrzcf40d181",
+                Accept: "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                const formattedNodes = data.nodes.map((node) => ({
+                    id: node.id,
+                    name: node.name,
+                    relation: node.relation,
+                    birth_date: node.birth_date,
+                    phone_number: node.phone_number,
+                    gender: node.gender,
+                    photo: node.profile_picture,
+                    pids: node.pids || [],
+                    fid: node.fid || null,
+                    mid: node.mid || null,
+                }));
+
+
+                new FamilyTree(document.getElementById("tree"), {
+                    enableSearch: false,
+                    template: "card",
+                    nodeBinding: {
+                        field_0: "name",
+                        field_1: "birth_date",
+                        field_2: "relation",
+                        field_3: "phone_number",
+                        img_0: "photo",
+                    },
+                    nodes: formattedNodes,
+                });
+
+            })
+            .catch((error) => console.error("خطأ في جلب البيانات:", error));
+
+
+    </script>
+</body>
+
+</html>

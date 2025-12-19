@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خريطة العائلة </title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/map.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvyWEUlGGtwKKr54fstMGMJz1N6ZtKZvo&libraries=places&callback=initMap"></script>
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.svg" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="usermessages.html" class="nav-link">الرسائل</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="upgrade.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-user-plus icon" style="color: rgba(39, 58, 65, 1);"></i>
+                <a href="requests.html" class="nav-link">طلبات الانضمام</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">خريطة العائلة </span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+
+            <!-- Map -->
+            <div class="map">
+                <div class="container-fluid">
+                    <div class="section-title text-end">
+                        <h5 class="py-4 px-2 fw-bold"
+                            style="color: rgba(39, 58, 65, 1); font-size: 42px; text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.103);">
+                            خريطة العائلة
+                        </h5>
+                    </div>
+                    <section class="container my-4">
+                        <div class="position-relative">
+                            <div id="map" style="height: 100vh; width: 100%; border-radius: 12px;"></div>
+                            <!-- Map Control Buttons -->
+                            <div class="map-controls-container position-absolute">
+                                <!-- Add Location Button -->
+                                <button class="btn btn-map-add-location mb-2" data-bs-toggle="modal"
+                                    data-bs-target="#addLocationModal" title="إضافة موقع جديد">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
+                                <!-- Current Location Button -->
+                                <button class="btn btn-map-current-location" onclick="getCurrentLocation()" 
+                                    title="موقعي الحالي">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Add Location Modal -->
+    <div class="modal fade" id="addLocationModal" tabindex="-1" aria-labelledby="addLocationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content add-location-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="addLocationModalLabel">إضافة موقع</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addLocationForm">
+                        <div class="mb-3">
+                            <label for="locationName" class="form-label">اسم الموقع</label>
+                            <input type="text" class="form-control location-input" id="locationName"
+                                placeholder="أدخل اسم الموقع" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="locationCity" class="form-label">المدينة</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control location-input" id="locationCity"
+                                    placeholder="أدخل اسم المدينة" required>
+                                <div class="city-loading d-none position-absolute"
+                                    style="top: 50%; left: 10px; transform: translateY(-50%);">
+                                    <div class="spinner-border spinner-border-sm text-warning" role="status">
+                                        <span class="visually-hidden">جاري البحث...</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="citySearchResults" class="city-suggestions d-none"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="locationDescription" class="form-label">الوصف</label>
+                            <textarea class="form-control location-input" id="locationDescription" rows="3"
+                                placeholder="أدخل وصف الموقع (اختياري)"></textarea>
+                        </div>
+                        <div class="location-coordinates mb-3" id="coordinatesDisplay" style="display: none;">
+                            <div class="alert alert-success d-flex align-items-center">
+                                <i class="bi bi-geo-alt-fill me-2"></i>
+                                <div>
+                                    <strong>تم تحديد الموقع:</strong><br>
+                                    <small id="coordinatesText"></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="location-help-text mb-3">
+                            <small class="text-muted">
+                                <i class="bi bi-info-circle me-1"></i>
+                                سيتم تحديد الموقع تلقائياً عند كتابة اسم المدينة أو النقر على الخريطة
+                            </small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-add-location-submit" id="submitLocationBtn"
+                        onclick="addNewLocation()" disabled>إضافة موقع</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/map.js"></script>
+</body>
+
+</html>

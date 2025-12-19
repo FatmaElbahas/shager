@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المستخدم</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/users.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <style>
+        /* Professional styling without excessive animations */
+        .professional-card {
+            transition: box-shadow 0.3s ease;
+        }
+
+        .professional-card:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .stat-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .action-btn {
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body style="height: 100vh;">
+
+    <div class="custom-container mt-4">
+        <div class="d-flex align-items-center bg-white py-3 rounded-pill">
+            <div class="search-bar d-flex align-items-center position-relative">
+
+                <!-- أيقونة البحث -->
+                <i class="bi bi-search search-icon px-3 position-absolute"></i>
+
+                <!-- مربع البحث -->
+                <input type="search" id="searchButton" class="form-control search-input rounded-pill"
+                    placeholder="البحث ..">
+
+                <!-- أيقونة الإشعارات -->
+                <div id="notifIcon" class="notif-icon position-relative ms-3" style="cursor:pointer;">
+                    <i class="bi bi-bell-fill" style="font-size:22px;color:#ff9800;"></i>
+
+                    <!-- النقطة الحمراء -->
+                    <span id="notifDot" style="
+            width:10px;
+            height:10px;
+            background:red;
+            border-radius:50%;
+            position:absolute;
+            top:-2px;
+            right:-2px;
+            display:none;
+        "></span>
+                </div>
+                <a href="nafication.html" class="show-all">عرض كل الإشعارات</a>
+                <!-- البوب أب -->
+                <div id="notifPopup" class="notif-popup" style="display:none;">
+                    <h6 class="mb-2">آخر الإشعارات</h6>
+                    <div id="notifList"></div>
+                    <a href="/nafication" class="show-all">عرض كل الإشعارات</a>
+                </div>
+
+            </div>
+
+            <div class="d-flex align-items-center gap-3 mx-4">
+                <a href="settings.html"> <img id="platformLogo" src="images/Asset 80.png" alt="Logo"
+                        class="img-fluid rounded-pill" style="width: 120px;object-fit: cover;">
+                </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close" aria-label="إغلاق القائمة">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="AdminDashboard.html" class="nav-link">لوحة التحكم</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="messages.html" class="nav-link">الرسائل</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="content.html" class="nav-link">إدارة الاشجار</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2 ">
+                <img src="images/Users Icon.png" alt="" class="icon">
+                <a href="users.html" class="nav-link">المستخدمين</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="invitations.html" class="nav-link">الدعوات</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/Sales Icon.png" alt="" class="icon">
+                <a href="reports.html" class="nav-link">التقارير</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="subscriptions.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/190 (1).png" alt="" class="icon">
+                <a href="payments.html" class="nav-link">المدفوعات والعروض </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="settings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="#" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold"> تفاصيل المستخدم</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <!-- Back Button -->
+            <div class="my-4">
+                <a href="users.html" class="btn btn-outline-secondary rounded-pill">
+                    <i class="bi bi-arrow-right me-2"></i> العودة إلى قائمة المستخدمين
+                </a>
+            </div>
+
+            <!-- Summary Cards (KPIs) -->
+            <div class="row mb-4">
+                <!-- Subscription Status -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-container">
+                            <i class="bi bi-credit-card-fill kpi-icon"></i>
+                        </div>
+                        <div class="kpi-label">حالة الاشتراك</div>
+                        <div id="subscription-status" class="kpi-value">-</div>
+                    </div>
+                </div>
+
+                <!-- User Role -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-container">
+                            <i class="bi bi-person-badge-fill kpi-icon"></i>
+                        </div>
+                        <div class="kpi-label">وظيفته في الشجرة</div>
+                        <div id="user-role" class="kpi-value">-</div>
+                    </div>
+                </div>
+
+                <!-- Join Date -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-container">
+                            <i class="bi bi-calendar-check-fill kpi-icon"></i>
+                        </div>
+                        <div class="kpi-label">تاريخ الانضمام</div>
+                        <div id="join-date" class="kpi-value">-</div>
+                    </div>
+                </div>
+
+                <!-- Family Members Count -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-container">
+                            <i class="bi bi-people-fill kpi-icon"></i>
+                        </div>
+                        <div class="kpi-label">عدد أفراد الشجرة</div>
+                        <div id="family-members-count" class="kpi-value">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Profile Summary Card -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4 professional-card">
+                <div class="card-header bg-white border-0 py-3">
+                    <h4 class="mb-0">بيانات المستخدم الأساسية</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-column flex-md-row align-items-center">
+                        <!-- User Avatar -->
+                        <div class="mb-4 mb-md-0 me-md-4">
+                            <img id="user-avatar" src="images/tree 1.png" alt="صورة المستخدم"
+                                class="rounded-circle border border-3 border-warning" width="120" height="120"
+                                onerror="this.onerror=null;this.src='images/tree 1.png';">
+                        </div>
+
+                        <!-- User Info -->
+                        <div class="flex-grow-1 text-center text-md-start">
+                            <h3 id="user-full-name" class="mb-3">-</h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center user-info-item">
+                                        <i class="bi bi-envelope-fill text-warning me-2 user-profile-icon"></i>
+                                        <div>
+                                            <small class="text-muted d-block small">البريد الإلكتروني</small>
+                                            <span id="user-email-display" class="fw-medium">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center user-info-item">
+                                        <i class="bi bi-telephone-fill text-warning me-2 user-profile-icon"></i>
+                                        <div>
+                                            <small class="text-muted d-block small">رقم الجوال</small>
+                                            <span id="user-phone-display" class="fw-medium">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center user-info-item">
+                                        <i class="bi bi-tree-fill text-warning me-2 user-profile-icon"></i>
+                                        <div>
+                                            <small class="text-muted d-block small">اسم الشجرة</small>
+                                            <span id="user-tree-name" class="fw-medium">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center user-info-item">
+                                        <i class="bi bi-briefcase-fill text-warning me-2 user-profile-icon"></i>
+                                        <div>
+                                            <small class="text-muted d-block small">الوظيفة</small>
+                                            <span id="user-job-display" class="fw-medium">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscriptions Section -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4 professional-card">
+                <div class="card-header bg-white border-0 py-3">
+                    <h4 class="mb-0">الاشتراكات</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0">
+                            <thead class="text-center bg-light">
+                                <tr>
+                                    <th>اسم المستخدم + البريد</th>
+                                    <th>اسم الشجرة</th>
+                                    <th>تاريخ بدء الاشتراك</th>
+                                    <th>تاريخ انتهاء الاشتراك</th>
+                                    <th>الخطة الحالية</th>
+                                    <th>حالة الاشتراك</th>
+                                    <th>طريقة الدفع</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subscriptions-table" class="align-middle">
+                                <tr>
+                                    <td colspan="8" class="text-center text-muted py-4">
+                                        لا توجد اشتراكات لهذا المستخدم
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Actions -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-white border-0 py-3">
+                    <h4 class="mb-0">إجراءات المستخدم</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button id="activate-user" class="btn btn-success rounded-pill px-4 action-btn">
+                            <i class="bi bi-check-circle me-2"></i> تفعيل
+                        </button>
+                        <button id="suspend-user" class="btn btn-warning rounded-pill px-4 action-btn">
+                            <i class="bi bi-pause-circle me-2"></i> إيقاف مؤقت
+                        </button>
+                        <button id="ban-user" class="btn btn-danger rounded-pill px-4 action-btn">
+                            <i class="bi bi-slash-circle me-2"></i> حظر
+                        </button>
+                        <button id="delete-user" class="btn btn-outline-danger rounded-pill px-4 action-btn">
+                            <i class="bi bi-trash me-2"></i> حذف
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/user-details.js"></script>
+</body>
+
+</html>

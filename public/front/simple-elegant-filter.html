@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نافذة الفلتر البسيطة والأنيقة</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/messages.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .demo-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .showcase-header h1 {
+            color: #1f2937;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .showcase-header p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+        .demo-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .control-buttons {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .control-buttons .btn {
+            margin: 0 10px 10px 0;
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="showcase-header">
+            <h1><i class="bi bi-sliders me-3"></i>نافذة الفلتر البسيطة والأنيقة</h1>
+            <p>تصميم نظيف وبسيط مع تجربة مستخدم سلسة</p>
+        </div>
+
+        <!-- أزرار التحكم -->
+        <div class="control-buttons">
+            <button class="btn btn-primary" onclick="showFilter()">
+                <i class="bi bi-eye"></i> إظهار النافذة
+            </button>
+            <button class="btn btn-secondary" onclick="hideFilter()">
+                <i class="bi bi-eye-slash"></i> إخفاء النافذة
+            </button>
+            <button class="btn btn-success" onclick="fillSampleData()">
+                <i class="bi bi-magic"></i> بيانات تجريبية
+            </button>
+        </div>
+
+        <!-- زر الفلتر -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 style="color: #374151;">الرسائل</h3>
+            <div class="filter-container">
+                <button class="btn btn-primary d-flex align-items-center gap-2" id="filterToggle">
+                    <i class="bi bi-sliders"></i>
+                    <span>فلتر</span>
+                    <span id="filterCount" style="display: none;">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- نافذة الفلتر -->
+        <div class="card mb-4" id="filterPanel" style="display: block;">
+            <div class="card-header">
+                <h6 class="mb-0"><i class="bi bi-funnel me-2"></i>فلترة الرسائل</h6>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">نوع الرسالة</label>
+                        <select class="form-select" id="messageTypeFilter">
+                            <option value="">جميع الأنواع</option>
+                            <option value="behavioral">سلوكية</option>
+                            <option value="technical">فنية</option>
+                            <option value="financial">مالية</option>
+                            <option value="inquiry">استفسار</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">الحالة</label>
+                        <select class="form-select" id="statusFilter">
+                            <option value="">جميع الحالات</option>
+                            <option value="answered">تم الرد</option>
+                            <option value="under_review">تحت المراجعة</option>
+                            <option value="unanswered">لم يتم الرد</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">اسم الشجرة</label>
+                        <input type="text" class="form-control" id="treeNameFilter" placeholder="ابحث في اسم الشجرة">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">اسم المستخدم</label>
+                        <input type="text" class="form-control" id="userNameFilter" placeholder="ابحث في اسم المستخدم">
+                    </div>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-success" onclick="applyFilters()">
+                        <i class="bi bi-check-circle me-1"></i>تطبيق الفلاتر
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="clearFilters()">
+                        <i class="bi bi-x-circle me-1"></i>مسح الفلاتر
+                    </button>
+                    <button class="btn btn-outline-danger" onclick="hideFilter()">
+                        <i class="bi bi-eye-slash me-1"></i>إخفاء
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم المميزات -->
+        <div class="demo-section">
+            <h4 class="text-center mb-4" style="color: #374151;">
+                <i class="bi bi-stars text-warning"></i> المميزات الجديدة
+            </h4>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="bi bi-palette fs-2 text-primary mb-3"></i>
+                    <h6>تصميم نظيف</h6>
+                    <p class="text-muted small">ألوان هادئة ومتناسقة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="bi bi-layout-text-window fs-2 text-success mb-3"></i>
+                    <h6>تخطيط بسيط</h6>
+                    <p class="text-muted small">ترتيب واضح ومنظم</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="bi bi-cursor fs-2 text-info mb-3"></i>
+                    <h6>تفاعل سلس</h6>
+                    <p class="text-muted small">تأثيرات خفيفة وأنيقة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="bi bi-phone fs-2 text-warning mb-3"></i>
+                    <h6>متجاوب</h6>
+                    <p class="text-muted small">يعمل على جميع الأجهزة</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم التفاصيل التقنية -->
+        <div class="demo-section">
+            <h4 class="text-center mb-4" style="color: #374151;">
+                <i class="bi bi-gear text-secondary"></i> التحسينات المطبقة
+            </h4>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class="text-primary">🎨 التصميم:</h6>
+                    <ul class="list-unstyled">
+                        <li>✓ ألوان هادئة ومريحة للعين</li>
+                        <li>✓ ظلال خفيفة وناعمة</li>
+                        <li>✓ حواف مدورة بشكل متناسق</li>
+                        <li>✓ تباعد مثالي بين العناصر</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-success">⚡ الأداء:</h6>
+                    <ul class="list-unstyled">
+                        <li>✓ أنيميشن سلسة وسريعة</li>
+                        <li>✓ تأثيرات hover خفيفة</li>
+                        <li>✓ تحميل سريع للنافذة</li>
+                        <li>✓ استجابة فورية للتفاعل</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- رابط للصفحة الأصلية -->
+        <div class="text-center">
+            <a href="messages.html" class="btn btn-lg btn-primary">
+                <i class="bi bi-arrow-left me-2"></i>
+                جرب في الصفحة الأصلية
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showFilter() {
+            const panel = document.getElementById('filterPanel');
+            panel.style.display = 'block';
+        }
+
+        function hideFilter() {
+            const panel = document.getElementById('filterPanel');
+            panel.style.display = 'none';
+        }
+
+        function fillSampleData() {
+            document.getElementById('messageTypeFilter').value = 'technical';
+            document.getElementById('statusFilter').value = 'pending';
+            document.getElementById('treeNameFilter').value = 'شجرة آل أحمد';
+            document.getElementById('userNameFilter').value = 'محمد';
+            updateFilterCount();
+        }
+
+        function applyFilters() {
+            updateFilterCount();
+            // محاكاة تطبيق الفلاتر
+            const toast = document.createElement('div');
+            toast.className = 'alert alert-success position-fixed top-0 end-0 m-3';
+            toast.style.zIndex = '9999';
+            toast.innerHTML = '<i class="bi bi-check-circle me-2"></i>تم تطبيق الفلاتر بنجاح';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        function clearFilters() {
+            document.getElementById('messageTypeFilter').value = '';
+            document.getElementById('statusFilter').value = '';
+            document.getElementById('treeNameFilter').value = '';
+            document.getElementById('userNameFilter').value = '';
+            updateFilterCount();
+            
+            const toast = document.createElement('div');
+            toast.className = 'alert alert-info position-fixed top-0 end-0 m-3';
+            toast.style.zIndex = '9999';
+            toast.innerHTML = '<i class="bi bi-info-circle me-2"></i>تم مسح جميع الفلاتر';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        function updateFilterCount() {
+            const filters = [
+                document.getElementById('messageTypeFilter').value,
+                document.getElementById('statusFilter').value,
+                document.getElementById('treeNameFilter').value,
+                document.getElementById('userNameFilter').value
+            ];
+            
+            const activeCount = filters.filter(f => f.trim() !== '').length;
+            const counter = document.getElementById('filterCount');
+            
+            if (activeCount > 0) {
+                counter.textContent = activeCount;
+                counter.style.display = 'flex';
+            } else {
+                counter.style.display = 'none';
+            }
+        }
+
+        // ربط الأحداث
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحديث العداد عند تغيير الحقول
+            const inputs = document.querySelectorAll('#filterPanel input, #filterPanel select');
+            inputs.forEach(input => {
+                input.addEventListener('change', updateFilterCount);
+                input.addEventListener('keyup', updateFilterCount);
+            });
+
+            // تأثيرات تفاعلية خفيفة
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.borderColor = '#6366f1';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.borderColor = '#e5e7eb';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

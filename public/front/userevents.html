@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المناسبات </title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/userevents.css">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    </body>
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- Vanilla Calendar للتقويم -->
+    <link href="https://cdn.jsdelivr.net/npm/vanilla-calendar@1.4.0/dist/vanilla-calendar.min.css" rel="stylesheet">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.svg" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="usermessages.html" class="nav-link">الرسائل</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="upgrade.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-user-plus icon" style="color: rgba(39, 58, 65, 1);"></i>
+                <a href="requests.html" class="nav-link">طلبات الانضمام</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">المناسبات </span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="section-title text-end">
+            <h5 class="py-4 px-2 fw-bold"
+                style="color: rgba(39, 58, 65, 1); font-size: 42px; text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.103);">
+                مناسبات الشهر
+            </h5>
+        </div>
+
+
+        <div class="container-fluid">
+            <div class="container my-4">
+                <div class="row">
+                    <div class="col-12 col-lg-8 mb-4">
+                        <!-- احذف هذا الجزء -->
+                        <div class="row" id="occasionCardsContainer">
+                            <div class="col-6 col-sm-4 col-md-3 mb-3">
+                                <div class="custom-card ...">
+                                    <!-- التفاصيل -->
+                                </div>
+                            </div>
+                            <!-- بطاقات أخرى -->
+                        </div>
+                    </div>
+
+                    <div id="loadingIndicator" class="text-center my-5 d-none">
+                        <div class="spinner-border" role="status" style="color: #b7924f;">
+                            <span class="visually-hidden">جاري التحميل...</span>
+                        </div>
+                    </div>
+
+
+                    <!-- العمود الجانبي (يأخذ 4 أعمدة على الشاشات الكبيرة، 12 على الصغيرة) -->
+                    <div class="col-12 col-lg-4">
+                        <!-- calender -->
+                        <div class="calendar mb-4" id="calendar" class="my-3">
+                            <div class="calendar-header">
+                                <select id="monthSelect"></select>
+                                <select id="yearSelect"></select>
+                            </div>
+                            <div class="calendar-days">
+                                <div>Mo</div>
+                                <div>Tu</div>
+                                <div>We</div>
+                                <div>Th</div>
+                                <div>Fri</div>
+                                <div>Sa</div>
+                                <div>Su</div>
+                            </div>
+                            <div class="calendar-dates" id="calendarDates"></div>
+                        </div>
+
+                        <!-- زرار فتح المودال -->
+                        <button class="btn btn-custom my-3 w-100" data-bs-toggle="modal"
+                            data-bs-target="#addEventModal">
+                            + أضف مناسبة جديدة
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered ">
+                                <!-- modal-lg عشان تكون كبيرة زي الصورة -->
+                                <div class="modal-content p-3 rounded-4" style="border-radius: 32px;">
+
+                                    <div class="modal-header border-0">
+                                        <h5 class="modal-title fw-bold" id="addEventModalLabel">مناسبة جديدة</h5>
+                                        <button type="button" class="btn-close ms-0" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <!-- نموذج الإدخال -->
+                                        <form id="occasionForm">
+
+                                            <!-- إضافة صورة الغلاف -->
+                                            <div class="mb-3 text-center border p-5 bg-light"
+                                                style="border-radius: 20px;">
+                                                <input type="file" id="coverImageInput" accept="image/*" class="d-none">
+
+                                                <!-- مكان عرض الصورة المختارة -->
+                                                <img id="coverImagePreview" src="" alt="صورة الغلاف"
+                                                    class="img-fluid mb-3 d-none rounded" style="max-height: 200px;" />
+
+                                                <button type="button" class="btn"
+                                                    onclick="document.getElementById('coverImageInput').click()">+ إضافة
+                                                    صورة الغلاف</button>
+                                            </div>
+
+
+                                            <!-- اسم المناسبة -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">المناسبة</label>
+                                                <input type="text" class="form-control" placeholder="اسم المناسبة"
+                                                    name="name" required id="name">
+                                            </div>
+
+                                            <!-- تاريخ المناسبة -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">تاريخ المناسبة</label>
+                                                <input type="date" class="form-control"
+                                                    placeholder="اختر تاريخ المناسبة" name="occasion_date" required
+                                                    id="occasion_date">
+                                            </div>
+
+                                            <!-- الموقع -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">اسم الموقع</label>
+                                                <input type="text" class="form-control" placeholder="ادخل موقع المناسبة"
+                                                    name="city" id="city">
+                                                <input type="hidden" id="latitude">
+                                                <input type="hidden" id="longitude">
+                                            </div>
+
+                                            <!-- من سيحضر المناسبة -->
+                                            <div class="mb-3">
+                                                <label><strong>من يمكنه رؤيتها؟</strong></label>
+                                                <select class="form-select custom-select" name="visibility"
+                                                    id="visibility">
+                                                    <option value="private">خاصة</option>
+                                                    <option value="public">عامة</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- تصنيفات -->
+                                            <div class="mb-3">
+                                                <label><strong><span><img src="images/Icons.png" alt=""></span> اضافة
+                                                        فئة</strong></label>
+                                                <select name="category" class="form-select">
+                                                    <option value="occasion">سنوي</option>
+                                                    <option value="meeting">اجتماع</option>
+                                                    <option value="familiar">عائلي</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- تفاصيل إضافية -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">التفاصيل</label>
+                                                <textarea class="form-control" rows="3"
+                                                    placeholder="اكتب تفاصيل المناسبة هنا..."></textarea>
+                                            </div>
+
+                                            <!-- الأزرار -->
+                                            <div class="d-flex justify-content-between mt-4">
+                                                <button type="submit" class="btn btn-custom w-50">إضافة
+                                                    المناسبة</button>
+                                                <button type="button" class="btn btn-outline-dark w-50 rounded-pill"
+                                                    data-bs-dismiss="modal">إلغاء</button>
+                                            </div>
+                                            <div id="loadingSpinner" class="text-center my-3 d-none">
+                                                <div class="spinner-border text-warning" role="status">
+                                                    <span class="visually-hidden">جاري الإضافة...</span>
+                                                </div>
+                                                <p class="mt-2">جاري الإضافة...</p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- صندوق المناسبات الفائتة -->
+                        <div class="past-events-box">
+                            <h5 class="py-3 px-2" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                                مناسبات فائتة
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Vanilla Calendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-calendar@1.4.0/dist/vanilla-calendar.min.js"></script>
+    <script src="js/userevents.js"></script>
+</body>
+
+</html>

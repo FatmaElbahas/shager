@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرسائل</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/messagessingleprofile.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+
+<body style="height: 100vh;">
+
+    <div class="custom-container mt-4">
+        <div class="d-flex align-items-center bg-white py-3 rounded-pill">
+            <div class="search-bar d-flex align-items-center position-relative">
+                <i class="bi bi-search search-icon px-3 position-absolute"></i> <input type="search" name="" id=""
+                    class="form-control search-input rounded-pill" placeholder="البحث ..">
+            </div>
+            <div class="d-flex align-items-center gap-3 mx-4">
+                <span>
+                    <a href="settings.html">
+                        <img id="platformLogo" src="images/Asset 80.png" alt="Logo" class="img-fluid rounded-pill"
+                            style="width: 120px; object-fit: cover;">
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="AdminDashboard.html" class="nav-link">لوحة تحكم</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="messages.html" class="nav-link">الرسائل</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="content.html" class="nav-link">إدارة الاشجار</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/Users Icon.png" alt="" class="icon">
+                <a href="users.html" class="nav-link">المستخدمين</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="invitations.html" class="nav-link">الدعوات</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/Sales Icon.png" alt="" class="icon">
+                <a href="reports.html" class="nav-link">التقارير</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="subscriptions.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/190 (1).png" alt="" class="icon">
+                <a href="payments.html" class="nav-link">المدفوعات والعروض </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="settings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="#" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold"> الرسائل</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+            <h1 class="my-4" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                الرسائل
+            </h1>
+            <!-- Message Profile Header -->
+            <div class="message-profile-header">
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <div class="avatar-img">
+                            <i class="bi bi-person-circle" style="font-size: 80px; color: #e0e0e0;"></i>
+                        </div>
+                    </div>
+                    <div class="profile-details">
+                        <h3 class="profile-name fw-bold">Ahmed Ali</h3>
+                        <p class="profile-email">Ahmed@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-actions">
+                    <div class="contact-item">
+                        <div class="contact-icon phone-icon mx-3">
+                            <img src="images/Frame 1984077665.png" alt="">
+                        </div>
+                        <div>
+                            <span class="contact-label mb-4">رقم الجوال</span>
+                            <br>
+                            <span class="contact-value fw-bold">+966253413789</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon email-icon mx-3">
+                            <img src="images/Frame 1984077665 (1).png" alt="">
+                        </div>
+                        <div>
+                            <span class="contact-label mb-2">اسم الشجرة</span>
+                            <br>
+                            <span class="contact-value fw-bold">الرحيم</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Content -->
+            <div class="message-content-section">
+                <div class="message-header">
+                    <h4>الرسائل</h4>
+                </div>
+
+                <div class="message-item">
+                    <div class="message-info">
+                        <span class="message-title">جار التحميل...</span>
+                        <span class="message-type">جار التحميل...</span>
+                        <span class="message-details" id="message-details">جار التحميل...</span>
+                    </div>
+                    <div class="message-actions">
+                        <button class="action-btn">
+                            <i class="bi bi-three-dots"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reply Section -->
+            <div class="reply-section">
+                <h5 class="reply-title">اكتب رد</h5>
+                <form class="reply-form" id="replyForm">
+                    <div class="form-group">
+                        <textarea id="admin_reply" name="admin_reply" class="form-control reply-textarea" rows="4"
+                            placeholder="اكتب رسالة الرد هنا..."></textarea>
+                    </div>
+                    <div class="form-actions mt-2">
+                        <button type="submit" class="btn btn-send btn-primary">
+                            <i class="bi bi-send"></i> إرسال
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+        <!-- Js -->
+        <script src="js/all.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/messagessingleprofile.js"></script>
+</body>
+
+</html>

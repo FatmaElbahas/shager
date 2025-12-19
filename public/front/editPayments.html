@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> اعدادات الحساب</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/UserPayements.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.svg" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class=" nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="usermessages.html" class="nav-link">الرسائل</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+            <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="usersubscriptions.html" class="nav-link">الإشتراكات</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-user-plus icon" style="color: rgba(39, 58, 65, 1);"></i>
+                <a href="requests.html" class="nav-link">طلبات الانضمام</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">اعدادات الحساب</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- header -->
+        <h5 class="text-end fw-bold my-4" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+            إعدادات الحساب
+        </h5>
+
+        <div class="container my-5">
+            <div class="row g-4">
+                <!-- Sidebar -->
+                <div class="col-lg-3">
+                    <div class="profile-sidebar text-end">
+                        <ul class="nav flex-column py-4">
+                            <li class="nav-item">
+                                <a class="nav-link" href="usersettings.html"
+                                    style="color: rgba(123, 123, 123, 1);">البيانات
+                                    الشخصية</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="active nav-link" href="editPayments.html"
+                                    style="color: rgba(123, 123, 123, 1);">
+                                    المدفوعات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="applyingcomplimant.html"
+                                    style="color: rgba(123, 123, 123, 1);">
+                                    تقديم شكوي</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="complimentresponse.html"
+                                    style="color: rgba(123, 123, 123, 1);">
+                                    متابعة الشكاوى</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class=" nav-link" href="Help.html" style="color: rgba(123, 123, 123, 1);">
+                                    المساعدة</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="domain.html" style="color: rgba(123, 123, 123, 1);">
+                                    حجز دومين</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <button class="nav-link text-danger bg-transparent border-0" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal" style="cursor:pointer;">
+                                    <i class="bi bi-trash3 me-2"></i>
+                                    حذف الحساب
+                                </button>
+                            </li>
+                            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                                        <div class="modal-header border-0 pb-0">
+                                            <div class="w-100 text-center">
+                                                <div class="delete-icon mb-3">
+                                                    <i class="bi bi-exclamation-triangle-fill text-danger"
+                                                        style="font-size: 3rem;"></i>
+                                                </div>
+                                                <h4 class="modal-title fw-bold text-danger" id="deleteModalLabel">
+                                                    تحذير: حذف الحساب
+                                                </h4>
+                                            </div>
+                                            <button type="button" class="btn-close position-absolute top-0 end-0 m-3"
+                                                data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                                        </div>
+                                        <div class="modal-body text-center px-4 py-3">
+                                            <div class="alert alert-warning border-0 mb-3"
+                                                style="background: rgba(255, 193, 7, 0.1);">
+                                                <p class="mb-2 fw-bold">⚠️ تنبيه مهم</p>
+                                                <p class="mb-0 small">هذا الإجراء لا يمكن التراجع عنه</p>
+                                            </div>
+                                            <p class="text-muted mb-3">
+                                                هل أنت متأكد تماماً من رغبتك في حذف حسابك؟
+                                            </p>
+                                            <div class="consequences-list text-start">
+                                                <p class="small text-danger mb-2">سيتم حذف:</p>
+                                                <ul class="small text-muted">
+                                                    <li>جميع بياناتك الشخصية</li>
+                                                    <li>شجرة العائلة الخاصة بك</li>
+                                                    <li>جميع المناسبات والأخبار</li>
+                                                    <li>الصور والملفات المرفوعة</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer border-0 justify-content-center pb-4">
+                                            <button type="button"
+                                                class="btn btn-outline-secondary rounded-pill px-4 me-2"
+                                                data-bs-dismiss="modal">
+                                                <i class="bi bi-x-circle me-1"></i>
+                                                إلغاء
+                                            </button>
+                                            <button type="button" id="confirmDeleteBtn"
+                                                class="btn btn-danger rounded-pill px-4">
+                                                <i class="bi bi-trash3-fill me-1"></i>
+                                                نعم، احذف الحساب نهائياً
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!-- Main content -->
+                <div class="col-lg-9">
+                    <div class="payment-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="text-end fw-bold mb-4" style="color: black; font-size: 24px;">
+                                المدفوعات
+                            </h5>
+                            <!-- زرار إضافة بطاقة جديدة -->
+                            <button class="btn btn-custom rounded-pill px-4" data-bs-toggle="modal"
+                                data-bs-target="#addPaymentModal">
+                                <i class="bi bi-plus-lg"></i> بطاقة جديدة
+                            </button>
+
+                            <!-- نافذة المودال -->
+                            <div class="modal fade" id="addPaymentModal" tabindex="-1"
+                                aria-labelledby="addPaymentModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content p-3" style=" border-radius: 32px;">
+                                        <div class="modal-header border-0">
+                                            <h5 class="modal-title" id="addPaymentModalLabel">بطاقة جديدة
+                                            </h5>
+                                            <button type="button" class="btn-close ms-0" data-bs-dismiss="modal"
+                                                aria-label="إغلاق"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="cardForm">
+                                                <!-- منطقة رفع الصورة التفاعلية -->
+                                                <div class="mb-3 text-center">
+                                                    <div class="image-upload-container position-relative"
+                                                        onclick="document.getElementById('cardImageInput').click()">
+                                                        <div class="golden-border"></div>
+                                                        <div class="card-preview position-relative overflow-hidden"
+                                                            style="border-radius: 20px; max-width: 300px; margin: 0 auto; min-height: 200px; background: #f8f9fa; border: 2px dashed #dee2e6;">
+                                                            <img id="cardImagePreview" src="images/Group (14).png"
+                                                                alt="معاينة البطاقة" class="img-fluid w-100 h-100"
+                                                                style="object-fit: cover; border-radius: 18px;">
+
+                                                            <!-- طبقة الرفع -->
+                                                            <div class="upload-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+                                                                style="opacity: 0; transition: all 0.3s ease; background: rgba(0,0,0,0.7); border-radius: 18px;">
+                                                                <div class="text-center text-white">
+                                                                    <div class="upload-icon-container mb-2">
+                                                                        <i class="bi bi-cloud-upload fs-1"></i>
+                                                                    </div>
+                                                                    <p class="mb-1 fw-bold upload-text">اضغط
+                                                                        أو اسحب
+                                                                        الصورة
+                                                                        هنا</p>
+                                                                    <small class="text-light">PNG, JPG,
+                                                                        JPEG, GIF, WebP
+                                                                        (حد
+                                                                        أقصى 5MB)</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- أزرار التحكم -->
+                                                            <div id="imageControls"
+                                                                class="position-absolute top-0 end-0 p-2"
+                                                                style="display: none;">
+                                                                <button type="button"
+                                                                    class="btn btn-sm btn-danger rounded-circle me-1"
+                                                                    onclick="event.stopPropagation(); resetCardImage();"
+                                                                    title="حذف الصورة">
+                                                                    <i class="bi bi-trash"></i>
+                                                                </button>
+                                                                <button type="button"
+                                                                    class="btn btn-sm btn-primary rounded-circle"
+                                                                    onclick="event.stopPropagation(); document.getElementById('cardImageInput').click();"
+                                                                    title="تغيير الصورة">
+                                                                    <i class="bi bi-pencil"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- طبقة السحب والإفلات -->
+                                                        <div id="dragOverlay"
+                                                            class="drag-overlay position-absolute top-0 start-0 w-100 h-100"
+                                                            style="display: none; border-radius: 20px;">
+                                                            <div class="text-center text-white">
+                                                                <div class="upload-icon-container mb-2">
+                                                                    <i class="bi bi-cloud-arrow-down fs-1"></i>
+                                                                </div>
+                                                                <p class="mb-0 fw-bold upload-text">أفلت
+                                                                    الصورة هنا</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- حقل الرفع المخفي -->
+                                                    <input type="file" id="cardImageInput" name="card_image"
+                                                        accept="image/png,image/jpeg,image/jpg,image/gif,image/webp"
+                                                        style="display: none;" onchange="previewCardImage(this)">
+
+                                                    <!-- معلومات الملف -->
+                                                    <div id="fileInfo" class="mt-2 p-2 bg-light rounded"
+                                                        style="display: none;">
+                                                        <small class="text-muted">
+                                                            <i class="bi bi-file-earmark-image me-1"></i>
+                                                            <span id="fileName"></span> - <span id="fileSize"></span>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">اسم حامل البطاقة</label>
+                                                    <input type="text" name="card_holder_name" class="form-control"
+                                                        placeholder="Noman Manzoor" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">رقم البطاقة</label>
+                                                    <input type="text" name="card_number" class="form-control"
+                                                        placeholder="6888 5377 4244 1121" required>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6 mb-3">
+                                                        <label class="form-label">تاريخ الانتهاء</label>
+                                                        <input type="text" name="expiry_date" class="form-control"
+                                                            placeholder="10/10" required>
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <label class="form-label">رمز التحقق (CVV)</label>
+                                                        <input type="text" name="cvv" class="form-control"
+                                                            placeholder="***" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer border-0 justify-content-center gap-3">
+                                                    <button type="button"
+                                                        class="btn btn-outline-secondary rounded-pill px-4 py-2 shadow-sm"
+                                                        data-bs-dismiss="modal">
+                                                        <i class="bi bi-x-circle me-2"></i> إلغاء
+                                                    </button>
+
+                                                    <button type="submit" form="cardForm"
+                                                        class="btn btn-success rounded-pill px-4 py-2 shadow-sm">
+                                                        <i class="bi bi-credit-card me-2"></i> حفظ البطاقة
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <!-- Table -->
+                        <div class="programmes-table table-responsive">
+                            <table class="table table-responsive table-borderless bg-white shadow-sm">
+                                <thead class="text-center">
+                                    <tr>
+                                        <th>رقم العملية </th>
+                                        <th>اسم المستخدم </th>
+                                        <th>التاريخ</th>
+                                        <th>الخطة الحالية </th>
+                                        <th>المبلغ </th>
+                                        <th>الحالة</th>
+                                        <th>طريقة الدفع</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transactionsTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <!-- Pagination -->
+                        <div
+                            class="pagination-controls d-flex justify-content-between align-items-center flex-wrap mt-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <span id="items-info">عرض 0-0 من 0 معامله</span>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <button id="prev-page" class="btn btn-link p-0">
+                                    <i class="bi bi-chevron-right" style="color: gold;"></i>
+                                </button>
+                                <span class="fw-bold" id="current-page">1</span>
+                                <span class="text-muted">من <span id="total-pages">1</span> صفحات</span>
+                                <button id="next-page" class="btn btn-link p-0">
+                                    <i class="bi bi-chevron-left text-muted"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/UserPayments.js"></script>
+</body>
+
+</html>

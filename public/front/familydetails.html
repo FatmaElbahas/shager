@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل العائلة</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/familydetails.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <script src="https://balkan.app/js/familytree.js"></script>
+
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" dir="rtl" style="background-color: rgba(248, 247, 247, 1);">
+        <div class="container-fluid">
+
+            <!-- الشعار على اليمين -->
+            <a class="navbar-brand mx-4" href="#">
+                <img src="images/Asset 80.svg" alt="logo" width="190">
+            </a>
+
+            <!-- زر القائمة للجوال -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-dark"></i>
+            </button>
+
+            <!-- محتوى الشريط -->
+            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
+
+                <!-- القائمة في المنتصف -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="Home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="families.html">العائلات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new.html"> الأخبار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">اتصل بنا</a>
+                    </li>
+                </ul>
+
+                <!-- Before sign in -->
+                <div id="before">
+                    <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                        <a href="login.html">
+                            <button class="btn btn-custom">تسجيل الدخول</button>
+                        </a>
+                        <a href="register.html">
+                            <button class="btn btn-outline-custom">إنشاء حساب</button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- after sign in  -->
+                <div id="after">
+                    <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                        <div class="user-bar">
+                            <a href="profile.html">
+                                <img src="images/image (25).png" alt="User" class="profile">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- main content -->
+    <main>
+        <div class="container py-4">
+            <!-- Header Section -->
+            <div class="family-header-modern">
+                <div class="d-flex align-items-center justify-content-between">
+                    <!-- Top Section with Title and Badge -->
+                    <div class="header-top d-flex justify-content-between align-items-start mb-4">
+                        <div class="family-title-container text-end">
+                            <h1 class="family-title-main mb-3" id="family-title">قبيلة بني خالد</h1>
+                            <div class="breadcrumb-simple my-3">
+                                <span class="breadcrumb-item"><a href="Home.html"
+                                        class="text-decoration-none text-dark">الرئيسية</a></span>
+                                <span class="breadcrumb-separator">•</span>
+                                <span class="breadcrumb-item"><a href="families.html"
+                                        class="text-decoration-none text-dark">العائلات</a></span>
+                                <span class="breadcrumb-separator">•</span>
+                                <span class="breadcrumb-item active">قبيلة بني خالد</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="btn btn-custom rounded-pill px-3 py-3" data-bs-toggle="modal"
+                            data-bs-target="#joinRequestModal" style="cursor: pointer;">
+                            <span>طلب انضمام<img src="images/octicon_arrow-up-24.svg" alt="" class="me-3"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cover Image Section -->
+                <div class="cover-section position-relative">
+                    <div class="cover-image-wrapper">
+                        <img id="cover_image" src="" alt="صورة العائلة" class="cover-image-main">
+                        <div class="cover-overlay"></div>
+                    </div>
+
+                    <!-- Family Info Overlay -->
+                    <div class="family-info-overlay">
+                        <div class="family-logo-section">
+                            <img id="logo_image" src="" alt="شعار العائلة" class="family-logo-main">
+                        </div>
+                        <div class="family-name-section">
+                            <h2 class="family-name-overlay" id="family-name-overlay">قبيلة بني خالد</h2>
+                        </div>
+                    </div>
+
+                    <div class="btn-overlay">
+                        <div class="btn btn-outline-custom rounded-pill px-3 py-3" data-bs-toggle="modal"
+                            data-bs-target="#messageCreatorModal" style="cursor: pointer;">
+                            <span><img src="images/mynaui_message.png" alt="" class="ms-2"> مراسلة منشيء الشجرة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Family Tree Section -->
+            <div class="family-tree-container" id="tree_logo">
+                <!-- family tree -->
+                <div class="bg-white rounded-4 p-4 my-5 text-center" style="overflow: hidden !important;">
+                    <div id="tree"></div>
+                </div>
+            </div>
+
+
+            <div class="background">
+                <div class="slope"></div>
+                <div class="tree">
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+
+                    <div class="branch left branch1">
+                        <div class="parent-name">...</div>
+                        <div class="branch left branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch left branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch left branch-inner3">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                        </div>
+                    </div>
+
+                    <div class="branch right branch2">
+                        <div class="parent-name">...</div>
+                        <div class="branch left branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch right branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch right branch-inner3">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                            <div class="branch left branch-inner4">
+                                <div class="parent-name">...</div>
+                                <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="branch left branch3">
+                        <div class="parent-name">...</div>
+                        <div class="branch right branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch left branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="leaf leaf1"><span class="name-text">...</span></div>
+                        <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    </div>
+
+                    <div class="branch right branch4">
+                        <div class="parent-name">...</div>
+                        <div class="branch left branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch right branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                    </div>
+
+                    <div class="branch left branch5">
+                        <div class="parent-name">...</div>
+                        <div class="branch right branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch left branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    </main>
+
+    <!-- Enhanced Occasions Section -->
+    <section class="occasions-section-enhanced">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header-modern text-center mb-5">
+                <div class="section-badge">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>المناسبات</span>
+                </div>
+                <h2 class="section-title-modern">المناسبات القادمة للقبيلة</h2>
+                <p class="section-description-modern">اكتشف أبرز الفعاليات والمناسبات التي تجمع أبناء القبيلة من مختلف
+                    الأماكن. من اللقاءات الاجتماعية إلى الاحتفالات الثقافية والندوات.</p>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Occasions Cards -->
+            <div class="occasions-grid" id="occasionsContainerCards">
+                <!-- Loading State -->
+                <div class="loading-state" id="occasions-loading">
+                    <div class="spinner-border text-warning" role="status"></div>
+                    <p class="mt-3 text-muted">جاري تحميل المناسبات...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced News Section -->
+    <section class="news-section-enhanced">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header-modern text-center mb-5">
+                <div class="section-badge">
+                    <i class="bi bi-newspaper"></i>
+                    <span>الأخبار</span>
+                </div>
+                <h2 class="section-title-modern">مقالات وأخبار القبيلة</h2>
+                <p class="section-description-modern">ابقَ على اطلاع بكل جديد عن القبيلة. من المقالات التي تبرز تاريخ
+                    القبيلة العريق، إلى آخر الأخبار والفعاليات التي تهم أبناء بني خالد.</p>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- News Cards -->
+            <div class="news-grid" id="newsContainer">
+                <!-- Loading State -->
+                <div class="loading-state" id="news-loading">
+                    <div class="spinner-border text-warning" role="status"></div>
+                    <p class="mt-3 text-muted">جاري تحميل الأخبار...</p>
+                </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-5">
+                <a href="new.html" class="btn btn-outline-custom btn-lg px-5">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    عرض جميع الأخبار
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>كُن جزءًا من شجر تك</h1>
+        <p>انطلق في رحلة التعرف على العائلات والقبائل، أو انضم إلينا وابدأ بتجميع عائلتك ومشاركتها وربطها مع الآخرين.
+        </p>
+        <a href="joinus.html">
+            <button class="btn btn-custom">انضم إلينا</button>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-2">
+        <div class="container">
+            <div class="row">
+                <!-- Column 1 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>تواصل معنا</h6>
+                    <p class="d-flex align-items-center gap-2" style="direction: rtl; color: rgba(123, 123, 123, 1);">
+                        <img src="images/ph_phone-call (1).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerPhone" dir="ltr">+966 59
+                            533
+                            8665</span>
+                    </p>
+                    <p class="d-flex align-items-center gap-2"
+                        style="direction: rtl; color: rgba(123, 123, 123, 1) !important; "> <img
+                            src="images/carbon_email (3).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerEmail"
+                            dir="ltr">shaigratech@gmail.com</span>
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" id="footerYoutube"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" id="footerTwitter"><img src="images/bxl-twitter.png" alt="Twitter"></a>
+                        <a href="#" id="footerInstagram"><img src="images/instagram-logo.png" alt="Instagram"></a>
+                        <a href="#" id="footerFacebook"><img src="images/bxl-facebook.png" alt="Facebook"></a>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>المزيد</h6>
+                    <ul>
+                        <li><a href="contactus.html">تواصل معنا</a></li>
+                        <li><a href="#">السياسات</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>الصفحات</h6>
+                    <ul>
+                        <li><a href="Home.html">الرئيسية</a></li>
+                        <li><a href="aboutus.html">من نحن</a></li>
+                        <li><a href="families.html">العائلات</a></li>
+                        <li><a href="new.html">الأخبار</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="col-md-3 footer-column mb-4 text-center px-5">
+                    <div class="footer-logo mb-3">
+                        <img src="images/Asset 80.svg" alt="ShajaraTech Logo" class="img-fluid" width="270px">
+                    </div>
+                    <p class="text-muted" style="color: rgba(123, 123, 123, 1);" id="description">منصة رقمية تجمع
+                        القبائل والعائلات في
+                        مكان واحد، تتيح لك بناء شجرة عائلتك،
+                        استكشاف الجذور، متابعة المناسبات، والتواصل مع مجتمعك بكل سهولة.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-4">
+                جميع الحقوق محفوظة © ShajaraTech 2025
+            </div>
+        </div>
+    </footer>
+
+    <!-- Join Request Modal -->
+    <div class="modal fade" id="joinRequestModal" tabindex="-1" aria-labelledby="joinRequestModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 32px;">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fw-bold text-end w-100" id="joinRequestModalLabel"
+                        style="color: black; font-size: 32px;">
+                        طلب انضمام
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body px-4 py-3">
+                    <form id="joinRequestForm">
+                        <div class="row">
+                            <!-- الاسم الأول -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">الاسم الأول</label>
+                                <input type="text" class="form-control rounded-3 py-2" name="user_name" id="user_name"
+                                    placeholder="أدخل الاسم الأول" required>
+                            </div>
+
+                            <!-- اسم العائلة -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">اسم العائلة</label>
+                                <input type="text" class="form-control rounded-3 py-2" name="family_name"
+                                    id="family_name" placeholder="أدخل اسم العائلة" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">الايميل</label>
+                            <input type="email" id="user_email" name="user_email" class="form-control rounded-3 py-2"
+                                placeholder="الإيميل" required>
+                        </div>
+
+                        <!-- الوظيفة -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">الوظيفة</label>
+                            <input type="text" class="form-control rounded-3 py-2" name="job" id="job"
+                                placeholder="أدخل الوظيفة">
+                        </div>
+
+                        <!-- تاريخ الميلاد -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">تاريخ الميلاد</label>
+                            <input type="date" class="form-control rounded-3 py-2" name="birth_date" id="birth_date">
+                        </div>
+
+                        <!-- الحالة الاجتماعية -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">الحالة الاجتماعية</label>
+                            <div class="d-flex gap-3 mt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="social_status" id="single"
+                                        value="single">
+                                    <label class="form-check-label" for="single">أعزب</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="social_status" id="married"
+                                        value="married">
+                                    <label class="form-check-label" for="married">متزوج</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tree_id" class="form-label fw-semibold">اختر الشجرة</label>
+                            <select name="tree_id" id="tree_id" required class="form-select custom-select">
+                                <option value="" class="text-muted">-- اختر شجرة --</option>
+                                <!-- هيتعمل populate من API -->
+                            </select>
+                        </div>
+
+                        <!-- رقم الهاتف -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">رقم الهاتف</label>
+                            <input type="tel" class="form-control rounded-3 py-2" name="user_phone" id="user_phone"
+                                placeholder="أدخل رقم الهاتف" required>
+                        </div>
+
+                        <!-- سبب الانضمام -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">سبب الانضمام</label>
+                            <textarea class="form-control rounded-3" name="user_message" id="user_message" rows="4"
+                                placeholder="اكتب سبب رغبتك في الانضمام إلى العائلة..."></textarea>
+                        </div>
+
+                        <div class="modal-footer border-0 justify-content-center pb-4">
+                            <button type="button" class="btn btn-outline-secondary rounded-pill px-4 me-2"
+                                data-bs-dismiss="modal">
+                                إلغاء
+                            </button>
+                            <button type="button" class="btn btn-custom rounded-pill px-4" id="submitJoinRequest">
+                                <span class="btn-text">إرسال الطلب</span>
+                                <span class="spinner-border spinner-border-sm d-none ms-2" role="status"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Creator Modal -->
+    <div class="modal fade" id="messageCreatorModal" tabindex="-1" aria-labelledby="messageCreatorModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 32px;">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fw-bold text-end w-100" id="messageCreatorModalLabel"
+                        style="color: black; font-size: 32px;">
+                        مراسلة منشيء الشجرة
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body px-4 py-3">
+                    <form id="messageCreatorForm">
+                        <div class="row">
+                            <!-- الاسم الأول -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">الاسم الأول</label>
+                                <input type="text" class="form-control rounded-3 py-2" name="user_name" id="user_name"
+                                    placeholder="أدخل الاسم الأول" required>
+                            </div>
+
+                            <!-- اسم العائلة -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">اسم العائلة</label>
+                                <input type="text" class="form-control rounded-3 py-2" name="family_name"
+                                    id="family_name" placeholder="أدخل اسم العائلة" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tree_id" class="form-label fw-semibold">اختر الشجرة</label>
+                            <select name="tree_id" id="tree_id" required class="form-select custom-select">
+                                <option value="" class="text-muted">-- اختر شجرة --</option>
+                                <!-- هيتعمل populate من API -->
+                            </select>
+                        </div>
+
+                        <!-- رقم الهاتف -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">رقم الهاتف</label>
+                            <input type="tel" class="form-control rounded-3 py-2" name="user_phone" id="user_phone"
+                                placeholder="أدخل رقم الهاتف" required>
+                        </div>
+
+                        <!-- الرسالة -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">الرسالة</label>
+                            <textarea class="form-control rounded-3" name="user_message" id="user_message" rows="5"
+                                placeholder="اكتب رسالتك هنا..." required></textarea>
+                        </div>
+                        <div class="modal-footer border-0 justify-content-center pb-4">
+                            <button type="button" class="btn btn-outline-secondary rounded-pill px-4 me-2"
+                                data-bs-dismiss="modal">
+                                إلغاء
+                            </button>
+                            <button type="button" class="btn btn-custom rounded-pill px-4" id="submitMessage">
+                                <span class="btn-text">إرسال الرسالة</span>
+                                <span class="spinner-border spinner-border-sm d-none ms-2" role="status"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/scenejs/dist/scene.min.js"></script>
+    <script src="js/notify.js"></script>
+    <script src="js/familydetails.js"></script>
+</body>
+
+</html>

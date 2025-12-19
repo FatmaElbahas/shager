@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الاشجار</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/content.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- tossify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item mt-3">
+                <a href="AdminDashboard.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Dashboard.png" alt="" class="icon">
+                    <span>لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="messages.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/stash_inbox (1).png" alt="" class="icon">
+                    <span>الرسائل</span>
+                </a>
+            </li>
+            <li class="active nav-item">
+                <a href="content.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                    <span>إدارة الاشجار</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="users.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Users Icon.png" alt="" class="icon">
+                    <span>المستخدمين</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="invitations.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/tabler_link-plus.png" alt="" class="icon">
+                    <span>الدعوات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reports.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Sales Icon.png" alt="" class="icon">
+                    <span>التقارير</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="subscriptions.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                    <span>الإشتراكات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="payments.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/190 (1).png" alt="" class="icon">
+                    <span>المدفوعات والعروض </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                    <span>الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item my-3">
+                <a href="#" class="nav-link text-danger d-flex align-items-center gap-2">
+                    <img src="images/Frame (3).png" alt="" class="icon">
+                    <span>تسجيل الخروج</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold"> إدارة الاشجار</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <!-- Filter Button and Active Filters -->
+            <div class="filter-header bg-white rounded-3 shadow-sm p-3 mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-3">
+                        <!-- Filter Toggle Button -->
+                        <button id="filterToggleBtn" class="filter-toggle-btn">
+                            <i class="bi bi-funnel-fill"></i>
+                            <span>الفلاتر</span>
+                            <span id="filterCount" class="filter-count d-none">0</span>
+                        </button>
+
+                        <!-- Quick Actions -->
+                        <div class="d-flex gap-2">
+                            <button id="resetFilters" class="btn btn-outline-secondary btn-sm">
+                                <i class="bi bi-arrow-clockwise me-1"></i>إعادة تعيين
+                            </button>
+                            <button id="refreshData" class="btn btn-primary btn-sm">
+                                <i class="bi bi-arrow-repeat me-1"></i>تحديث
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Results Info -->
+                    <div class="d-flex align-items-center gap-2">
+                        <span id="resultsCount" class="text-muted"></span>
+                        <div class="spinner-border spinner-border-sm text-primary d-none" id="filterSpinner">
+                            <span class="visually-hidden">جاري الفلترة...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Filters Display -->
+                <div id="activeFilters" class="mt-3 d-none">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <span class="text-muted fw-bold">الفلاتر النشطة:</span>
+                        <div id="filterTags" class="d-flex gap-2 flex-wrap"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Modal Window -->
+            <div id="filterModal" class="filter-modal">
+                <div class="filter-modal-content">
+                    <div class="filter-modal-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-funnel-fill me-2"></i>خيارات الفلترة
+                        </h5>
+                        <button id="closeFilterModal" class="btn-close-modal">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+
+                    <div class="filter-modal-body">
+                        <div class="row g-4">
+                            <!-- Status Filter -->
+                            <div class="col-md-6">
+                                <label class="filter-label">
+                                    <i class="bi bi-check-circle me-2"></i>الحالة
+                                </label>
+                                <select id="statusFilter" class="form-select filter-select">
+                                    <option value="">جميع الحالات</option>
+                                    <option value="pending">قيد الانتظار</option>
+                                    <option value="approving">تمت الموافقة</option>
+                                    <option value="rejected">مرفوض</option>
+                                </select>
+                            </div>
+
+                            <!-- Activity Type Filter -->
+                            <div class="col-md-6">
+                                <label class="filter-label">
+                                    <i class="bi bi-activity me-2"></i>نوع النشاط
+                                </label>
+                                <select id="activityTypeFilter" class="form-select filter-select">
+                                    <option value="">جميع الأنشطة</option>
+                                    <option value="create">إنشاء شجرة</option>
+                                    <option value="edit">تعديل شجرة</option>
+                                    <option value="delete">حذف عضو</option>
+                                    <option value="add_member">إضافة عضو</option>
+                                </select>
+                            </div>
+
+                            <!-- Date Filter -->
+                            <div class="col-md-6">
+                                <label class="filter-label">
+                                    <i class="bi bi-calendar3 me-2"></i>الفترة الزمنية
+                                </label>
+                                <select id="dateFilter" class="form-select filter-select">
+                                    <option value="">جميع التواريخ</option>
+                                    <option value="today">اليوم</option>
+                                    <option value="week">هذا الأسبوع</option>
+                                    <option value="month">هذا الشهر</option>
+                                    <option value="custom">تاريخ مخصص</option>
+                                </select>
+                            </div>
+
+                            <!-- Search Filter -->
+                            <div class="col-md-6">
+                                <label class="filter-label">
+                                    <i class="bi bi-search me-2"></i>البحث
+                                </label>
+                                <input type="text" id="modalSearchInput" class="form-control filter-select"
+                                    placeholder="البحث في الأنشطة...">
+                            </div>
+                        </div>
+
+                        <!-- Custom Date Range -->
+                        <div id="customDateRange" class="row mt-4 d-none">
+                            <div class="col-md-6">
+                                <label class="filter-label">من تاريخ</label>
+                                <input type="date" id="startDate" class="form-control filter-select">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="filter-label">إلى تاريخ</label>
+                                <input type="date" id="endDate" class="form-control filter-select">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-modal-footer">
+                        <button id="applyFilters" class="btn btn-primary">
+                            <i class="bi bi-check2 me-1"></i>تطبيق الفلاتر
+                        </button>
+                        <button id="clearAllFilters" class="btn btn-outline-secondary">
+                            <i class="bi bi-trash me-1"></i>مسح الكل
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="programmes-table table-responsive">
+                <h1 class="my-4" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                    سجل النشاطات
+                </h1>
+                <div id="tableContainer" style="position: relative;">
+                    <table class="table table-responsive table-borderless bg-white shadow-sm">
+                        <thead class="text-center">
+                            <tr>
+                                <th>التاريخ</th>
+                                <th>اسم الشجرة</th>
+                                <th>نوع النشاط</th>
+                                <th>بواسطة المستخدم</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activityTableBody">
+                            <!-- بيانات الأنشطة ستضاف هنا -->
+                        </tbody>
+                    </table>
+
+                    <!-- عناصر التحميل فوق الجدول -->
+                    <div class="loading-overlay" id="loadingOverlay"></div>
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="visually-hidden">جاري التحميل...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Pagination -->
+            <div class="pagination-controls d-flex justify-content-between align-items-center flex-wrap mt-3">
+                <div class="d-flex align-items-center gap-2">
+                    <span id="items-info">عرض 0-0 من 0 نشاط</span>
+                </div>
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    <button id="prev-page" class="btn btn-link p-0">
+                        <i class="bi bi-chevron-right" style="color: gold;"></i>
+                    </button>
+                    <span class="fw-bold" id="current-page">1</span>
+                    <span class="text-muted">من <span id="total-pages">1</span> صفحات</span>
+                    <button id="next-page" class="btn btn-link p-0">
+                        <i class="bi bi-chevron-left text-muted"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- tossify -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/content.js"></script>
+</body>
+
+</html>

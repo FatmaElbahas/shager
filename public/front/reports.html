@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> التقارير</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reports.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+
+<body style="height: 100vh;">
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item mt-3">
+                <a href="AdminDashboard.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Dashboard.png" alt="" class="icon">
+                    <span>لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="messages.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/stash_inbox (1).png" alt="" class="icon">
+                    <span>الرسائل</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="content.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                    <span>إدارة الاشجار</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="users.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Users Icon.png" alt="" class="icon">
+                    <span>المستخدمين</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="invitations.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/tabler_link-plus.png" alt="" class="icon">
+                    <span>الدعوات</span>
+                </a>
+            </li>
+            <li class="active nav-item">
+                <a href="reports.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Sales Icon.png" alt="" class="icon">
+                    <span>التقارير</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="subscriptions.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                    <span>الإشتراكات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="payments.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/190 (1).png" alt="" class="icon">
+                    <span>المدفوعات والعروض </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                    <span>الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item my-3">
+                <a href="#" class="nav-link text-danger d-flex align-items-center gap-2">
+                    <img src="images/Frame (3).png" alt="" class="icon">
+                    <span>تسجيل الخروج</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold"> التقارير</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+
+            <div class="d-flex justify-content-between align-items-center my-4">
+                <h4 style="color: rgba(39, 58, 65, 1); font-size: 35px;">
+                    التقارير
+                </h4>
+            </div>
+
+            <div class="stats-container my-4">
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="stat-card d-flex align-items-center gap-3 bg-white py-4 px-3 shadow-sm ">
+                            <span>
+                                <img src="images/Icon (8).png" alt="">
+                            </span>
+                            <div>
+                                <p class="text-muted mb-1">عدد المشتركين</p>
+                                <h4 class="mb-0" id="subscriber-count">غير معرف</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="stat-card d-flex align-items-center gap-3 bg-white py-4 px-1 shadow-sm ">
+                            <span>
+                                <img src="images/Icon (9).png" alt="">
+                            </span>
+                            <div>
+                                <p class="text-muted mb-1">خطط الاشتراك الحالية</p>
+                                <h4 class="mb-0" id="plans-count">غير معرف</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="stat-card d-flex align-items-center gap-3 bg-white py-4 px-3 shadow-sm ">
+                            <span>
+                                <img src="images/Icon.svg" alt="">
+                            </span>
+                            <div>
+                                <p class="text-muted mb-1">إجمالي الربح</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h4 class="mb-0" id="revenue-count">غير معرف</h4>
+                                    <p id="revenue-change" class="mb-0 fw-bold" style="font-size: 15px;"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="stat-card d-flex align-items-center gap-3 bg-white py-4 px-3 shadow-sm ">
+                            <span>
+                                <img src="images/Icon (11).png" alt="">
+                            </span>
+                            <div>
+                                <p class="text-muted mb-1">مستخدم جديد</p>
+                                <h4 class="mb-0" id="new-users-count">غير معرف</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <h5>الإيرادات الشهرية</h5>
+                        <p class="total">غير معرف</p>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <div class="card" style="border: none;">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="card-title">الأعضاء الجدد المشتركين</h5>
+
+                                    <select id="filterType" class="form-select mb-3 btn btn-outline-success"
+                                        onchange="fetchEnrollmentData()" style="width: 35%;">
+                                        <option value="7days">آخر 7 أيام</option>
+                                        <option value="1month">آخر شهر</option>
+                                        <option value="6months">آخر 6 أشهر</option>
+                                        <option value="1year">آخر سنة</option>
+                                    </select>
+                                </div>
+
+                                <canvas id="enrollmentsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboards container my-2">
+
+                <div class="container my-5">
+                    <div class="card shadow-sm border-0 rounded-4 py-5 px-3 d-flex flex-column align-items-center"
+                        style="border-radius: 15px;">
+                        <div class="d-flex justify-content-between align-items-center w-100 mb-3">
+                            <h5 style="color: rgba(39, 58, 65, 1); font-size: 25px;">زوار الموقع</h5>
+                        </div>
+                        <!-- الرسم البياني -->
+                        <div class="w-100">
+                            <canvas id="visitorsChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container my-5">
+                    <div class="chart-container-enhanced">
+                        <h5 class="chart-title-enhanced" style="font-size: 1.6rem;">
+                            <i class="fas fa-globe-americas me-2 chart-icon" style="color: #b7924f;"></i>
+                            نسبة الزوار حسب البلد
+                        </h5>
+                        <div style="height: 380px; width: 100%; position: relative; display: flex; align-items: center; justify-content: center;">
+                            <canvas id="countryPieChart"></canvas>
+                            <!-- نص محسن في المنتصف -->
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none;">
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #2c3e50; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">الزوار</div>
+                                <div style="font-size: 1rem; color: #7f8c8d; margin-top: 5px;">حسب البلد</div>
+                                <div style="width: 40px; height: 2px; background: linear-gradient(90deg, #b7924f, #d4af37); margin: 8px auto; border-radius: 2px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="visitorsChart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="countryPieChart.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+
+</html>

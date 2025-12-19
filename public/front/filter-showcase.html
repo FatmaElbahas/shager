@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض أيقونات الفلتر المحسنة</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/messages.css">
+    <style>
+        .showcase-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 20px;
+        }
+        .demo-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+        }
+        .demo-button {
+            margin: 10px;
+        }
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .color-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="showcase-container">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-primary mb-3">
+                <i class="bi bi-sliders me-3"></i>
+                عرض أيقونات الفلتر المحسنة
+            </h1>
+            <p class="lead text-muted">تصميم متطور وتفاعلي لأزرار الفلتر مع تأثيرات بصرية مذهلة</p>
+        </div>
+
+        <!-- قسم الأزرار الرئيسية -->
+        <div class="demo-section">
+            <h3 class="text-center mb-4">
+                <i class="bi bi-stars text-warning"></i>
+                الأزرار الرئيسية
+            </h3>
+            
+            <div class="text-center">
+                <!-- زر الديسكتوب -->
+                <div class="filter-container demo-button">
+                    <button class="btn btn-primary d-flex align-items-center gap-2" id="demoFilterToggle">
+                        <i class="bi bi-sliders"></i>
+                        <span>فلتر متقدم</span>
+                        <span id="demoFilterCount" style="display: flex;">3</span>
+                    </button>
+                </div>
+
+                <!-- زر الديسكتوب النشط -->
+                <div class="filter-container demo-button">
+                    <button class="btn btn-primary d-flex align-items-center gap-2 active" id="demoActiveFilter">
+                        <i class="bi bi-sliders"></i>
+                        <span>فلتر نشط</span>
+                        <span id="demoActiveCount" style="display: flex;">2</span>
+                    </button>
+                </div>
+
+                <!-- زر الموبايل -->
+                <button class="btn btn-outline-primary btn-sm demo-button" id="demoMobileFilter">
+                    <i class="bi bi-sliders"></i>
+                </button>
+
+                <!-- زر الموبايل النشط -->
+                <button class="btn btn-success btn-sm demo-button" id="demoMobileActive">
+                    <i class="bi bi-sliders"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- قسم المميزات -->
+        <div class="demo-section">
+            <h3 class="text-center mb-4">
+                <i class="bi bi-magic text-info"></i>
+                المميزات والتأثيرات
+            </h3>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="bi bi-palette2 fs-1 text-primary mb-3"></i>
+                    <h5>تدرجات لونية متطورة</h5>
+                    <p class="text-muted">ألوان بنفسجية وخضراء مع تأثيرات انتقالية سلسة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="bi bi-arrow-repeat fs-1 text-success mb-3"></i>
+                    <h5>أنيميشن تفاعلي</h5>
+                    <p class="text-muted">دوران الأيقونات وتأثيرات hover مع حركات سلسة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="bi bi-phone fs-1 text-warning mb-3"></i>
+                    <h5>تصميم متجاوب</h5>
+                    <p class="text-muted">أزرار مخصصة للموبايل والديسكتوب مع تأثيرات مختلفة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="bi bi-badge-cc fs-1 text-danger mb-3"></i>
+                    <h5>عداد ذكي</h5>
+                    <p class="text-muted">عداد الفلاتر مع تأثيرات bounce وpulse</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الألوان -->
+        <div class="demo-section">
+            <h3 class="text-center mb-4">
+                <i class="bi bi-eyedropper text-success"></i>
+                لوحة الألوان المستخدمة
+            </h3>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class="text-center">الحالة العادية</h6>
+                    <div class="color-palette">
+                        <div class="color-box" style="background: #6366f1;">6366f1</div>
+                        <div class="color-box" style="background: #8b5cf6;">8b5cf6</div>
+                        <div class="color-box" style="background: #a855f7;">a855f7</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-center">الحالة النشطة</h6>
+                    <div class="color-palette">
+                        <div class="color-box" style="background: #10b981;">10b981</div>
+                        <div class="color-box" style="background: #34d399;">34d399</div>
+                        <div class="color-box" style="background: #6ee7b7;">6ee7b7</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3">
+                <h6>عداد الفلاتر</h6>
+                <div class="color-palette">
+                    <div class="color-box" style="background: #ef4444;">ef4444</div>
+                    <div class="color-box" style="background: #f97316;">f97316</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم التفاعل -->
+        <div class="demo-section">
+            <h3 class="text-center mb-4">
+                <i class="bi bi-hand-index text-primary"></i>
+                جرب التفاعل
+            </h3>
+            
+            <div class="alert alert-info text-center">
+                <h5>اختبر التأثيرات!</h5>
+                <p class="mb-3">مرر الماوس فوق الأزرار واضغط عليها لرؤية التأثيرات المختلفة</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <span class="badge bg-primary">Hover Effects</span>
+                    <span class="badge bg-success">Click Animation</span>
+                    <span class="badge bg-warning">Pulse Effect</span>
+                    <span class="badge bg-danger">Spin Animation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الكود -->
+        <div class="demo-section">
+            <h3 class="text-center mb-4">
+                <i class="bi bi-code-slash text-secondary"></i>
+                التحسينات المطبقة
+            </h3>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h6><i class="bi bi-brush"></i> تحسينات CSS:</h6>
+                    <ul class="list-unstyled">
+                        <li>✨ تدرجات لونية متطورة</li>
+                        <li>🎭 تأثيرات hover وactive</li>
+                        <li>💫 أنيميشن للأيقونات</li>
+                        <li>🌊 تأثير الموجة عند النقر</li>
+                        <li>📱 تصميم متجاوب</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6><i class="bi bi-gear"></i> تحسينات JavaScript:</h6>
+                    <ul class="list-unstyled">
+                        <li>🔢 عداد ذكي للفلاتر</li>
+                        <li>⚡ تأثيرات pulse تفاعلية</li>
+                        <li>🎯 تحديث فوري للحالة</li>
+                        <li>🎨 تغيير الألوان الديناميكي</li>
+                        <li>📊 إحصائيات مباشرة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- رابط للصفحة الأصلية -->
+        <div class="text-center">
+            <a href="messages.html" class="btn btn-lg btn-success">
+                <i class="bi bi-arrow-left me-2"></i>
+                جرب في الصفحة الأصلية
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // إضافة تفاعل للأزرار التجريبية
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoButtons = document.querySelectorAll('[id^="demo"]');
+            
+            demoButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // تأثير نقر
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                    
+                    // تبديل الحالة للأزرار القابلة للتبديل
+                    if (this.id.includes('Toggle') || this.id.includes('Mobile')) {
+                        this.classList.toggle('active');
+                        if (this.classList.contains('btn-outline-primary')) {
+                            this.classList.remove('btn-outline-primary');
+                            this.classList.add('btn-success');
+                        } else if (this.classList.contains('btn-success')) {
+                            this.classList.remove('btn-success');
+                            this.classList.add('btn-outline-primary');
+                        }
+                    }
+                });
+            });
+            
+            // تأثير عشوائي للعدادات
+            setInterval(() => {
+                const counters = document.querySelectorAll('[id*="Count"]');
+                counters.forEach(counter => {
+                    const randomNum = Math.floor(Math.random() * 5) + 1;
+                    counter.textContent = randomNum;
+                    counter.classList.add('pulse');
+                    setTimeout(() => counter.classList.remove('pulse'), 800);
+                });
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

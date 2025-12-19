@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الخبر</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/newsdetails.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" dir="rtl" style="background-color: rgba(248, 247, 247, 1);">
+        <div class="container-fluid">
+
+            <!-- الشعار على اليمين -->
+            <a class="navbar-brand mx-4" href="#">
+                <img src="images/Asset 80.svg" alt="logo" width="190">
+            </a>
+
+            <!-- زر القائمة للجوال -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-dark"></i>
+            </button>
+
+            <!-- محتوى الشريط -->
+            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
+
+                <!-- القائمة في المنتصف -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="Home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="families.html">العائلات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="new.html"> الأخبار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">اتصل بنا</a>
+                    </li>
+                </ul>
+
+                <!-- Before sign in -->
+                <div id="before">
+                    <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                        <a href="login.html">
+                            <button class="btn btn-custom">تسجيل الدخول</button>
+                        </a>
+                        <a href="register.html">
+                            <button class="btn btn-outline-custom">إنشاء حساب</button>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- after sign in  -->
+                <div id="after">
+                    <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                        <div class="user-bar">
+                            <a href="profile.html">
+                                <img src="images/image (25).png" alt="User" class="profile">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <header>
+        <div class="content">
+            <div class="text-content">
+                <h1 class="text-left"> الاخبار</h1>
+                <nav class="navbar navbar-expand-lg ">
+                    <div class="container-fluid ">
+                        <span>
+                            <a class="navbar-brand" href="home.html">الرئيسية</a>
+                            / <a class="navbar-brand" href="home.html">الأخبار</a>
+                            / <span class="active">تفاصيل الخبر</span>
+                        </span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-4 my-5">
+        <div class="row g-4">
+
+            <!-- المحتوى الرئيسي -->
+            <div class="col-lg-8">
+                <article class="news-article bg-white rounded shadow-sm overflow-hidden">
+                    <!-- صورة الخبر -->
+                    <div class="news-image-container">
+                        <img src="images/8810bc1de51202dd3f3942f189531aa3ada96aaa.jpg" class="img-fluid w-100"
+                            alt="صورة الخبر" id="newsImage" style="height: 400px; object-fit: cover;" />
+                    </div>
+
+                    <!-- محتوى الخبر -->
+                    <div class="news-content p-4">
+                        <!-- عنوان الخبر -->
+                        <header class="news-header mb-4">
+                            <h1 class="news-title mb-3" id="newsTitle"
+                                style="color: rgba(39, 58, 65, 1); font-size: 28px; font-weight: bold; line-height: 1.4;">
+                                قبيلة العتيبي تحتفل بقدوم مولود جديد في أحد فروعها
+                            </h1>
+
+                            <!-- تاريخ النشر -->
+                            <div class="news-meta d-flex align-items-center mb-3">
+                                <div class="publish-date d-flex align-items-center">
+                                    <img src="images/uiw_date (1).png" alt="تاريخ النشر"
+                                        style="width: 24px; height: 24px;" class="me-2">
+                                    <span class="date-text" id="newsPublishedDate"
+                                        style="color: rgba(123, 123, 123, 1); font-size: 16px;">
+                                        الجمعة 17 مايو، 2025
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- خط فاصل -->
+                            <hr class="news-divider" style="border-color: rgba(211, 171, 85, 0.3); border-width: 2px;">
+                        </header>
+
+                        <!-- نص الخبر -->
+                        <div class="news-body">
+                            <!-- الوصف المختصر -->
+                            <div class="news-summary mb-4">
+                                <p class="lead" id="newsDescriptionShort"
+                                    style="font-size: 18px; line-height: 1.6; color: rgba(39, 58, 65, 0.8); font-weight: 500;">
+                                    في أجواء مليئة بالفرح والسرور، احتفلت قبيلة العتيبي بقدوم المولود الجديد لأحد
+                                    فروعها.
+                                    حيث شارك أفراد القبيلة التهاني والتبريكات بهذه المناسبة السعيدة.
+                                </p>
+                            </div>
+
+                            <!-- النص الكامل -->
+                            <div class="news-full-content">
+                                <p class="news-paragraph" id="newsDescriptionFull"
+                                    style="font-size: 16px; line-height: 1.8; color: rgba(39, 58, 65, 1); text-align: justify;">
+                                    وقد عُرف عن القبيلة اهتمامها الكبير بالتقاليد والمناسبات الاجتماعية، حيث تُعدّ ولادة
+                                    الأطفال
+                                    من أهم اللحظات التي تحظى باحتفاء خاص. كما تتمنى أسرة الموقع الصحة والسلامة للمولود
+                                    الجديد
+                                    ولعائلته الكريمة. وتبادلوا الهدايا والكلمات الطيبة التي تعبر عن الفخر والامتنان بهذه
+                                    الإضافة
+                                    الجديدة للعائلة الكريمة.
+                                </p>
+                            </div>
+                        </div>
+
+                        <footer class="news-footer mt-4 pt-3" style="border-top: 1px solid rgba(0,0,0,0.1);">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="back-button">
+                                    <a href="new.html" class="btn btn-outline-custom">
+                                        <i class="fas fa-arrow-right me-2"></i>
+                                        العودة للأخبار
+                                    </a>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+            </div>
+
+            <!-- القائمة الجانبية -->
+            <div class="col-lg-4">
+                <div class="d-flex flex-column gap-3" id="latestNewsContainer">
+                    <!-- كاردات الأخبار الجانبية - سيتم ملؤها من JavaScript -->
+
+                    <!-- كارد افتراضي للعرض في حالة عدم وجود أخبار -->
+                    <div class="photo-card mb-3" style="display: none;" id="defaultNewsCard">
+                        <img src="images/Frame 38.png" alt="صورة افتراضية" class="img-fluid">
+                        <div class="body">
+                            <h5 class="photo-title fw-bold">مواليد جدد</h5>
+                            <p class="photo-date mb-2">
+                                <img src="images/uiw_date (1).png" alt="" style="width: 24px; height: 24px;">
+                                17/5/2025
+                            </p>
+                            <p class="text-muted mb-3" style="font-size: 14px; line-height: 1.5;">
+                                نُعلن عن قدوم طفل جديد لأحد أفراد قبيلة العتيبي في مناسبة سعيدة تجمع العائلة.
+                            </p>
+                            <button class="btn btn-outline-custom btn-sm w-100">
+                                <i class="fas fa-arrow-left me-2"></i>
+                                عرض التفاصيل
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- footer -->
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>كُن جزءًا من شجر تك</h1>
+        <p>انطلق في رحلة التعرف على العائلات والقبائل، أو انضم إلينا وابدأ بتجميع عائلتك ومشاركتها وربطها مع الآخرين.
+        </p>
+        <a href="joinus.html">
+            <button class="btn btn-custom">انضم إلينا</button>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-2">
+        <div class="container">
+            <div class="row">
+                <!-- Column 1 -->
+                <!-- Column 1 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>تواصل معنا</h6>
+                    <p class="d-flex align-items-center gap-2" style="direction: rtl; color: rgba(123, 123, 123, 1);">
+                        <img src="images/ph_phone-call (1).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerPhone" dir="ltr">+966 59
+                            533
+                            8665</span>
+                    </p>
+                    <p class="d-flex align-items-center gap-2"
+                        style="direction: rtl; color: rgba(123, 123, 123, 1) !important; "> <img
+                            src="images/carbon_email (3).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerEmail"
+                            dir="ltr">shaigratech@gmail.com</span>
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" id="footerYoutube"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" id="footerTwitter"><img src="images/bxl-twitter.png" alt="Twitter"></a>
+                        <a href="#" id="footerInstagram"><img src="images/instagram-logo.png" alt="Instagram"></a>
+                        <a href="#" id="footerFacebook"><img src="images/bxl-facebook.png" alt="Facebook"></a>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>المزيد</h6>
+                    <ul>
+                        <li><a href="contactus.html">تواصل معنا</a></li>
+                        <li><a href="#">السياسات</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>الصفحات</h6>
+                    <ul>
+                        <li><a href="Home.html">الرئيسية</a></li>
+                        <li><a href="aboutus.html">من نحن</a></li>
+                        <li><a href="families.html">العائلات</a></li>
+                        <li><a href="new.html">الأخبار</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="col-md-3 footer-column mb-4 text-center px-5">
+                    <div class="footer-logo mb-3">
+                        <img src="images/Asset 80.svg" alt="ShajaraTech Logo" class="img-fluid" width="270px">
+                    </div>
+                    <p class="text-muted" style="color: rgba(123, 123, 123, 1);" id="description">منصة رقمية تجمع
+                        القبائل والعائلات في
+                        مكان واحد، تتيح لك بناء شجرة عائلتك،
+                        استكشاف الجذور، متابعة المناسبات، والتواصل مع مجتمعك بكل سهولة.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-4">
+                جميع الحقوق محفوظة © ShajaraTech 2025
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/newsdetails.js"></script>
+</body>
+
+</html>

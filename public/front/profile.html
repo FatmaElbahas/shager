@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الشخصية</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/logout-notifications.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" dir="rtl" style="background-color: rgba(248, 247, 247, 1);">
+        <div class="container-fluid">
+
+            <!-- الشعار على اليمين -->
+            <a class="navbar-brand mx-4" href="#">
+                <img src="images/Asset 80.svg" alt="logo" width="190">
+            </a>
+
+            <!-- زر القائمة للجوال -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-dark"></i>
+            </button>
+
+            <!-- محتوى الشريط -->
+            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
+
+                <!-- القائمة في المنتصف -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="Home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="families.html">العائلات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new.html"> الأخبار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">اتصل بنا</a>
+                    </li>
+                </ul>
+
+                <!-- after sign in  -->
+                <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                    <div class="user-bar">
+                        <a href="profile.html">
+                            <img src="images/image (25).png" alt="User" class="profile">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center my-4">
+            <div>
+                <h1 class="text-end mb-3" style="color: rgba(39, 58, 65, 1); font-size: 48px; font-weight: bolder;">
+                    حسابي
+                </h1>
+                <div class="d-flex gap-2">
+                    <a href="Home.html"
+                        style="text-decoration: none; color: rgba(39, 58, 65, 1); font-size: 18px; font-weight: 500;">
+                        الرئيسية >
+                    </a>
+                    <span>
+                        <p style="font-size: 18px; font-weight: 500; color: rgba(39, 58, 65, 1);"> حسابي
+                        </p>
+                    </span>
+                </div>
+
+            </div>
+            <button id="dashboardBtn" class="btn btn-outline-custom py-3 rounded-pill px-3" style="display: none;">
+                <a id="dashboardLink" href="#">
+                    <img src="images/icon-park_go-on.png" alt=""> الذهاب إلى لوحة التحكم
+                </a>
+            </button>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html" style="color: rgba(211, 171, 85, 1);">البيانات
+                                الشخصية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="editpassword.html" style="color: rgba(123, 123, 123, 1);">تعديل
+                                الرقم السري</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link text-danger bg-transparent border-0" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal" style="cursor:pointer;">
+                                حذف الحساب
+                            </button>
+                        </li>
+                        <!-- Delete Confirmation Modal -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content border-0" style="border-radius: 32px;">
+                                    <div class="modal-header text-dark border-0 my-3 mx-2">
+                                        <h5 class="modal-title mx-3" id="deleteModalLabel" style="font-size: 24px;">
+                                            تأكيد حذف الحساب</h5>
+                                        <button type="button" class="btn-close btn-sm btn-close-dark my-3 mx-4"
+                                            data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                                    </div>
+                                    <div class="modal-body text-center border-0">
+                                        <div class="mb-3">
+                                            <i class="fas fa-exclamation-triangle text-warning"
+                                                style="font-size: 48px;"></i>
+                                        </div>
+                                        <p class="mb-2"><strong>هل أنت متأكد أنك تريد حذف الحساب؟</strong></p>
+                                        <p class="text-muted">سيتم حذف جميع بياناتك نهائياً ولا يمكن التراجع عن هذا
+                                            الإجراء.</p>
+                                        <div class="alert alert-danger mt-3">
+                                            <small><i class="fas fa-info-circle me-1"></i> تحذير: هذا الإجراء غير قابل
+                                                للإلغاء</small>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center border-0 my-3">
+                                        <button type="button" class="btn btn-outline-secondary rounded-pill px-4"
+                                            data-bs-dismiss="modal">إلغاء</button>
+                                        <button type="button" id="confirmDeleteBtnfinally"
+                                            class="btn btn-danger rounded-pill px-4">نعم ، احذف الحساب</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <li class="nav-item d-flex align-items-center gap-2">
+                            <img src="images/Frame (3).png" alt="" class="icon">
+                            <a href="#" id="logoutBtn" class="nav-link text-danger">تسجيل الخروج</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="col-lg-9">
+                <div class="profile-card">
+                    <h4 class="fw-bold mt-2">البيانات الشخصية</h4>
+
+                    <form id="updateForm" class="mt-4" enctype="multipart/form-data">
+                        <div class="d-flex justify-content-center">
+                            <!-- صورة الملف الشخصي -->
+                            <div class="text-center mb-4">
+                                <div class="position-relative d-inline-block">
+                                    <img id="previewImage" src="images/image (25).png" width="100" height="100"
+                                        style="border-radius: 50%; object-fit: cover;">
+                                    <label for="profile_picture"
+                                        class="position-absolute bottom-0 end-0 bg-light border rounded-circle p-1"
+                                        style="cursor: pointer;">
+                                        <i class="fa fa-camera text-muted"></i>
+                                    </label>
+                                    <input type="file" name="profile_picture" id="profile_picture"
+                                        class="form-control d-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- الاسم الأول والأخير -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">الاسم </label>
+                                <input type="text" class="form-control" placeholder="ادخل الاسم الأول" name="name"
+                                    required id="name">
+                            </div>
+                        </div>
+
+                        <!-- الحالة -->
+                        <div class="mb-3">
+                            <label class="form-label">الحالة</label>
+                            <select class="form-select" name="life_status" id="life_status" required>
+                                <option selected disabled>اختر الحالة</option>
+                                <option value="alive">على قيد الحياة</option>
+                                <option value="deceased">متوفي/ة</option>
+                            </select>
+                        </div>
+
+                        <!-- الوظيفة -->
+                        <div class="mb-3">
+                            <label class="form-label">الوظيفة</label>
+                            <input type="text" class="form-control" placeholder="ادخل الوظيفة" name="job" id="job">
+                        </div>
+
+                        <!-- تاريخ الميلاد -->
+                        <div class="mb-3">
+                            <label class="form-label">تاريخ الميلاد</label>
+                            <input type="date" class="form-control" name="birth_date" id="birth_date">
+                        </div>
+
+                        <!-- الحالة الاجتماعية -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">الحالة الاجتماعية</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="social_status" id="single"
+                                    value="single" checked>
+                                <label class="form-check-label" for="single">أعزب / عزباء</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="social_status" id="married"
+                                    value="married">
+                                <label class="form-check-label" for="married">متزوج / متزوجة</label>
+                            </div>
+                        </div>
+
+
+                        <!-- رقم الجوال -->
+                        <div class="mb-4">
+                            <label class="form-label">رقم الجوال</label>
+                            <input type="text" class="form-control" placeholder="ادخل رقم الجوال" name="phone">
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-custom rounded-pill px-5"> حفظ التغييرات</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-2">
+        <div class="container">
+            <div class="row">
+                <!-- Column 1 -->
+                <!-- Column 1 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>تواصل معنا</h6>
+                    <p class="d-flex align-items-center gap-2" style="direction: rtl; color: rgba(123, 123, 123, 1);">
+                        <img src="images/ph_phone-call (1).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerPhone" dir="ltr">+966 59
+                            533
+                            8665</span>
+                    </p>
+                    <p class="d-flex align-items-center gap-2"
+                        style="direction: rtl; color: rgba(123, 123, 123, 1) !important; "> <img
+                            src="images/carbon_email (3).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerEmail"
+                            dir="ltr">shaigratech@gmail.com</span>
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" id="footerYoutube"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" id="footerTwitter"><img src="images/bxl-twitter.png" alt="Twitter"></a>
+                        <a href="#" id="footerInstagram"><img src="images/instagram-logo.png" alt="Instagram"></a>
+                        <a href="#" id="footerFacebook"><img src="images/bxl-facebook.png" alt="Facebook"></a>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>المزيد</h6>
+                    <ul>
+                        <li><a href="contactus.html">تواصل معنا</a></li>
+                        <li><a href="#">السياسات</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>الصفحات</h6>
+                    <ul>
+                        <li><a href="Home.html">الرئيسية</a></li>
+                        <li><a href="aboutus.html">من نحن</a></li>
+                        <li><a href="families.html">العائلات</a></li>
+                        <li><a href="new.html">الأخبار</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="col-md-3 footer-column mb-4 text-center px-5">
+                    <div class="footer-logo mb-3">
+                        <img src="images/Asset 80.svg" alt="ShajaraTech Logo" class="img-fluid" width="270px">
+                    </div>
+                    <p class="text-muted" style="color: rgba(123, 123, 123, 1);" id="description">منصة رقمية تجمع
+                        القبائل والعائلات في
+                        مكان واحد، تتيح لك بناء شجرة عائلتك،
+                        استكشاف الجذور، متابعة المناسبات، والتواصل مع مجتمعك بكل سهولة.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-4">
+                جميع الحقوق محفوظة © ShajaraTech 2025
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

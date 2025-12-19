@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شجرة العائلة</title>
+    <style>
+        body {
+            background: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* حاوية الشجرة مع التوسيط والمساحة المقللة */
+        .background {
+            width: 100%;
+            height: 900px;
+            position: relative;
+            margin: 4rem auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: block;
+            /* ضمان التوسيط المثالي */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .background .slope {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .slope {
+            background: rgb(116, 27, 22);
+            width: 100%;
+            height: 150px;
+            border-radius: 50% 50% 0px 0px / 100% 100% 0px 0px;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .slope:before {
+            content: "";
+            background: rgb(116, 27, 22);
+            border-radius: 50%;
+            width: 160px;
+            height: 60px;
+            position: absolute;
+            left: 50%;
+            margin-left: -80px;
+            top: -10px;
+        }
+
+        .tree {
+            width: 5px;
+            border-right: 20px solid transparent;
+            border-left: 20px solid transparent;
+            border-bottom: 600px solid rgb(116, 27, 22);
+            position: absolute;
+            left: 50%;
+            transform-origin: 50% 600px;
+            bottom: 150px;
+            margin-left: -20px;
+        }
+
+        .branch {
+            position: absolute;
+            width: 300px;
+            height: 150px;
+            border-bottom: 10px solid rgb(116, 27, 22);
+        }
+
+        .branch:before,
+        .branch:after {
+            content: "";
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            border: inherit;
+            border-radius: inherit;
+            z-index: 0;
+        }
+
+        .branch:before {
+            transform: rotate(1deg);
+        }
+
+        .branch:after {
+            transform: rotate(2deg);
+        }
+
+        .branch.left,
+        .branch.left:before,
+        .branch.left:after {
+            transform-origin: 100% 100%;
+        }
+
+        .branch.right,
+        .branch.right:before,
+        .branch.right:after {
+            transform-origin: 0% 100%;
+        }
+
+        .branch.left {
+            border-bottom-left-radius: 100% 100%;
+        }
+
+        .branch.right {
+            border-bottom-right-radius: 100% 100%;
+            margin-left: 1px;
+        }
+
+        .tree>.branch.left {
+            transform: rotate(5deg);
+        }
+
+        .tree>.branch.right {
+            transform: rotate(-5deg);
+        }
+
+        .leaf {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background:rgba(46, 125, 50);
+            border-radius: 20% 80%;
+            z-index: 1;
+            transform-origin: 0px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: rgba(161, 148, 62);
+            padding: .5rem;
+            text-align: center;
+            line-height: 1.1;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .leaf .name-text {
+            display: block;
+            width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.2;
+            text-align: center;
+            font-size: inherit;
+            white-space: normal;
+            max-width: 100%;
+        }
+
+        /* تصحيح اتجاه النص ليكون أفقي بالنسبة للصفحة */
+        .branch.left .leaf1 .name-text {
+            transform: rotate(145deg);
+        }
+
+        .branch.left .leaf2 .name-text {
+            transform: rotate(70deg);
+        }
+
+        .branch.left .leaf3 .name-text {
+            transform: rotate(145deg);
+        }
+
+        .branch.right .leaf1 .name-text {
+            transform: rotate(-30deg);
+        }
+
+        .branch.right .leaf2 .name-text {
+            transform: rotate(30deg);
+        }
+
+        .branch.right .leaf3 .name-text {
+            transform: rotate(-50deg);
+        }
+
+        .branch.left .branch-inner1 .leaf1 .name-text {
+            transform: rotate(145deg);
+        }
+
+        .branch.left .branch-inner1 .leaf2 .name-text {
+            transform: rotate(70deg);
+        }
+
+        .branch.left .branch-inner1 .leaf3 .name-text {
+            transform: rotate(145deg);
+        }
+
+        .branch.left .branch-inner2 .leaf1 .name-text {
+            transform: rotate(10deg);
+        }
+
+        .branch.left .branch-inner2 .leaf2 .name-text {
+            transform: rotate(160deg);
+        }
+
+        .branch.left .branch-inner2 .leaf3 .name-text {
+            transform: rotate(10deg);
+        }
+
+        .branch.left .branch-inner3 .leaf1 .name-text {
+            transform: rotate(145deg);
+        }
+
+        .branch.left .branch-inner3 .leaf2 .name-text {
+            transform: rotate(40deg);
+        }
+
+        .branch.right .branch-inner1 .leaf1 .name-text {
+            transform: rotate(-30deg);
+        }
+
+        .branch.right .branch-inner1 .leaf2 .name-text {
+            transform: rotate(-40deg);
+        }
+
+        .branch.right .branch-inner1 .leaf3 .name-text {
+            transform: rotate(-30deg);
+        }
+
+        .branch.right .branch-inner2 .leaf1 .name-text {
+            transform: rotate(20deg);
+        }
+
+        .branch.right .branch-inner2 .leaf2 .name-text {
+            transform: rotate(60deg);
+        }
+
+        .branch.right .branch-inner2 .leaf3 .name-text {
+            transform: rotate(40deg);
+        }
+
+        .branch.right .branch-inner3 .leaf1 .name-text {
+            transform: rotate(0deg);
+        }
+
+        .branch.right .branch-inner3 .leaf2 .name-text {
+            transform: rotate(120deg);
+        }
+
+        .branch.right .branch-inner3 .leaf3 .name-text {
+            transform: rotate(50deg);
+        }
+
+        .branch.right .branch-inner4 .leaf1 .name-text {
+            transform: rotate(-30deg);
+        }
+
+        .branch3>.leaf1 .name-text {
+            transform: rotate(-20deg);
+        }
+
+        .branch3>.leaf2 .name-text {
+            transform: rotate(-40deg);
+        }
+
+        .tree>.leaf1 .name-text {
+            transform: rotate(145deg);
+        }
+
+        .tree>.leaf2 .name-text {
+            transform: rotate(100deg);
+        }
+
+        /* اسم الأب على الفرع */
+        .parent-name {
+            position: absolute;
+           background: linear-gradient(180deg, #ffe36a 0%, #ffd23c 35%, #ffb52e 65%, #ff8a1f 100%);
+;
+            border: 2px solid none;
+            border-radius: 50%;
+            min-width: 45px;
+            min-height: 45px;
+            width: auto;
+            height: auto;
+            max-width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: rgba(161, 148, 62);
+            text-align: center;
+            line-height: 1.2;
+            padding: 8px 10px;
+            z-index: 3;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .branch.left>.parent-name {
+            right: -10px;
+            bottom: -10px;
+        }
+
+        .branch.right>.parent-name {
+            left: -10px;
+            bottom: -10px;
+        }
+
+        .branch .branch:after {
+            content: none;
+        }
+
+        .tree>.leaf1 {
+            width: 35px;
+            height: 35px;
+            transform: rotate(-150deg);
+            font-size: 9px;
+        }
+
+        .tree>.leaf2 {
+            width: 35px;
+            height: 35px;
+            transform: rotate(-100deg);
+            font-size: 9px;
+        }
+
+        .branch1 {
+            top: 360px;
+            right: 0;
+        }
+
+        .branch1 .branch-inner1 {
+            width: 120px;
+            height: 70px;
+            transform: rotate(35deg);
+            border-bottom-left-radius: 100% 70%;
+            left: 100px;
+            top: 0px;
+            border-width: 8px;
+        }
+
+        .branch1 .branch-inner2 {
+            width: 100px;
+            height: 45px;
+            transform: rotate(-40deg);
+            border-bottom-left-radius: 100% 70%;
+            left: 52px;
+            top: 25px;
+            border-width: 7px;
+        }
+
+        .branch1 .branch-inner3 {
+            width: 45px;
+            height: 22px;
+            transform: rotate(40deg);
+            border-bottom-left-radius: 100% 70%;
+            left: 32px;
+            top: 28px;
+            border-width: 5px;
+        }
+
+        .branch1 .branch-inner1 .leaf1 {
+            transform: rotate(-150deg);
+            top: 68px;
+            left: 90px;
+        }
+
+        .branch1 .branch-inner1 .leaf2 {
+            width: 45px;
+            height: 45px;
+            transform: rotate(110deg);
+            top: 68px;
+            left: 48px;
+            font-size: 10px;
+        }
+
+        .branch1 .branch-inner1 .leaf3 {
+            width: 45px;
+            height: 45px;
+            transform: rotate(-150deg);
+            top: 54px;
+            left: 18px;
+            font-size: 10px;
+        }
+
+        .branch1 .branch-inner2 .leaf1 {
+            transform: rotate(80deg);
+            left: 82px;
+            top: 46px;
+        }
+
+        .branch1 .branch-inner2 .leaf2 {
+            width: 48px;
+            height: 48px;
+            transform: rotate(-160deg);
+            left: 54px;
+            top: 38px;
+            font-size: 10px;
+        }
+
+        .branch1 .branch-inner2 .leaf3 {
+            width: 45px;
+            height: 45px;
+            transform: rotate(100deg);
+            left: 18px;
+            top: 34px;
+            font-size: 10px;
+        }
+
+        .branch1 .branch-inner3 .leaf1 {
+            width: 38px;
+            height: 38px;
+            transform: rotate(-150deg);
+            left: 37px;
+            top: 20px;
+            font-size: 9px;
+        }
+
+        .branch1 .branch-inner3 .leaf2 {
+            width: 38px;
+            height: 38px;
+            transform: rotate(130deg);
+            left: 17px;
+            top: 22px;
+            font-size: 9px;
+        }
+
+        .branch2 {
+            height: 110px;
+            top: 240px;
+            left: 0;
+        }
+
+        .branch2 .branch-inner1 {
+            width: 120px;
+            height: 130px;
+            transform: rotate(90deg);
+            border-bottom-left-radius: 100% 70%;
+            left: -52px;
+            top: -26px;
+            border-width: 8px;
+        }
+
+        .branch2 .branch-inner2 {
+            width: 120px;
+            height: 145px;
+            transform: rotate(60deg);
+            border-bottom-right-radius: 100% 70%;
+            left: 110px;
+            top: -52px;
+            border-width: 7px;
+        }
+
+        .branch2 .branch-inner3 {
+            width: 80px;
+            height: 58px;
+            transform: rotate(30deg);
+            border-bottom-right-radius: 100% 100%;
+            left: 220px;
+            top: 19px;
+            border-width: 5px;
+        }
+
+        .branch2 .branch-inner4 {
+            width: 40px;
+            height: 28px;
+            transform: rotate(180deg);
+            border-bottom-left-radius: 100% 100%;
+            left: 0px;
+            top: 16px;
+            border-width: 4px;
+        }
+
+        .branch2 .branch-inner1 .leaf1 {
+            transform: rotate(120deg);
+            top: 138px;
+            left: 88px;
+        }
+
+        .branch2 .branch-inner1 .leaf2 {
+            transform: rotate(220deg);
+            top: 118px;
+            left: 56px;
+            width: 48px;
+            height: 48px;
+            font-size: 10px;
+        }
+
+        .branch2 .branch-inner1 .leaf3 {
+            transform: rotate(150deg);
+            top: 112px;
+            left: 20px;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch2 .branch-inner2 .leaf1 {
+            transform: rotate(-20deg);
+            top: 157px;
+            left: 24px;
+        }
+
+        .branch2 .branch-inner2 .leaf2 {
+            transform: rotate(-120deg);
+            top: 137px;
+            left: 52px;
+            width: 48px;
+            height: 48px;
+            font-size: 10px;
+        }
+
+        .branch2 .branch-inner2 .leaf3 {
+            transform: rotate(-40deg);
+            top: 121px;
+            left: 90px;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch2 .branch-inner3>.leaf1 {
+            transform: rotate(0deg);
+            top: 63px;
+            left: 24px;
+            width: 48px;
+            height: 48px;
+            font-size: 10px;
+        }
+
+        .branch2 .branch-inner3 .leaf2 {
+            transform: rotate(-120deg);
+            top: 49px;
+            left: 44px;
+            width: 48px;
+            height: 48px;
+            font-size: 10px;
+        }
+
+        .branch2 .branch-inner3 .leaf3 {
+            transform: rotate(-50deg);
+            top: 26px;
+            left: 78px;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch2 .branch-inner4>.leaf1 {
+            transform: rotate(150deg);
+            top: 27px;
+            left: 11px;
+            width: 35px;
+            height: 35px;
+            font-size: 9px;
+        }
+
+        .branch3 {
+            top: 135px;
+            right: 0;
+            width: 300px;
+            height: 130px;
+        }
+
+        .branch3 .branch-inner1 {
+            width: 120px;
+            height: 80px;
+            transform: rotate(-80deg);
+            border-bottom-right-radius: 100% 100%;
+            left: 150px;
+            top: 29px;
+            border-width: 7px;
+        }
+
+        .branch3 .branch-inner2 {
+            width: 120px;
+            height: 115px;
+            transform: rotate(-40deg);
+            border-bottom-left-radius: 100% 70%;
+            left: 70px;
+            top: 10px;
+            border-width: 7px;
+        }
+
+        .branch3 .branch-inner1 .leaf1 {
+            transform: rotate(-30deg);
+            top: 84px;
+            left: 29px;
+        }
+
+        .branch3 .branch-inner1 .leaf2 {
+            width: 45px;
+            height: 45px;
+            transform: rotate(-95deg);
+            top: 66px;
+            left: 45px;
+            font-size: 10px;
+        }
+
+        .branch3 .branch-inner1 .leaf3 {
+            width: 45px;
+            height: 45px;
+            transform: rotate(-50deg);
+            top: 61px;
+            left: 87px;
+            font-size: 10px;
+        }
+
+        .branch3 .branch-inner2 .leaf1 {
+            transform: rotate(80deg);
+            left: 98px;
+            top: 120px;
+        }
+
+        .branch3 .branch-inner2 .leaf2 {
+            width: 48px;
+            height: 48px;
+            transform: rotate(-160deg);
+            left: 69px;
+            top: 105px;
+            font-size: 10px;
+        }
+
+        .branch3 .branch-inner2 .leaf3 {
+            width: 45px;
+            height: 45px;
+            transform: rotate(100deg);
+            left: 32px;
+            top: 94px;
+            font-size: 10px;
+        }
+
+        .branch3>.leaf1 {
+            right: 60px;
+            transform: rotate(200deg);
+            bottom: -33px;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch3>.leaf2 {
+            right: 218px;
+            transform: rotate(220deg);
+            bottom: 19px;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch4 {
+            width: 230px;
+            height: 70px;
+            top: 95px;
+            left: 0;
+        }
+
+        .branch4 .branch-inner1 {
+            width: 100px;
+            height: 115px;
+            transform: rotate(90deg);
+            border-bottom-left-radius: 100% 70%;
+            left: -52px;
+            top: -49px;
+            border-width: 8px;
+        }
+
+        .branch4 .branch-inner2 {
+            width: 100px;
+            height: 130px;
+            transform: rotate(60deg);
+            border-bottom-right-radius: 100% 70%;
+            left: 110px;
+            top: -69px;
+            border-width: 7px;
+        }
+
+        .branch4 .branch-inner1 .leaf1 {
+            transform: rotate(120deg);
+            top: 121px;
+            left: 82px;
+        }
+
+        .branch4 .branch-inner1 .leaf2 {
+            transform: rotate(220deg);
+            top: 107px;
+            left: 59px;
+            width: 48px;
+            height: 48px;
+            font-size: 10px;
+        }
+
+        .branch4 .branch-inner1 .leaf3 {
+            transform: rotate(150deg);
+            top: 101px;
+            left: 26px;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch4 .branch-inner2 .leaf1 {
+            transform: rotate(-20deg);
+            top: 138px;
+            left: 19px;
+        }
+
+        .branch4 .branch-inner2 .leaf2 {
+            transform: rotate(-120deg);
+            top: 121px;
+            left: 39px;
+            width: 48px;
+            height: 48px;
+            font-size: 10px;
+        }
+
+        .branch4 .branch-inner2 .leaf3 {
+            transform: rotate(-40deg);
+            top: 112px;
+            left: 69px;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch5 {
+            top: 40px;
+            right: 0;
+            width: 170px;
+            height: 58px;
+        }
+
+        .branch5 .branch-inner1 {
+            width: 60px;
+            height: 60px;
+            border-bottom-right-radius: 100% 100%;
+            left: 98px;
+            top: -10px;
+            border-width: 7px;
+            transform: rotate(-60deg);
+        }
+
+        .branch5 .branch-inner2 {
+            width: 80px;
+            height: 80px;
+            transform: rotate(-50deg);
+            border-bottom-left-radius: 100% 80%;
+            left: 52px;
+            top: -20px;
+            border-width: 7px;
+        }
+
+        .branch5 .branch-inner1 .leaf1 {
+            transform: rotate(-20deg);
+            left: 20%;
+            bottom: -70%;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch5 .branch-inner1 .leaf2 {
+            width: 40px;
+            height: 40px;
+            transform: rotate(-120deg);
+            top: 85%;
+            left: 40%;
+            font-size: 9px;
+        }
+
+        .branch5 .branch-inner1 .leaf3 {
+            width: 35px;
+            height: 35px;
+            transform: rotate(-50deg);
+            top: 65%;
+            left: 80%;
+            font-size: 9px;
+        }
+
+        .branch5 .branch-inner2 .leaf1 {
+            transform: rotate(80deg);
+            left: 70%;
+            top: 110%;
+            width: 45px;
+            height: 45px;
+            font-size: 10px;
+        }
+
+        .branch5 .branch-inner2 .leaf2 {
+            width: 40px;
+            height: 40px;
+            transform: rotate(-140deg);
+            left: 43%;
+            top: 85%;
+            font-size: 9px;
+        }
+
+        .branch5 .branch-inner2 .leaf3 {
+            width: 35px;
+            height: 35px;
+            transform: rotate(100deg);
+            left: 20%;
+            top: 75%;
+            font-size: 9px;
+        }
+
+        /* تحسينات للتصميم المتجاوب مع الأحجام المقللة */
+        @media (max-width: 1000px) {
+            .background {
+                width: 800px;
+                height: 800px;
+                margin: 15px auto;
+            }
+
+            .tree {
+                border-bottom-width: 480px;
+                bottom: 120px;
+                transform-origin: 50% 480px;
+            }
+
+            .slope {
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .background {
+                width: 700px;
+                height: 700px;
+                margin: 15px auto;
+            }
+
+            .tree {
+                border-bottom-width: 420px;
+                bottom: 110px;
+                transform-origin: 50% 420px;
+            }
+
+            .slope {
+                height: 110px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .background {
+                width: 100%;
+                max-width: 600px;
+                height: 600px;
+                margin: 10px auto;
+            }
+
+            .tree {
+                border-bottom-width: 360px;
+                bottom: 100px;
+                transform-origin: 50% 360px;
+            }
+
+            .slope {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .background {
+                max-width: 500px;
+                height: 500px;
+                margin: 10px auto;
+            }
+
+            .tree {
+                border-bottom-width: 280px;
+                bottom: 90px;
+            }
+
+            .slope {
+                height: 90px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .background {
+                max-width: 400px;
+                height: 400px;
+                margin: 10px auto;
+            }
+
+            .tree {
+                border-bottom-width: 220px;
+                bottom: 80px;
+            }
+
+            .slope {
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="slope"></div>
+        <div class="tree">
+            <div class="leaf leaf1"><span class="name-text">...</span></div>
+            <div class="leaf leaf2"><span class="name-text">...</span></div>
+
+            <div class="branch left branch1">
+                <div class="parent-name">...</div>
+                <div class="branch left branch-inner1">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+                <div class="branch left branch-inner2">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+                <div class="branch left branch-inner3">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                </div>
+            </div>
+
+            <div class="branch right branch2">
+                <div class="parent-name">...</div>
+                <div class="branch left branch-inner1">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+                <div class="branch right branch-inner2">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+                <div class="branch right branch-inner3">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                    <div class="branch left branch-inner4">
+                        <div class="parent-name">...</div>
+                        <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="branch left branch3">
+                <div class="parent-name">...</div>
+                <div class="branch right branch-inner1">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+                <div class="branch left branch-inner2">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+                <div class="leaf leaf1"><span class="name-text">...</span></div>
+                <div class="leaf leaf2"><span class="name-text">...</span></div>
+            </div>
+
+            <div class="branch right branch4">
+                <div class="parent-name">...</div>
+                <div class="branch left branch-inner1">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+                <div class="branch right branch-inner2">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+            </div>
+
+            <div class="branch left branch5">
+                <div class="parent-name">...</div>
+                <div class="branch right branch-inner1">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+                <div class="branch left branch-inner2">
+                    <div class="parent-name">...</div>
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    <div class="leaf leaf3"><span class="name-text">...</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scenejs/1.3.0/scene.min.js"></script>
+    <script>
+        // متغيرات عامة
+        let familyData = [];
+        let isLoading = false;
+
+        // دالة جلب البيانات من API
+        async function loadFamilyData() {
+            if (isLoading) return;
+
+            try {
+                isLoading = true;
+                console.log('🔄 بدء تحميل البيانات من API...');
+                showLoadingIndicator();
+
+                const response = await fetch('/api/test-tree', {
+                    method: 'GET',
+                    headers: {
+                        Authorization: "Bearer 384|mhUwLp8nMo15V5hDXvNDdEJ0Hc9Gr5ob8BbAuOe2b90ed68b",
+                        Accept: "application/json",
+                    }
+                });
+
+                console.log('📡 استجابة الخادم:', response.status, response.statusText);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('✅ تم تحميل البيانات بنجاح:', data);
+                    console.log('📊 نوع البيانات:', typeof data);
+                    console.log('🔍 محتويات البيانات:', Object.keys(data));
+
+                    if (data) {
+                        familyData = extractMembers(data);
+                        console.log('👥 عدد الأعضاء المستخرجين:', familyData.length);
+                        console.log('📝 الأعضاء:', familyData);
+
+                        if (familyData.length > 0) {
+                            updateTreeWithData();
+                            console.log('🌳 تم تحديث الشجرة بنجاح');
+                            showSuccessMessage(`تم تحميل ${familyData.length} عضو`);
+                        } else {
+                            console.warn('⚠️ لا توجد أعضاء في البيانات');
+                            showErrorMessage('لا توجد بيانات أعضاء');
+                        }
+                    } else {
+                        console.error('❌ البيانات فارغة');
+                        showErrorMessage('البيانات المستلمة فارغة');
+                    }
+                } else {
+                    console.error('❌ فشل في تحميل البيانات:', response.status, response.statusText);
+                    showErrorMessage(`خطأ ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                console.error('💥 خطأ في الاتصال:', error);
+                showErrorMessage(`خطأ في الاتصال: ${error.message}`);
+            } finally {
+                isLoading = false;
+                hideLoadingIndicator();
+                initializeAnimation();
+            }
+        }
+
+        // دالة استخراج الأعضاء من البيانات
+        function extractMembers(data) {
+            let members = [];
+
+            console.log('🔍 محاولة استخراج الأعضاء من البيانات...');
+
+            // محاولة استخراج من تنسيقات مختلفة
+            if (data.nodes && Array.isArray(data.nodes)) {
+                console.log('📋 وجدت data.nodes:', data.nodes.length, 'عنصر');
+                members = data.nodes;
+            } else if (data.members && Array.isArray(data.members)) {
+                console.log('📋 وجدت data.members:', data.members.length, 'عنصر');
+                members = data.members;
+            } else if (data.tree && Array.isArray(data.tree)) {
+                console.log('📋 وجدت data.tree:', data.tree.length, 'عنصر');
+                members = data.tree;
+            } else if (data.family_data_members_tree && Array.isArray(data.family_data_members_tree)) {
+                console.log('📋 وجدت data.family_data_members_tree:', data.family_data_members_tree.length, 'عنصر');
+                members = data.family_data_members_tree;
+            } else if (Array.isArray(data)) {
+                console.log('📋 البيانات عبارة عن مصفوفة مباشرة:', data.length, 'عنصر');
+                members = data;
+            } else {
+                console.log('🔍 محاولة البحث في جميع خصائص البيانات...');
+                // البحث في جميع الخصائص
+                for (let key in data) {
+                    if (Array.isArray(data[key]) && data[key].length > 0) {
+                        console.log(`📋 وجدت مصفوفة في ${key}:`, data[key].length, 'عنصر');
+                        members = data[key];
+                        break;
+                    }
+                }
+            }
+
+            console.log('📊 عدد الأعضاء الخام:', members.length);
+
+            if (members.length === 0) {
+                console.warn('⚠️ لم يتم العثور على أي أعضاء في البيانات');
+                return [];
+            }
+
+            // تنظيف وتوحيد البيانات
+            const processedMembers = members.map((member, index) => {
+                const processed = {
+                    id: member.id || index + 1,
+                    name: member.name || member.text?.name || member.title || `عضو ${index + 1}`,
+                    relation: member.relation || member.text?.relation || member.type || 'member',
+                    status: member.status || member.text?.status || 'alive',
+                    job: member.job || member.text?.job || '',
+                    birth_date: member.birth_date || member.text?.birth_date || '',
+                    father_id: member.father_id || member.parent_id || null,
+                    mother_id: member.mother_id || null
+                };
+
+                console.log(`👤 عضو ${index + 1}:`, processed.name, `(${processed.relation})`);
+                return processed;
+            });
+
+            console.log('✅ تم معالجة', processedMembers.length, 'عضو بنجاح');
+            return processedMembers;
+        }
+
+        // دوال المساعدة للواجهة
+        function showLoadingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.id = 'loading-indicator';
+            indicator.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(255, 255, 255, 0.95);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+                text-align: center;
+                border: 2px solid #D3AB55;
+            `;
+            indicator.innerHTML = `
+                <div style="color: #D3AB55; font-size: 18px; margin-bottom: 10px;">🌳 جاري تحميل شجرة العائلة...</div>
+                <div style="width: 30px; height: 30px; border: 3px solid #f3f3f3; border-top: 3px solid #D3AB55; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+                <style>
+                    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                </style>
+            `;
+            document.body.appendChild(indicator);
+        }
+
+        function hideLoadingIndicator() {
+            const indicator = document.getElementById('loading-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        function showSuccessMessage(message) {
+            showMessage(message, '#4CAF50', '✅');
+        }
+
+        function showErrorMessage(message) {
+            showMessage(message, '#f44336', '❌');
+        }
+
+        function showMessage(message, color, icon) {
+            const msg = document.createElement('div');
+            msg.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${color};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 1001;
+                font-family: Arial, sans-serif;
+                max-width: 300px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            msg.innerHTML = `
+                <div style="font-weight: bold;">${icon} ${message}</div>
+                <style>
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                </style>
+            `;
+            document.body.appendChild(msg);
+
+            setTimeout(() => {
+                if (msg.parentNode) msg.remove();
+            }, 4000);
+        }
+
+        // دالة تحديث الشجرة بالبيانات
+        function updateTreeWithData() {
+            if (!familyData || familyData.length === 0) {
+                console.warn('⚠️ لا توجد بيانات لتحديث الشجرة');
+                showEmptyState();
+                return;
+            }
+
+            console.log('🌳 بدء تحديث الشجرة بـ', familyData.length, 'عضو');
+
+            // إخفاء رسالة الحالة الفارغة
+            hideEmptyState();
+
+            // تحديث الأوراق الرئيسية (الجذر)
+            const rootLeaves = document.querySelectorAll('.tree > .leaf .name-text');
+            console.log('🍃 عدد الأوراق الجذرية:', rootLeaves.length);
+
+            if (rootLeaves[0] && familyData[0]) {
+                rootLeaves[0].textContent = familyData[0].name;
+                rootLeaves[0].parentElement.style.display = 'block';
+                console.log('👑 تم تحديث الجذر الأول:', familyData[0].name);
+            }
+            if (rootLeaves[1] && familyData[1]) {
+                rootLeaves[1].textContent = familyData[1].name;
+                rootLeaves[1].parentElement.style.display = 'block';
+                console.log('👑 تم تحديث الجذر الثاني:', familyData[1].name);
+            }
+
+            // تحديث أسماء الآباء والأطفال
+            const parentNames = document.querySelectorAll('.parent-name');
+            const leafTexts = document.querySelectorAll('.branch .leaf .name-text');
+
+            console.log('👨‍👩‍👧‍👦 عدد أسماء الآباء:', parentNames.length);
+            console.log('🍃 عدد أوراق الأطفال:', leafTexts.length);
+
+            let memberIndex = 2; // بدء من العضو الثالث بعد الجذرين
+
+            // تحديث أسماء الآباء
+            parentNames.forEach((parent, index) => {
+                if (familyData[memberIndex]) {
+                    const oldName = parent.textContent;
+                    parent.textContent = familyData[memberIndex].name;
+                    parent.style.display = 'block';
+                    console.log(`👨 آب ${index + 1}: ${oldName} → ${familyData[memberIndex].name}`);
+                    memberIndex++;
+                } else {
+                    // إخفاء العناصر الفارغة
+                    parent.style.display = 'none';
+                }
+            });
+
+            // تحديث أسماء الأطفال
+            leafTexts.forEach((leaf, index) => {
+                if (familyData[memberIndex]) {
+                    const oldName = leaf.textContent;
+                    leaf.textContent = familyData[memberIndex].name;
+                    leaf.parentElement.style.display = 'block';
+                    console.log(`👶 طفل ${index + 1}: ${oldName} → ${familyData[memberIndex].name}`);
+                    memberIndex++;
+                } else {
+                    // إخفاء العناصر الفارغة
+                    leaf.parentElement.style.display = 'none';
+                }
+            });
+
+            console.log('✅ تم تحديث الشجرة بنجاح! استُخدم', memberIndex, 'من', familyData.length, 'عضو');
+        }
+
+        // دالة عرض حالة فارغة
+        function showEmptyState() {
+            const existingEmpty = document.getElementById('empty-state');
+            if (existingEmpty) return;
+
+            const emptyDiv = document.createElement('div');
+            emptyDiv.id = 'empty-state';
+            emptyDiv.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: #666;
+                font-family: Arial, sans-serif;
+                z-index: 500;
+            `;
+            emptyDiv.innerHTML = `
+                <div style="font-size: 48px; margin-bottom: 20px;">🌳</div>
+                <div style="font-size: 24px; margin-bottom: 10px; color: #D3AB55;">في انتظار البيانات</div>
+                <div style="font-size: 16px; color: #999;">سيتم عرض شجرة العائلة عند تحميل البيانات من API</div>
+            `;
+            document.querySelector('.tree').appendChild(emptyDiv);
+        }
+
+        // دالة إخفاء حالة فارغة
+        function hideEmptyState() {
+            const emptyDiv = document.getElementById('empty-state');
+            if (emptyDiv) emptyDiv.remove();
+        }
+
+        // دالة تهيئة الأنيميشن
+        function initializeAnimation() {
+            var sceneTree = new Scene({
+                ".tree": {
+                    0: { transform: "scale(0)" },
+                    1.5: { transform: "scale(1)" }
+                }
+            }, {
+                selector: true
+            });
+
+            var branchs = document.querySelectorAll(".tree .branch, .tree .leaf, .tree .parent-name");
+            var depths = [0, 0, 0];
+
+            for (var i = 0; i < branchs.length; ++i) {
+                var sceneItem = sceneTree.newItem("item" + i);
+                var className = branchs[i].className;
+
+                if (~className.indexOf("branch-inner")) {
+                    ++depths[1];
+                    depths[2] = 0;
+                } else if (~className.indexOf("branch")) {
+                    ++depths[0];
+                    depths[1] = 0;
+                    depths[2] = 0;
+                } else if (~className.indexOf("leaf") || ~className.indexOf("parent-name")) {
+                    ++depths[2];
+                }
+
+                sceneItem.setElement(branchs[i]);
+                sceneItem.setCSS(0, ["transform"]);
+                var time = 1 + depths[0] * 0.5 + depths[1] * 0.5 + depths[2] * 0.5;
+                sceneItem.set(time, "transform", "scale", 0);
+                sceneItem.set(time + 1, "transform", "scale", 1);
+            }
+
+            sceneTree.playCSS();
+        }
+
+        // تشغيل التطبيق عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function () {
+            // عرض حالة الانتظار أولاً
+            showEmptyState();
+            // ثم تحميل البيانات
+            loadFamilyData();
+        });
+    </script>
+</body>
+
+</html>

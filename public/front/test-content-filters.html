@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار فلاتر إدارة الأشجار</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/content.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- tossify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <style>
+        .test-header {
+            background: linear-gradient(135deg, #b7924f 0%, #d4af37 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #b7924f;
+        }
+        
+        .demo-data {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid #e9ecef;
+        }
+        
+        .test-button {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid p-4">
+        <!-- Test Header -->
+        <div class="test-header">
+            <h1><i class="bi bi-funnel-fill me-2"></i>اختبار نظام الفلترة المتقدم</h1>
+            <p class="mb-0">صفحة اختبار شاملة لجميع مميزات الفلترة في إدارة الأشجار</p>
+        </div>
+
+        <!-- Features Overview -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5><i class="bi bi-check-circle-fill text-success me-2"></i>المميزات المطبقة</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-arrow-left text-primary me-2"></i>فلترة حسب الحالة (قيد الانتظار، موافق، مرفوض)</li>
+                        <li><i class="bi bi-arrow-left text-primary me-2"></i>فلترة حسب نوع النشاط</li>
+                        <li><i class="bi bi-arrow-left text-primary me-2"></i>فلترة حسب التاريخ مع خيارات متعددة</li>
+                        <li><i class="bi bi-arrow-left text-primary me-2"></i>عرض الفلاتر النشطة مع إمكانية الإزالة</li>
+                        <li><i class="bi bi-arrow-left text-primary me-2"></i>عداد النتائج ومؤشرات التحميل</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5><i class="bi bi-gear-fill text-warning me-2"></i>الوظائف التفاعلية</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-arrow-left text-success me-2"></i>بحث فوري مع تأخير ذكي</li>
+                        <li><i class="bi bi-arrow-left text-success me-2"></i>تاريخ مخصص قابل للتحديد</li>
+                        <li><i class="bi bi-arrow-left text-success me-2"></i>إعادة تعيين جميع الفلاتر</li>
+                        <li><i class="bi bi-arrow-left text-success me-2"></i>تحديث البيانات مع تأثيرات بصرية</li>
+                        <li><i class="bi bi-arrow-left text-success me-2"></i>تصميم متجاوب للأجهزة المختلفة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Data -->
+        <div class="demo-data">
+            <h6><i class="bi bi-database-fill me-2"></i>بيانات تجريبية للاختبار:</h6>
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>الحالات:</strong>
+                    <ul class="small mb-0">
+                        <li>قيد الانتظار (pending)</li>
+                        <li>تمت الموافقة (approving)</li>
+                        <li>مرفوض (rejected)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <strong>أنواع الأنشطة:</strong>
+                    <ul class="small mb-0">
+                        <li>إنشاء شجرة (create)</li>
+                        <li>تعديل شجرة (edit)</li>
+                        <li>حذف عضو (delete)</li>
+                        <li>إضافة عضو (add_member)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <strong>فترات زمنية:</strong>
+                    <ul class="small mb-0">
+                        <li>اليوم (today)</li>
+                        <li>هذا الأسبوع (week)</li>
+                        <li>هذا الشهر (month)</li>
+                        <li>تاريخ مخصص (custom)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Buttons -->
+        <div class="text-center mb-4">
+            <button class="test-button" onclick="testStatusFilter()">
+                <i class="bi bi-funnel me-1"></i>اختبار فلتر الحالة
+            </button>
+            <button class="test-button" onclick="testActivityTypeFilter()">
+                <i class="bi bi-activity me-1"></i>اختبار فلتر النشاط
+            </button>
+            <button class="test-button" onclick="testDateFilter()">
+                <i class="bi bi-calendar3 me-1"></i>اختبار فلتر التاريخ
+            </button>
+            <button class="test-button" onclick="testSearchFunction()">
+                <i class="bi bi-search me-1"></i>اختبار البحث
+            </button>
+            <button class="test-button" onclick="testResetFunction()">
+                <i class="bi bi-arrow-clockwise me-1"></i>اختبار إعادة التعيين
+            </button>
+        </div>
+
+
+        <!-- Filter Modal Window -->
+        <div id="filterModal" class="filter-modal">
+            <div class="filter-modal-content">
+                <div class="filter-modal-header">
+                    <h5 class="mb-0">
+                        <i class="bi bi-funnel-fill me-2"></i>خيارات الفلترة
+                    </h5>
+                    <button id="closeFilterModal" class="btn-close-modal">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                
+                <div class="filter-modal-body">
+                    <div class="row g-4">
+                        <!-- Status Filter -->
+                        <div class="col-md-6">
+                            <label class="filter-label">
+                                <i class="bi bi-check-circle me-2"></i>الحالة
+                            </label>
+                            <select id="statusFilter" class="form-select filter-select">
+                                <option value="">جميع الحالات</option>
+                                <option value="pending">قيد الانتظار</option>
+                                <option value="approving">تمت الموافقة</option>
+                                <option value="rejected">مرفوض</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Activity Type Filter -->
+                        <div class="col-md-6">
+                            <label class="filter-label">
+                                <i class="bi bi-activity me-2"></i>نوع النشاط
+                            </label>
+                            <select id="activityTypeFilter" class="form-select filter-select">
+                                <option value="">جميع الأنشطة</option>
+                                <option value="create">إنشاء شجرة</option>
+                                <option value="edit">تعديل شجرة</option>
+                                <option value="delete">حذف عضو</option>
+                                <option value="add_member">إضافة عضو</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Date Filter -->
+                        <div class="col-md-6">
+                            <label class="filter-label">
+                                <i class="bi bi-calendar3 me-2"></i>الفترة الزمنية
+                            </label>
+                            <select id="dateFilter" class="form-select filter-select">
+                                <option value="">جميع التواريخ</option>
+                                <option value="today">اليوم</option>
+                                <option value="week">هذا الأسبوع</option>
+                                <option value="month">هذا الشهر</option>
+                                <option value="custom">تاريخ مخصص</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Search Filter -->
+                        <div class="col-md-6">
+                            <label class="filter-label">
+                                <i class="bi bi-search me-2"></i>البحث
+                            </label>
+                            <input type="text" id="modalSearchInput" class="form-control filter-select" placeholder="البحث في الأنشطة...">
+                        </div>
+                    </div>
+                    
+                    <!-- Custom Date Range -->
+                    <div id="customDateRange" class="row mt-4 d-none">
+                        <div class="col-md-6">
+                            <label class="filter-label">من تاريخ</label>
+                            <input type="date" id="startDate" class="form-control filter-select">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="filter-label">إلى تاريخ</label>
+                            <input type="date" id="endDate" class="form-control filter-select">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-modal-footer">
+                    <button id="applyFilters" class="btn btn-primary">
+                        <i class="bi bi-check2 me-1"></i>تطبيق الفلاتر
+                    </button>
+                    <button id="clearAllFilters" class="btn btn-outline-secondary">
+                        <i class="bi bi-trash me-1"></i>مسح الكل
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Demo Table -->
+        <div class="programmes-table bg-white rounded-3 shadow-sm p-3">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="mb-0" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                    سجل النشاطات
+                </h1>
+                <div class="d-flex align-items-center gap-2">
+                    <!-- Filter Toggle Button -->
+                    <button id="filterToggleBtn" class="filter-toggle-btn">
+                        <i class="bi bi-funnel-fill"></i>
+                        <span>الفلاتر</span>
+                        <span id="filterCount" class="filter-count d-none">0</span>
+                    </button>
+                    
+                    <!-- Quick Actions -->
+                    <button id="resetFilters" class="btn btn-outline-secondary btn-sm">
+                        <i class="bi bi-arrow-clockwise me-1"></i>إعادة تعيين
+                    </button>
+                    <button id="refreshData" class="btn btn-primary btn-sm">
+                        <i class="bi bi-arrow-repeat me-1"></i>تحديث
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Active Filters Display -->
+            <div id="activeFilters" class="mb-3 d-none">
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <span class="text-muted fw-bold">الفلاتر النشطة:</span>
+                    <div id="filterTags" class="d-flex gap-2 flex-wrap"></div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-borderless">
+                    <thead class="text-center">
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>اسم الشجرة</th>
+                            <th>نوع النشاط</th>
+                            <th>بواسطة المستخدم</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="demoTableBody">
+                        <!-- سيتم ملء البيانات التجريبية هنا -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Results Counter -->
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                <div class="d-flex align-items-center gap-2">
+                    <span id="resultsCount" class="text-muted">عرض 1-3 من 3 نشاط</span>
+                    <div class="spinner-border spinner-border-sm text-primary d-none" id="filterSpinner">
+                        <span class="visually-hidden">جاري الفلترة...</span>
+                    </div>
+                </div>
+                <div class="text-muted small">
+                    <i class="bi bi-info-circle me-1"></i>صفحة اختبار الفلاتر
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // بيانات تجريبية
+        const demoData = [
+            {
+                id: 1,
+                date: '2024-01-15',
+                family_name: 'عائلة الأحمد',
+                type: 'create',
+                user: { name: 'أحمد محمد', email: 'ahmed@example.com' },
+                status: 'pending'
+            },
+            {
+                id: 2,
+                date: '2024-01-14',
+                family_name: 'عائلة السعود',
+                type: 'edit',
+                user: { name: 'سارة أحمد', email: 'sara@example.com' },
+                status: 'approving'
+            },
+            {
+                id: 3,
+                date: '2024-01-13',
+                family_name: 'عائلة الخالد',
+                type: 'add_member',
+                user: { name: 'محمد علي', email: 'mohammed@example.com' },
+                status: 'rejected'
+            }
+        ];
+
+        // دوال الاختبار
+        function testStatusFilter() {
+            document.getElementById('statusFilter').value = 'pending';
+            document.getElementById('statusFilter').dispatchEvent(new Event('change'));
+            showTestToast('تم تطبيق فلتر الحالة: قيد الانتظار');
+        }
+
+        function testActivityTypeFilter() {
+            document.getElementById('activityTypeFilter').value = 'create';
+            document.getElementById('activityTypeFilter').dispatchEvent(new Event('change'));
+            showTestToast('تم تطبيق فلتر النشاط: إنشاء شجرة');
+        }
+
+        function testDateFilter() {
+            document.getElementById('dateFilter').value = 'week';
+            document.getElementById('dateFilter').dispatchEvent(new Event('change'));
+            showTestToast('تم تطبيق فلتر التاريخ: هذا الأسبوع');
+        }
+
+        function testSearchFunction() {
+            document.getElementById('activitySearch').value = 'عائلة الأحمد';
+            document.getElementById('activitySearch').dispatchEvent(new Event('input'));
+            showTestToast('تم تطبيق البحث: عائلة الأحمد');
+        }
+
+        function testResetFunction() {
+            document.getElementById('resetFilters').click();
+            showTestToast('تم إعادة تعيين جميع الفلاتر');
+        }
+
+        function showTestToast(message) {
+            Toastify({
+                text: message,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "#28a745",
+                stopOnFocus: true
+            }).showToast();
+        }
+
+        // محاكاة البيانات التجريبية
+        function loadDemoData() {
+            const tbody = document.getElementById('demoTableBody');
+            tbody.innerHTML = '';
+            
+            demoData.forEach(item => {
+                const statusColors = {
+                    pending: { bg: '#FFF3CD', color: '#856404', text: 'قيد الانتظار' },
+                    approving: { bg: '#D4EDDA', color: '#155724', text: 'تمت الموافقة' },
+                    rejected: { bg: '#F8D7DA', color: '#721C24', text: 'مرفوض' }
+                };
+                
+                const typeNames = {
+                    create: 'إنشاء شجرة',
+                    edit: 'تعديل شجرة',
+                    delete: 'حذف عضو',
+                    add_member: 'إضافة عضو'
+                };
+                
+                const status = statusColors[item.status];
+                
+                const row = `
+                    <tr>
+                        <td class="text-center">${new Date(item.date).toLocaleDateString('ar-SA')}</td>
+                        <td class="text-center">${item.family_name}</td>
+                        <td class="text-center">${typeNames[item.type]}</td>
+                        <td class="text-center">
+                            <div>
+                                <strong>${item.user.name}</strong>
+                                <br><small class="text-muted">${item.user.email}</small>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span style="background-color: ${status.bg}; color: ${status.color}; padding: 5px 12px; border-radius: 20px; font-weight: 600;">
+                                ${status.text}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // تحميل البيانات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDemoData();
+            document.getElementById('resultsCount').textContent = `عرض 1-${demoData.length} من ${demoData.length} نشاط`;
+            
+            // إضافة حقل بحث مخفي للاختبار
+            const hiddenSearch = document.createElement('input');
+            hiddenSearch.type = 'hidden';
+            hiddenSearch.id = 'activitySearch';
+            document.body.appendChild(hiddenSearch);
+            
+            // محاكاة وظائف الفلترة
+            setupDemoFilters();
+        });
+
+        function setupDemoFilters() {
+            // زر فتح نافذة الفلاتر
+            document.getElementById('filterToggleBtn').addEventListener('click', function() {
+                const modal = document.getElementById('filterModal');
+                modal.classList.add('show');
+                this.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // زر إغلاق النافذة
+            document.getElementById('closeFilterModal').addEventListener('click', function() {
+                closeModal();
+            });
+            
+            // إغلاق عند النقر خارج النافذة
+            document.getElementById('filterModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            
+            // فلتر التاريخ - إظهار التاريخ المخصص
+            document.getElementById('dateFilter').addEventListener('change', function() {
+                const customRange = document.getElementById('customDateRange');
+                if (this.value === 'custom') {
+                    customRange.classList.remove('d-none');
+                } else {
+                    customRange.classList.add('d-none');
+                }
+            });
+            
+            // زر تطبيق الفلاتر
+            document.getElementById('applyFilters').addEventListener('click', function() {
+                updateActiveFiltersDemo();
+                closeModal();
+                showTestToast('تم تطبيق الفلاتر بنجاح');
+            });
+            
+            // زر مسح جميع الفلاتر
+            document.getElementById('clearAllFilters').addEventListener('click', function() {
+                document.getElementById('statusFilter').value = '';
+                document.getElementById('activityTypeFilter').value = '';
+                document.getElementById('dateFilter').value = '';
+                document.getElementById('modalSearchInput').value = '';
+                document.getElementById('customDateRange').classList.add('d-none');
+                showTestToast('تم مسح جميع الفلاتر');
+            });
+            
+            // إعادة تعيين (في الهيدر)
+            document.getElementById('resetFilters').addEventListener('click', function() {
+                document.getElementById('statusFilter').value = '';
+                document.getElementById('activityTypeFilter').value = '';
+                document.getElementById('dateFilter').value = '';
+                document.getElementById('activitySearch').value = '';
+                document.getElementById('modalSearchInput').value = '';
+                document.getElementById('customDateRange').classList.add('d-none');
+                updateActiveFiltersDemo();
+                showTestToast('تم إعادة تعيين جميع الفلاتر');
+            });
+            
+            // تحديث
+            document.getElementById('refreshData').addEventListener('click', function() {
+                this.classList.add('pulse-animation');
+                setTimeout(() => {
+                    this.classList.remove('pulse-animation');
+                    showTestToast('تم تحديث البيانات بنجاح');
+                }, 1000);
+            });
+            
+            // ربط البحث في المودال مع البحث الرئيسي
+            document.getElementById('modalSearchInput').addEventListener('input', function() {
+                document.getElementById('activitySearch').value = this.value;
+            });
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('filterModal');
+            const toggleBtn = document.getElementById('filterToggleBtn');
+            modal.classList.remove('show');
+            toggleBtn.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateActiveFiltersDemo() {
+            const activeFiltersDiv = document.getElementById('activeFilters');
+            const filterTagsDiv = document.getElementById('filterTags');
+            const filterCountBadge = document.getElementById('filterCount');
+            
+            filterTagsDiv.innerHTML = '';
+            let hasFilters = false;
+            let filterCount = 0;
+            
+            // فحص الفلاتر النشطة
+            const status = document.getElementById('statusFilter').value;
+            const type = document.getElementById('activityTypeFilter').value;
+            const date = document.getElementById('dateFilter').value;
+            const search = document.getElementById('activitySearch').value;
+            
+            if (status) {
+                addDemoFilterTag('الحالة', getStatusText(status));
+                hasFilters = true;
+                filterCount++;
+            }
+            
+            if (type) {
+                addDemoFilterTag('النوع', getTypeText(type));
+                hasFilters = true;
+                filterCount++;
+            }
+            
+            if (date) {
+                addDemoFilterTag('التاريخ', getDateText(date));
+                hasFilters = true;
+                filterCount++;
+            }
+            
+            if (search) {
+                addDemoFilterTag('البحث', search);
+                hasFilters = true;
+                filterCount++;
+            }
+            
+            // تحديث عداد الفلاتر في الزر
+            if (filterCountBadge) {
+                if (filterCount > 0) {
+                    filterCountBadge.textContent = filterCount;
+                    filterCountBadge.classList.remove('d-none');
+                } else {
+                    filterCountBadge.classList.add('d-none');
+                }
+            }
+            
+            if (hasFilters) {
+                activeFiltersDiv.classList.remove('d-none');
+            } else {
+                activeFiltersDiv.classList.add('d-none');
+            }
+        }
+
+        function addDemoFilterTag(label, value) {
+            const filterTagsDiv = document.getElementById('filterTags');
+            const tag = document.createElement('div');
+            tag.className = 'filter-tag';
+            tag.innerHTML = `
+                <span>${label}: ${value}</span>
+                <button class="remove-filter" onclick="this.parentElement.remove(); updateActiveFiltersDemo();">
+                    <i class="bi bi-x"></i>
+                </button>
+            `;
+            filterTagsDiv.appendChild(tag);
+        }
+
+        function getStatusText(status) {
+            const texts = {
+                pending: 'قيد الانتظار',
+                approving: 'تمت الموافقة',
+                rejected: 'مرفوض'
+            };
+            return texts[status] || status;
+        }
+
+        function getTypeText(type) {
+            const texts = {
+                create: 'إنشاء شجرة',
+                edit: 'تعديل شجرة',
+                delete: 'حذف عضو',
+                add_member: 'إضافة عضو'
+            };
+            return texts[type] || type;
+        }
+
+        function getDateText(date) {
+            const texts = {
+                today: 'اليوم',
+                week: 'هذا الأسبوع',
+                month: 'هذا الشهر',
+                custom: 'تاريخ مخصص'
+            };
+            return texts[date] || date;
+        }
+    </script>
+</body>
+
+</html>

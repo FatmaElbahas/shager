@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/contactus.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" dir="rtl" style="background-color: rgba(248, 247, 247, 1);">
+        <div class="container-fluid">
+
+            <!-- الشعار على اليمين -->
+            <a class="navbar-brand mx-4" href="#">
+                <img src="images/Asset 80.svg" alt="logo" width="190">
+            </a>
+
+            <!-- زر القائمة للجوال -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-dark"></i>
+            </button>
+
+            <!-- محتوى الشريط -->
+            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
+
+                <!-- القائمة في المنتصف -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="Home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="families.html">العائلات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new.html"> الأخبار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contactus.html">اتصل بنا</a>
+                    </li>
+                </ul>
+
+                <!-- Before sign in -->
+                <div id="before">
+                    <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                        <a href="login.html">
+                            <button class="btn btn-custom">تسجيل الدخول</button>
+                        </a>
+                        <a href="register.html">
+                            <button class="btn btn-outline-custom">إنشاء حساب</button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- after sign in  -->
+                <div id="after">
+                    <div class="d-flex align-items-center gap-3 mx-2 justify-content-end">
+                        <div class="user-bar">
+                            <a href="profile.html">
+                                <img src="images/Rectangle.png" alt="User" class="profile">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <header>
+        <div class="content">
+            <div class="text-content">
+                <h1 class="text-left"> تواصل معنا</h1>
+                <nav class="navbar navbar-expand-lg ">
+                    <div class="container-fluid ">
+                        <span>
+                            <a class="navbar-brand" href="home.html">الرئيسية</a>
+                            / تواصل معنا
+                        </span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- contact -->
+    <div class="contact my-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+
+                <h4 class="mb-2">تواصل معنا</h4>
+                <p class="mb-4">نسعد بتواصلك معنا للإجابة على استفساراتك أو استقبال مقترحاتك في أي وقت.
+                </p>
+
+                <!-- معلومات التواصل -->
+                <div class="col-lg-5">
+                    <div class="contact-box">
+                        <h5 class="my-3">تواصل معنا </h5>
+                        <p class="my-4" style="color: rgba(222, 192, 128, 1); font-size: 16px;"> اتصل بنا : <br> </p>
+                        <p class="d-flex align-items-center gap-2" style="direction: rtl;">
+                            <img src="images/ph_phone-call.png" alt="" width="20">
+                            <span dir="ltr">+966 59 533 8665</span>
+                        </p>
+                        <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
+                        <p class="my-4" style="color: rgba(222, 192, 128, 1); font-size: 16px;"> أو أرسل رسالة : </p>
+                        <p class="d-flex align-items-center gap-2" style="direction: rtl;">
+                            <img src="images/uil_whatsapp.png" alt="" width="20">
+                            <span dir="ltr">+966 59 533 8665</span>
+                        </p>
+                        <p><span><img src="images/carbon_email (2).png" alt=""></span> shaigratech@gmail.com</p>
+                    </div>
+                </div>
+
+
+                <!-- نموذج التواصل -->
+                <div class="col-lg-7">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <input type="text" name="name" class="form-control" placeholder="الاسم بالكامل">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" name="email" class="form-control" placeholder="الإيميل">
+                        </div>
+                        <div class="mb-3">
+                            <select name="subject" class="form-select custom-select">
+                                <option selected disabled class="text-muted">الموضوع</option>
+                                <option value="استفسار">استفسار</option>
+                                <option value="ملاحظة">ملاحظة</option>
+                                <option value="اقتراح">اقتراح</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <textarea name="message" class="form-control" rows="4" placeholder="الرسالة"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-custom my-3">إرسال</button>
+                    </form>
+
+                    <div class="success-message" id="successMessage">
+                        <div class="success-icon">✓</div>
+                        <h2>تم استلام رسالتك بنجاح!</h2>
+                        <p>شكراً لتواصلك تلقينا رسالتك وسنقوم بالرد عليك في أقرب وقت ممكن.</p>
+                        <a href="" class="btn-back" id="backButton">إرسال رسالة جديدة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>كُن جزءًا من شجر تك</h1>
+        <p>انطلق في رحلة التعرف على العائلات والقبائل، أو انضم إلينا وابدأ بتجميع عائلتك ومشاركتها وربطها مع الآخرين.
+        </p>
+        <a href="joinus.html">
+            <button class="btn btn-custom">انضم إلينا</button>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-2">
+        <div class="container">
+            <div class="row">
+                <!-- Column 1 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>تواصل معنا</h6>
+                    <p class="d-flex align-items-center gap-2" style="direction: rtl; color: rgba(123, 123, 123, 1);">
+                        <img src="images/ph_phone-call (1).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerPhone" dir="ltr">+966 59
+                            533
+                            8665</span>
+                    </p>
+                    <p class="d-flex align-items-center gap-2"
+                        style="direction: rtl; color: rgba(123, 123, 123, 1) !important; "> <img
+                            src="images/carbon_email (3).png" alt="" width="20"
+                            style="color: rgba(123, 123, 123, 1) !important;"> <span id="footerEmail"
+                            dir="ltr">shaigratech@gmail.com</span>
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" id="footerYoutube"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" id="footerTwitter"><img src="images/bxl-twitter.png" alt="Twitter"></a>
+                        <a href="#" id="footerInstagram"><img src="images/instagram-logo.png" alt="Instagram"></a>
+                        <a href="#" id="footerFacebook"><img src="images/bxl-facebook.png" alt="Facebook"></a>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>المزيد</h6>
+                    <ul>
+                        <li><a href="contactus.html">تواصل معنا</a></li>
+                        <li><a href="#">السياسات</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-md-3 footer-column mb-4">
+                    <h6>الصفحات</h6>
+                    <ul>
+                        <li><a href="Home.html">الرئيسية</a></li>
+                        <li><a href="aboutus.html">من نحن</a></li>
+                        <li><a href="families.html">العائلات</a></li>
+                        <li><a href="new.html">الأخبار</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="col-md-3 footer-column mb-4 text-center px-5">
+                    <div class="footer-logo mb-3">
+                        <img src="images/Asset 80.svg" alt="ShajaraTech Logo" class="img-fluid" width="270px">
+                    </div>
+                    <p class="text-muted" style="color: rgba(123, 123, 123, 1);" id="description">منصة رقمية تجمع
+                        القبائل والعائلات في
+                        مكان واحد، تتيح لك بناء شجرة عائلتك،
+                        استكشاف الجذور، متابعة المناسبات، والتواصل مع مجتمعك بكل سهولة.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-4">
+                جميع الحقوق محفوظة © ShajaraTech 2025
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/contactus.js"></script>
+</body>
+
+</html>

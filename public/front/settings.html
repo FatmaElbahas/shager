@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإعدادات</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/settings.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- select -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+
+<body style="height: 100vh;">
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item mt-3">
+                <a href="AdminDashboard.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Dashboard.png" alt="" class="icon">
+                    <span>لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="messages.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/stash_inbox (1).png" alt="" class="icon">
+                    <span>الرسائل</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="content.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                    <span>إدارة الاشجار</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="users.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Users Icon.png" alt="" class="icon">
+                    <span>المستخدمين</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="invitations.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/tabler_link-plus.png" alt="" class="icon">
+                    <span>الدعوات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reports.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Sales Icon.png" alt="" class="icon">
+                    <span>التقارير</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="subscriptions.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                    <span>الإشتراكات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="payments.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/190 (1).png" alt="" class="icon">
+                    <span>المدفوعات والعروض </span>
+                </a>
+            </li>
+            <li class="active nav-item">
+                <a href="settings.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                    <span>الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item my-3">
+                <a href="#" class="nav-link text-danger d-flex align-items-center gap-2">
+                    <img src="images/Frame (3).png" alt="" class="icon">
+                    <span>تسجيل الخروج</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold"> الإعدادات</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+            <h4 class="my-3" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                الإعدادات
+            </h4>
+
+            <!-- بيانات المنصة -->
+            <div class="container my-5">
+                <div class="platform-card">
+                    <h5 class="mb-4 bg-light py-3 px-3">
+                        <span><img src="images/majesticons_data-line.png" alt=""></span> بيانات المنصة
+                    </h5>
+                    <div class="row g-4 align-items-start">
+                        <div class="col-md-9">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold mb-3">رابط المنصة</label>
+                                <input type="text" class="form-control" placeholder="www.shajaraTech.com">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold mb-3">وصف المنصة</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="منصة رقمية تجمع القبائل والعائلات..."></textarea>
+                            </div>
+                            <button class="btn btn-custom mt-3">حفظ بيانات المنصة</button>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="logo-box rounded-4 shadow-sm text-center">
+                                <img id="platformLogoPreview" src="images/Rectangle (1).png" alt="شعار المنصة"
+                                    style="max-width: 100%; height: auto;">
+                                <input type="file" id="platformLogoInput" accept="image/*" style="display: none;">
+                                <button id="changeLogoBtn"
+                                    class="btn btn-outline-secondary rounded-4 py-3 px-3 btn-sm mt-3">
+                                    تعديل شعار المنصة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الأمان -->
+            <div class="container my-5">
+                <div class="settings-card">
+                    <h5 class="mb-4 bg-light py-3 px-3">
+                        <span><img src="images/ant-design_safety-outlined.png" alt=""></span> الأمان
+                    </h5>
+                    <div class="setting-item">
+                        <label for="setting1" class="form-check-label">تشفير البيانات</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="setting1">
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="setting2" class="form-check-label">تكامل مع مزودي الأمان</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="setting2">
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="setting3" class="form-check-label">شهادة SSL</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="setting3">
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="setting4" class="form-check-label">الحماية من هجمات DDoS</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="setting4">
+                        </div>
+                    </div>
+                    <button class="btn btn-custom mt-3">حفظ الأمان</button>
+                </div>
+            </div>
+
+            <!-- الدعم الفني -->
+            <div class="container">
+                <div class="support-card">
+                    <h5 class="mb-4 bg-light py-3 px-3">الدعم الفني</h5>
+                    <div class="mb-3 input-group">
+                        <input type="text" class="form-control text-end" placeholder="+966 59 533 8665">
+                    </div>
+                    <div class="mb-4 input-group">
+                        <input type="email" class="form-control text-end" placeholder="shaigratech@gmail.com">
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="btn btn-custom mt-3">حفظ الدعم الفني</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- حسابات التواصل -->
+            <div class="container">
+                <div class="social-card">
+                    <h5 class="mb-4 bg-light py-3 px-3">حسابات التواصل الاجتماعي</h5>
+                    <div class="mb-3 input-group">
+                        <input type="text" class="form-control text-end" placeholder="حساب فيس بوك">
+                    </div>
+                    <div class="mb-3 input-group">
+                        <input type="text" class="form-control text-end" placeholder="حساب انستجرام">
+                    </div>
+                    <div class="mb-3 input-group">
+                        <input type="text" class="form-control text-end" placeholder="حساب تويتر">
+                    </div>
+                    <div class="mb-4 input-group">
+                        <input type="text" class="form-control text-end" placeholder="رابط اليوتيوب">
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="btn btn-custom mt-3">حفظ حسابات التواصل</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+
+</html>

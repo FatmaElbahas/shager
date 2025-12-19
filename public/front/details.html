@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: 999px;
+    border: 1.5px solid #D4AF37;
+    background-color: #FFFBF2;
+    color: #C9A634;
+
+    box-shadow: 0 2px 4px rgba(212, 175, 55, 0.12);
+    transition: all 0.25s ease;
+}
+
+.back-btn i {
+    font-size: 13px;
+}
+
+.back-btn:hover {
+    background-color: #FFF3D6;
+    color: #B8962E;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(212, 175, 55, 0.18);
+}
+
+.back-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(212, 175, 55, 0.12);
+}
+
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #F7F8FA;
+            /* Lighter background */
+            color: #1F2937;
+            direction: rtl;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            /* Wider container to match image */
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent;
+            /* No background */
+            padding: 10px 0;
+            /* Minimal padding */
+            margin-bottom: 15px;
+        }
+
+        .logo-area .logo {
+            height: 40px;
+        }
+
+        .search-bar-container {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-bar {
+            position: relative;
+            flex-grow: 1;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            font-size: 14px;
+            outline: none;
+            background-color: #F7F8FA;
+            /* Search input background */
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        .header-icons i {
+            font-size: 20px;
+            color: #9CA3AF;
+            cursor: pointer;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            /* More rounded corners */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            /* Softer shadow */
+            padding: 20px;
+            display: flex;
+            flex-direction: row-reverse;
+            /* Reverse layout: icon on right, data on left */
+            align-items: center;
+            justify-content: space-between;
+            text-align: right;
+            transition: none;
+            /* Remove hover effect */
+        }
+
+        .stat-card:hover {
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-info {
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            /* Align text to the right */
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 0;
+        }
+
+        .status-active {
+            color: #10B981;
+            /* Brighter green */
+            font-weight: 700;
+        }
+
+        .stat-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 33px;
+            margin-right: 15px;
+            /* Move icon to the right in RTL */
+        }
+
+        .icon-bg-1 {
+            background-color: #F7F8FA;
+            /* Very light background for icon */
+            color: #D4AF37;
+        }
+
+        .icon-bg-2 {
+            background-color: #FFF8E6;
+            color: #D4AF37;
+        }
+
+        .icon-bg-3 {
+            background-color: #FFF8E6;
+            color: #D4AF37;
+        }
+
+        .icon-bg-4 {
+            background-color: #FFF8E6;
+            color: #D4AF37;
+        }
+
+        /* ===== Profile Banner – Large Version (Like Image 2) ===== */
+
+        .profile-banner {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 35px 45px;
+            margin-bottom: 30px;
+        }
+
+        .profile-details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            width: 100%;
+        }
+
+        /* Left Side (Avatar + Name) */
+        .user-main-info {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            min-width: 420px;
+        }
+
+        .avatar-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background-color: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: #9CA3AF;
+            border: 4px solid #D4AF37;
+            flex-shrink: 0;
+        }
+
+        .user-main-info h2 {
+            font-size: 30px;
+            font-weight: 800;
+            color: #1F2937;
+            margin-bottom: 6px;
+        }
+
+        .user-main-info p {
+            font-size: 18px;
+            color: #6B7280;
+        }
+
+        /* Right Side Details */
+        .detail-item-group {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .detail-item .info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-item .label {
+            font-size: 18px;
+            color: #9CA3AF;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .detail-item .value {
+            font-size: 26px;
+            font-weight: 800;
+            color: #1F2937;
+        }
+
+        .detail-item .icon-circle {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background-color: #FFF8E6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 38px;
+        }
+
+        .gold-bg {
+            color: #D4AF37;
+        }
+
+        /* Back Button Hover Effect */
+        .back-button-container .btn:hover {
+            background-color: #D4AF37 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.25) !important;
+        }
+
+        /* Remove absolute positioning */
+
+        /* Subscriptions Section */
+        .subscriptions-section {
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1F2937;
+            border-bottom: 1px solid #E5E7EB;
+            padding-bottom: 15px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #F7F8FA;
+            /* Lighter header background */
+            padding: 15px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 14px;
+            color: #6B7280;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 14px;
+        }
+
+        .user-cell {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-cell .thumb {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .user-cell .name {
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 3px;
+        }
+
+        .user-cell .email {
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .badge.active {
+            background-color: #D1FAE5;
+            /* Light green */
+            color: #059669;
+            /* Dark green */
+        }
+
+        .badge.suspended {
+            background-color: #FEF3C7;
+            /* Light yellow */
+            color: #D97706;
+            /* Dark yellow/orange */
+        }
+
+        .badge.expired {
+            background-color: #FEE2E2;
+            /* Light red */
+            color: #DC2626;
+            /* Dark red */
+        }
+
+        .action-dots {
+            color: #9CA3AF;
+            cursor: pointer;
+
+            @media (max-width: 992px) {
+                .profile-details {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .avatar-circle {
+                    margin-left: 0;
+                    margin-bottom: 20px;
+                }
+
+                .user-main-info {
+                    margin-bottom: 30px;
+                }
+
+                .detail-item-group {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .detail-item {
+                    margin-left: 0;
+                    margin-bottom: 15px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .top-header {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .search-bar {
+                    max-width: 100%;
+                    margin: 0;
+                    order: 3;
+                }
+
+                .stats-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <header class="top-header">
+            <div class="logo-area">
+                <img src="images/Asset 80.png" alt="Logo" class="logo">
+            </div>
+            <div class="header-icons">
+                <i class="fa-regular fa-bell"></i>
+                <i class="fa-regular fa-circle-question"></i>
+            </div>
+        </header>
+
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <input type="text" placeholder="البحث ..">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="back-button-container" style="margin: 20px 0;">
+            <a href="users.html" class="btn back-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+                العودة إلى قائمة المستخدمين
+            </a>
+        </div>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-info">
+                    <span class="stat-label">حالة الاشتراك</span>
+                    <span class="stat-value" id="subscription-status">-</span>
+                </div>
+                <div class="stat-icon icon-bg-1">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <span class="stat-label">تاريخ الانضمام</span>
+                    <span class="stat-value" id="join-date">-</span>
+                </div>
+                <div class="stat-icon icon-bg-2">
+                    <i class="fa-solid fa-calendar-alt"></i>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <span class="stat-label">وظيفته في الشجرة</span>
+                    <span class="stat-value" id="user-role">-</span>
+                </div>
+                <div class="stat-icon icon-bg-3">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <span class="stat-label">عدد افراد الشجرة</span>
+                    <span class="stat-value" id="family-members-count">-</span>
+                </div>
+                <div class="stat-icon icon-bg-4">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-banner">
+            <div class="profile-details">
+                <div class="user-main-info">
+                    <div class="avatar-circle">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <h2 id="user-full-name">-</h2>
+                        <p id="user-email">-</p>
+                    </div>
+                </div>
+                <div class="detail-item-group">
+                    <div class="detail-item">
+                        <div class="icon-circle"><i class="fa-solid fa-tree"></i></div>
+                        <div class="info-text">
+                            <span class="label">اسم الشجرة</span>
+                            <span class="value" id="tree-name">-</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="icon-circle"><i class="fa-solid fa-mobile-screen"></i></div>
+                        <div class="info-text">
+                            <span class="label">رقم الجوال</span>
+                            <span class="value" id="phone-number">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="subscriptions-section">
+            <h3 class="section-title" style="border-bottom: none; padding-bottom: 0;">الاشتراكات</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>اسم المستخدم</th>
+                            <th>اسم الشجرة</th>
+                            <th>تاريخ بدء الاشتراك</th>
+                            <th>تاريخ انتهاء الاشتراك</th>
+                            <th>الخطة الحالية</th>
+                            <th>حالة الاشتراك</th>
+                            <th>طريقة الدفع</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscriptions-table">
+                        <tr>
+                            <td colspan="8" class="text-center text-muted py-4">
+                                جاري تحميل الاشتراكات...
+                            </td>
+
+                            <script>
+                                // Get user ID from URL parameter
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const userId = urlParams.get('id');
+                                const token = localStorage.getItem("authToken");
+
+                                // Function to fetch user data
+                                async function fetchUserData() {
+                                    if (!userId) {
+                                        console.error('No user ID provided');
+                                        return;
+                                    }
+
+                                    try {
+                                        const response = await fetch(`/api/admin/users/${userId}`, {
+                                            headers: {
+                                                Accept: "application/json",
+                                                Authorization: `Bearer ${token}`,
+                                            },
+                                        });
+
+                                        if (!response.ok) throw new Error("Failed to fetch user data");
+
+                                        const user = await response.json();
+
+                                        // Update the UI with real data
+                                        document.querySelector('.user-main-info h2').textContent = user.name || '-';
+                                        document.querySelector('.user-main-info p').textContent = user.email || '-';
+
+                                        // Update detail items
+                                        const treeName = user.family_trees && user.family_trees.length > 0
+                                            ? user.family_trees[0].tree_name || '-'
+                                            : '-';
+                                        document.querySelector('.detail-item:nth-child(1) .value').textContent = treeName;
+
+                                        document.querySelector('.detail-item:nth-child(2) .value').textContent = user.phone || '-';
+
+                                        // Update stat cards in correct order
+                                        // Card 1: Subscription Status
+                                        const statusText = user.status === 'active'
+                                            ? 'فعال'
+                                            : user.status === 'suspended'
+                                                ? 'موقوف'
+                                                : 'محظور';
+                                        document.querySelector('.stat-card:nth-child(1) .stat-value').textContent = statusText;
+
+                                        // Card 2: Join Date
+                                        const joinDate = user.created_at
+                                            ? new Date(user.created_at).toLocaleDateString('ar-EG')
+                                            : "-";
+                                        document.querySelector('.stat-card:nth-child(2) .stat-value').textContent = joinDate;
+
+                                        // Card 3: Role in Tree
+                                        const roleText = user.role === 'admin'
+                                            ? 'مدير'
+                                            : user.role === 'tree_creator'
+                                                ? 'منشئ الشجرة'
+                                                : 'عضو';
+                                        document.querySelector('.stat-card:nth-child(3) .stat-value').textContent = roleText;
+
+                                        // Card 4: Tree Members Count
+                                        document.querySelector('.stat-card:nth-child(4) .stat-value').textContent =
+                                            user.family_trees && user.family_trees.length > 0
+                                                ? user.family_trees[0].members_count || 0
+                                                : 0;
+
+                                        // Update subscription table if needed
+                                        // This would require additional API calls for subscription data
+                                    } catch (error) {
+                                        console.error('Error fetching user data:', error);
+                                        alert('حدث خطأ أثناء تحميل بيانات المستخدم');
+                                    }
+                                }
+
+                                // Check authentication
+                                function checkAuth() {
+                                    const user = JSON.parse(localStorage.getItem("user"));
+                                    if (!token || !user || user.role !== "admin") {
+                                        window.location.href = "login.html";
+                                    }
+                                }
+
+                                // Load user data when page loads
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    checkAuth();
+                                    fetchUserData();
+                                });
+                            </script>
+</body>
+
+</html>

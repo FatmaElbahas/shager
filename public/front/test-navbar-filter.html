@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار فلتر الـ Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/messages.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .demo-navbar {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .message-item {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: white;
+        }
+        .badge-status {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h2 class="text-center mb-4">
+            <i class="bi bi-funnel-fill text-primary"></i>
+            اختبار فلتر الـ Navbar
+        </h2>
+        
+        <!-- محاكاة الـ Navbar -->
+        <div class="demo-navbar">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">الرسائل</h5>
+                <div class="d-flex gap-2">
+                    <!-- زر الفلتر للموبايل -->
+                    <button class="btn btn-outline-primary btn-sm d-md-none" id="mobileFilterToggle" title="فلترة الرسائل">
+                        <i class="bi bi-sliders"></i>
+                    </button>
+                    <!-- زر الفلتر للديسكتوب -->
+                    <button class="btn btn-primary d-none d-md-flex align-items-center gap-2" id="filterToggle" title="فلترة الرسائل">
+                        <i class="bi bi-sliders"></i>
+                        <span>فلتر</span>
+                        <span id="filterCount" style="display: none;">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- لوحة الفلاتر -->
+        <div class="card mb-4" id="filterPanel" style="display: none;">
+            <div class="card-header bg-light">
+                <h6 class="mb-0"><i class="bi bi-funnel me-2"></i>فلترة الرسائل</h6>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">نوع الرسالة</label>
+                        <select class="form-select" id="messageTypeFilter">
+                            <option value="">جميع الأنواع</option>
+                            <option value="behavioral">سلوكية</option>
+                            <option value="technical">فنية</option>
+                            <option value="financial">مالية</option>
+                            <option value="inquiry">استفسار</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">الحالة</label>
+                        <select class="form-select" id="statusFilter">
+                            <option value="">جميع الحالات</option>
+                            <option value="answered">تم الرد</option>
+                            <option value="under_review">تحت المراجعة</option>
+                            <option value="unanswered">لم يتم الرد</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">اسم الشجرة</label>
+                        <input type="text" class="form-control" id="treeNameFilter" placeholder="ابحث في اسم الشجرة">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">اسم المستخدم</label>
+                        <input type="text" class="form-control" id="userNameFilter" placeholder="ابحث في اسم المستخدم">
+                    </div>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-success" id="applyFilters">
+                        <i class="bi bi-check-circle me-1"></i>تطبيق الفلاتر
+                    </button>
+                    <button class="btn btn-outline-secondary" id="clearFilters">
+                        <i class="bi bi-x-circle me-1"></i>مسح الفلاتر
+                    </button>
+                    <button class="btn btn-outline-danger" id="hideFilters">
+                        <i class="bi bi-eye-slash me-1"></i>إخفاء
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- إحصائيات -->
+        <div class="alert alert-info">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <strong id="totalCount">5</strong> إجمالي الرسائل
+                </div>
+                <div class="col-md-4">
+                    <strong id="filteredCount">5</strong> رسائل معروضة
+                </div>
+                <div class="col-md-4">
+                    <strong id="activeFiltersCount">0</strong> فلاتر نشطة
+                </div>
+            </div>
+        </div>
+
+        <!-- منطقة عرض الرسائل -->
+        <div id="messagesContainer">
+            <!-- سيتم ملؤها بالبيانات -->
+        </div>
+    </div>
+
+    <script>
+        // بيانات تجريبية تحاكي البيانات من الباك اند
+        const allMessages = [
+            {
+                id: 1,
+                type: 'behavioral',
+                status: 'answered',
+                user: { name: 'أحمد محمد', phone: '0501234567' },
+                tree_name: 'شجرة آل أحمد',
+                content: 'شكوى سلوكية',
+                created_at: '2024-01-15'
+            },
+            {
+                id: 2,
+                type: 'technical',
+                status: 'under_review',
+                user: { name: 'فاطمة علي', phone: '0507654321' },
+                tree_name: 'شجرة آل علي',
+                content: 'مشكلة فنية في النظام',
+                created_at: '2024-01-14'
+            },
+            {
+                id: 3,
+                type: 'inquiry',
+                status: 'unanswered',
+                user: { name: 'محمد سالم', phone: '0509876543' },
+                tree_name: 'شجرة آل سالم',
+                content: 'استفسار حول الخدمة',
+                created_at: '2024-01-13'
+            },
+            {
+                id: 4,
+                type: 'financial',
+                status: 'answered',
+                user: { name: 'نور الهدى', phone: '0502468135' },
+                tree_name: 'شجرة آل الهدى',
+                content: 'مشكلة في الدفع',
+                created_at: '2024-01-12'
+            },
+            {
+                id: 5,
+                type: 'other',
+                status: 'under_review',
+                user: { name: 'خالد أحمد', phone: '0503691472' },
+                tree_name: 'شجرة آل أحمد',
+                content: 'طلب آخر',
+                created_at: '2024-01-11'
+            }
+        ];
+
+        let currentFilters = {
+            messageType: "",
+            status: "",
+            treeName: "",
+            userName: ""
+        };
+        let isFilterActive = false;
+
+        // ترجمة الأنواع والحالات
+        const typeLabels = {
+            behavioral: 'سلوكية',
+            technical: 'فنية',
+            financial: 'مالية',
+            inquiry: 'استفسار',
+            other: 'أخرى'
+        };
+
+        const statusLabels = {
+            answered: 'تم الرد',
+            under_review: 'تحت المراجعة',
+            unanswered: 'لم يتم الرد'
+        };
+
+        const statusColors = {
+            answered: 'success',
+            under_review: 'warning',
+            unanswered: 'danger'
+        };
+
+        // تطبيق الفلاتر
+        function applyLocalFilters(messages) {
+            return messages.filter(message => {
+                if (currentFilters.messageType && message.type !== currentFilters.messageType) {
+                    return false;
+                }
+                if (currentFilters.status && message.status !== currentFilters.status) {
+                    return false;
+                }
+                if (currentFilters.treeName) {
+                    const treeName = message.tree_name || '';
+                    if (!treeName.toLowerCase().includes(currentFilters.treeName.toLowerCase())) {
+                        return false;
+                    }
+                }
+                if (currentFilters.userName) {
+                    const userName = message.user?.name || '';
+                    if (!userName.toLowerCase().includes(currentFilters.userName.toLowerCase())) {
+                        return false;
+                    }
+                }
+                return true;
+            });
+        }
+
+        // عرض الرسائل
+        function renderMessages(messages) {
+            const container = document.getElementById('messagesContainer');
+            
+            if (messages.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="bi bi-search fs-1 text-muted"></i>
+                        <h5 class="mt-3">لا توجد رسائل مطابقة للفلاتر</h5>
+                        <button class="btn btn-outline-primary mt-2" onclick="clearFilters()">مسح الفلاتر</button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = messages.map(message => `
+                <div class="message-item">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h6 class="mb-1">${message.user.name}</h6>
+                            <small class="text-muted">${message.user.phone}</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-primary">${typeLabels[message.type]}</span>
+                            <div class="mt-1">
+                                <span class="badge bg-${statusColors[message.status]} badge-status">${statusLabels[message.status]}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <strong>الشجرة:</strong> ${message.tree_name}
+                    </div>
+                    <div class="mb-2">
+                        <strong>المحتوى:</strong> ${message.content}
+                    </div>
+                    <div class="text-muted">
+                        <small><i class="bi bi-calendar"></i> ${message.created_at}</small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // تحديث الإحصائيات
+        function updateStats(total, filtered) {
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('filteredCount').textContent = filtered;
+            
+            const activeCount = Object.values(currentFilters).filter(v => v !== "").length;
+            document.getElementById('activeFiltersCount').textContent = activeCount;
+        }
+
+        // تبديل لوحة الفلاتر
+        function toggleFilterPanel() {
+            const filterPanel = document.getElementById('filterPanel');
+            const filterToggle = document.getElementById('filterToggle');
+            
+            if (filterPanel.style.display === 'none' || filterPanel.style.display === '') {
+                filterPanel.style.display = 'block';
+                filterToggle.classList.add('active');
+            } else {
+                filterPanel.style.display = 'none';
+                filterToggle.classList.remove('active');
+            }
+        }
+
+        // تطبيق الفلاتر
+        function applyFilters() {
+            currentFilters.messageType = document.getElementById('messageTypeFilter').value;
+            currentFilters.status = document.getElementById('statusFilter').value;
+            currentFilters.treeName = document.getElementById('treeNameFilter').value.trim();
+            currentFilters.userName = document.getElementById('userNameFilter').value.trim();
+            
+            isFilterActive = Object.values(currentFilters).some(value => value !== "");
+            
+            const filteredMessages = applyLocalFilters(allMessages);
+            renderMessages(filteredMessages);
+            updateStats(allMessages.length, filteredMessages.length);
+            updateFilterCount();
+            updateFilterButtonState();
+            
+            // إخفاء لوحة الفلاتر
+            document.getElementById('filterPanel').style.display = 'none';
+            document.getElementById('filterToggle').classList.remove('active');
+        }
+
+        // مسح الفلاتر
+        function clearFilters() {
+            document.getElementById('messageTypeFilter').value = '';
+            document.getElementById('statusFilter').value = '';
+            document.getElementById('treeNameFilter').value = '';
+            document.getElementById('userNameFilter').value = '';
+            
+            currentFilters = {
+                messageType: "",
+                status: "",
+                treeName: "",
+                userName: ""
+            };
+            isFilterActive = false;
+            
+            renderMessages(allMessages);
+            updateStats(allMessages.length, allMessages.length);
+            updateFilterCount();
+            updateFilterButtonState();
+        }
+
+        // إخفاء الفلاتر
+        function hideFilters() {
+            document.getElementById('filterPanel').style.display = 'none';
+            document.getElementById('filterToggle').classList.remove('active');
+        }
+
+        // تحديث عداد الفلاتر
+        function updateFilterCount() {
+            const filterCount = document.getElementById('filterCount');
+            const activeFiltersCount = Object.values(currentFilters).filter(value => value !== "").length;
+            
+            if (activeFiltersCount > 0) {
+                filterCount.textContent = activeFiltersCount;
+                filterCount.style.display = 'flex';
+            } else {
+                filterCount.style.display = 'none';
+            }
+        }
+
+        // تحديث حالة زر الفلتر
+        function updateFilterButtonState() {
+            const filterToggle = document.getElementById('filterToggle');
+            const mobileFilterToggle = document.getElementById('mobileFilterToggle');
+            
+            if (isFilterActive) {
+                filterToggle.classList.add('active');
+                mobileFilterToggle.classList.remove('btn-outline-primary');
+                mobileFilterToggle.classList.add('btn-success');
+            } else {
+                filterToggle.classList.remove('active');
+                mobileFilterToggle.classList.remove('btn-success');
+                mobileFilterToggle.classList.add('btn-outline-primary');
+            }
+        }
+
+        // إعداد الأحداث
+        document.addEventListener('DOMContentLoaded', function() {
+            // عرض البيانات الأولية
+            renderMessages(allMessages);
+            updateStats(allMessages.length, allMessages.length);
+            
+            // ربط الأحداث
+            document.getElementById('filterToggle').addEventListener('click', toggleFilterPanel);
+            document.getElementById('mobileFilterToggle').addEventListener('click', toggleFilterPanel);
+            document.getElementById('applyFilters').addEventListener('click', applyFilters);
+            document.getElementById('clearFilters').addEventListener('click', clearFilters);
+            document.getElementById('hideFilters').addEventListener('click', hideFilters);
+            
+            // Enter في حقول النص
+            document.getElementById('treeNameFilter').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') applyFilters();
+            });
+            document.getElementById('userNameFilter').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') applyFilters();
+            });
+        });
+    </script>
+</body>
+</html>

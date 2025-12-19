@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> البداية </title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/start.css">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- tossify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        
+        <ul class="nav flex-column px-3">
+            <li class=" nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="usermessages.html" class="nav-link">الرسائل</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+              <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="usersubscriptions.html" class="nav-link">الإشتراكات</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="#" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold"> البداية</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <header>
+                <div class="container">
+                    <div class="tree-title">اختر قالب شجرتك</div>
+                    <div class="fw-bold my-4" style="font-size: 20px; color: rgba(39, 58, 65, 1);">قوالب مجانية</div>
+                    <div class="row g-4">
+
+
+                        <!-- قالب 1-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 1.png" class="card-img-top" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <p class="mb-2">قالب 1</p>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="1">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 1.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 2 -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 2.png" class="card-img-top" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <p class="mb-2">قالب 2</p>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 2 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="2">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageView2">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageView2" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 2.png" class="img-fluid" alt="شجرة كاملة">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 3-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 3.png" class="card-img-top bg-white" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 3</p>
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="3">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal3">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal3" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 3.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 4-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 4.png" class="card-img-top bg-white" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 4</p>
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="4">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal4">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal4" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 4.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- قالب 5-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 5.png" class="card-img-top bg-white" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 5</p>
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="5">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal5">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal5" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 5.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- قالب 6-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 6.png" class="card-img-top bg-white" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 6</p>
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="6">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal6">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal6" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 6.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 7-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 7.png" class="card-img-top bg-white" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 7</p>
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="7">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal7">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal7" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 7.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 8-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 8.png" class="card-img-top bg-white" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 8</p>
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="8">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal8">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal8" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 8.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 9-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 9.png" class="card-img-top bg-white" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 9</p>
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="9">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal9">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal9" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 9.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 10-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template 10.png" class="card-img-top bg-white" alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 10</p>
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="10">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal10">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal10" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template 10.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="fw-bold my-4" style="font-size: 20px; color: rgba(39, 58, 65, 1);">قوالب مدفوعة</div>
+                    <div class="row g-4">
+                        <!-- قالب 1-->
+                        <!--<div class="col-12 col-sm-6 col-md-4 col-lg-4">-->
+                        <!--    <div class="card tree-card h-100">-->
+                        <!--        <img src="images/Template 11 (1).jpeg" class="card-img-top bg-white"-->
+                        <!--            alt="شجرة العائلة" />-->
+
+                        <!--        <div class="card-footer">-->
+                        <!--            <div class="d-flex justify-content-between align-items-center">-->
+                        <!--                <p class="mb-2">قالب 9</p>-->
+                        <!--                <i class="fa-solid fa-crown"-->
+                        <!--                    style="color: rgba(210, 174, 73, 1); width: 20px; height: 18px;"></i>-->
+                        <!--            </div>-->
+                        <!--            <div class="d-flex justify-content-around">-->
+                                        <!-- قالب 1 -->
+                        <!--                <button class="btn text-muted choose-template"-->
+                        <!--                    data-template-id="11">اختر</button>-->
+                        <!--                <button class="btn text-muted" data-bs-toggle="modal"-->
+                        <!--                    data-bs-target="#imageModal11">-->
+                        <!--                    <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>-->
+                        <!--                    معاينة-->
+                        <!--                </button>-->
+                        <!--            </div>-->
+                        <!--        </div>-->
+                        <!--    </div>-->
+                        <!--</div>-->
+
+                        <!-- Modal with close button -->
+                        <!--<div class="modal fade" id="imageModal11" tabindex="-1" aria-labelledby="imageModalLabel"-->
+                        <!--    aria-hidden="true">-->
+                        <!--    <div class="modal-dialog modal-dialog-centered modal-md">-->
+                        <!--        <div class="modal-content">-->
+
+                                    <!-- زر إغلاق في الأعلى -->
+                        <!--            <div class="modal-header" style="border: none;">-->
+                        <!--                <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"-->
+                        <!--                    aria-label="إغلاق"></button>-->
+                        <!--            </div>-->
+
+                                    <!-- صورة داخل المودال -->
+                        <!--            <div class="modal-body text-center">-->
+                        <!--                <img src="images/Template 11 (1).jpeg" class="img-fluid" alt="شجرة العائلة" />-->
+                        <!--            </div>-->
+                        <!--        </div>-->
+                        <!--    </div>-->
+                        <!--</div>-->
+
+                        <!-- قالب 11-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template11.png" class="card-img-top bg-white"
+                                    alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 1</p>
+                                        <i class="fa-solid fa-crown"
+                                            style="color: rgba(210, 174, 73, 1); width: 20px; height: 18px;"></i>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="11">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal11">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal11" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template11.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 12-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template12.png" class="card-img-top bg-white"
+                                    alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 2</p>
+                                        <i class="fa-solid fa-crown"
+                                            style="color: rgba(210, 174, 73, 1); width: 20px; height: 18px;"></i>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="12">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal12">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal12" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template12.png class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- قالب 13-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template13.png" class="card-img-top bg-white"
+                                    alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 3</p>
+                                        <i class="fa-solid fa-crown"
+                                            style="color: rgba(210, 174, 73, 1); width: 20px; height: 18px;"></i>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="13">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal13">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal13" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template13.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- قالب 14-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template14.png" class="card-img-top bg-white"
+                                    alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 4</p>
+                                        <i class="fa-solid fa-crown"
+                                            style="color: rgba(210, 174, 73, 1); width: 20px; height: 18px;"></i>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="14">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal12">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal14" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template14.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- قالب 15-->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="card tree-card h-100">
+                                <img src="images/Template15.png" class="card-img-top bg-white"
+                                    alt="شجرة العائلة" />
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2">قالب 5</p>
+                                        <i class="fa-solid fa-crown"
+                                            style="color: rgba(210, 174, 73, 1); width: 20px; height: 18px;"></i>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <!-- قالب 1 -->
+                                        <button class="btn text-muted choose-template"
+                                            data-template-id="15">اختر</button>
+                                        <button class="btn text-muted" data-bs-toggle="modal"
+                                            data-bs-target="#imageModal15">
+                                            <i class="fa-solid fa-eye mx-2" style="color: rgba(123, 123, 123, 1);"></i>
+                                            معاينة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal with close button -->
+                        <div class="modal fade" id="imageModal15" tabindex="-1" aria-labelledby="imageModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+
+                                    <!-- زر إغلاق في الأعلى -->
+                                    <div class="modal-header" style="border: none;">
+                                        <button type="button" class="btn-close my-3 mx-3" data-bs-dismiss="modal"
+                                            aria-label="إغلاق"></button>
+                                    </div>
+
+                                    <!-- صورة داخل المودال -->
+                                    <div class="modal-body text-center">
+                                        <img src="images/Template15.png" class="img-fluid" alt="شجرة العائلة" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+            <div class="container my-5">
+                <div class="tree-section">
+
+                    <h5 class="mb-4 text-end bg-light py-4 px-4" style="font-size: 32px;">بيانات الشجرة</h5>
+
+
+                    <div class="row g-4 align-items-center">
+                        <!-- صورة الغلاف -->
+                        <div class="col-md-8">
+                            <div class="preview-box">
+                                <img id="coverPreview" src="images/de6269f8495c9e1e3c9d10d517503b73266b35db.jpg"
+                                    class="preview-img" alt="صورة الغلاف">
+                                <input type="file" id="coverInput" class="form-control" accept="image/*" hidden>
+                                <br>
+                                <div class="btn btn-outline-secondary rounded-pill my-2" id="coverBtn">
+                                    تعديل صورة الغلاف
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- شعار الشجرة -->
+                        <div class="col-md-4">
+                            <div class="preview-box">
+                                <img id="logoPreview" src="images/7822ab7df8351c37786b879ef7fbb08936cb7cef (1).png"
+                                    class="logo-img rounded-pill" alt="شعار الشجرة">
+                                <input type="file" id="logoInput" class="form-control" accept="image/*" hidden>
+                                <br>
+                                <div class="btn btn-outline-secondary rounded-pill my-2" id="logoBtn">
+                                    تعديل صورة الشعار
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- إدخال اسم الشجرة -->
+                    <div class="mt-4">
+                        <label class="form-label fw-bold mb-3">اسم شجرتك</label>
+                        <input type="text" id="treeName" class="form-control py-3" placeholder="عائلة السعادة" />
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between mt-4">
+                        <!-- زر البدء -->
+                        <!-- <div class="mt-4 text-end">
+                            <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#addUserModal">ابدأ
+                                الآن</button>
+                        </div> -->
+
+                        <!-- زر الحفظ -->
+                        <div class="mt-4 text-end">
+                            <button class="btn-outline-custom" id="saveTreeBtn">ابدأ الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Modal لإضافة بياناتك -->
+                    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-md">
+                            <div class="modal-content rounded-4 p-4" style="border-radius: 32px;">
+
+                                <!-- رأس المودال -->
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title text-end" id="addUserModalLabel" style="font-size: 32px;">أضف
+                                        بياناتك</h5>
+                                    <button type="button" class="btn-close position-absolute start-0 mx-4"
+                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <!-- جسم المودال -->
+                                <div class="modal-body">
+                                    <form id="userForm">
+                                        <!-- صورة الملف الشخصي -->
+                                        <div class="text-center mb-4">
+                                            <div class="position-relative d-inline-block">
+                                                <img id="previewImage" src="images/image (25).png" width="100"
+                                                    height="100" style="border-radius: 50%; object-fit: cover;">
+                                                <label for="profile_image"
+                                                    class="position-absolute bottom-0 end-0 bg-light border rounded-circle p-1"
+                                                    style="cursor: pointer;">
+                                                    <i class="fa fa-camera text-muted"></i>
+                                                </label>
+                                                <input type="file" name="profile_image" id="profile_image"
+                                                    class="form-control d-none">
+                                            </div>
+                                        </div>
+
+
+                                        <!-- الاسم الأول والأخير -->
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="form-label">الاسم الأول</label>
+                                                <input type="text" class="form-control" placeholder="ادخل الاسم الأول"
+                                                    name="first_name" required>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label">الاسم الأخير</label>
+                                                <input type="text" class="form-control" placeholder="ادخل الاسم الأخير"
+                                                    name="last_name" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- الوظيفة -->
+                                        <div class="mb-3">
+                                            <label class="form-label">الوظيفة</label>
+                                            <input type="text" class="form-control" placeholder="ادخل الوظيفة"
+                                                name="job">
+                                        </div>
+
+                                        <!-- الحالة -->
+                                        <div class="mb-3">
+                                            <label class="form-label">الحالة</label>
+                                            <select class="form-select" name="life_status" required>
+                                                <option selected>اختر الحالة</option>
+                                                <option value="alive">على قيد الحياة</option>
+                                                <option value="deceased">متوفي/ة</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- تاريخ الميلاد -->
+                                        <div class="mb-3">
+                                            <label class="form-label">تاريخ الميلاد</label>
+                                            <input type="date" class="form-control" name="birth_date">
+                                        </div>
+
+                                        <!-- الحالة الاجتماعية -->
+                                        <div class="mb-3">
+                                            <label class="form-label d-block">الحالة الاجتماعية</label>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="single" id="single"
+                                                    value="single" checked>
+                                                <label class="form-check-label" for="single">أعزب / عزباء</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="married" id="married"
+                                                    value="married">
+                                                <label class="form-check-label" for="married">متزوج / متزوجة</label>
+                                            </div>
+                                        </div>
+
+                                        <!-- رقم الجوال -->
+                                        <div class="mb-4">
+                                            <label class="form-label">رقم الجوال</label>
+                                            <input type="text" class="form-control" placeholder="ادخل رقم الجوال"
+                                                name="phone">
+                                        </div>
+
+                                        <!-- أزرار الإجراءات -->
+                                        <div class="d-flex justify-content-between">
+                                            <button type="button"
+                                                class="btn btn-outline-dark rounded-pill w-50 py-3 px-3"
+                                                data-bs-dismiss="modal">لاحقًا</button>
+                                            <button type="button" class="btn btn-custom w-50"
+                                                onclick="goToFatherModal()">استمرار</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal بيانات الأب -->
+                    <div class="modal fade" id="fatherModal" tabindex="-1" aria-labelledby="fatherModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-md">
+                            <div class="modal-content rounded-4 p-4" style="border-radius: 32px;">
+
+                                <!-- رأس المودال -->
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title text-end" id="fatherModalLabel" style="font-size: 32px;">
+                                        أضف
+                                        بيانات الاب</h5>
+                                    <button type="button" class="btn-close position-absolute start-0 mx-4"
+                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form id="fatherForm">
+                                        <!-- صورة الملف الشخصي -->
+                                        <div class="text-center mb-4">
+                                            <div class="position-relative d-inline-block">
+                                                <img id="previewImage" src="images/image (25).png" width="100"
+                                                    height="100" style="border-radius: 50%; object-fit: cover;">
+                                                <label for="profile_image"
+                                                    class="position-absolute bottom-0 end-0 bg-light border rounded-circle p-1"
+                                                    style="cursor: pointer;">
+                                                    <i class="fa fa-camera text-muted"></i>
+                                                </label>
+                                                <input type="file" name="profile_image" id="profile_image"
+                                                    class="form-control d-none">
+                                            </div>
+                                        </div>
+
+                                        <!-- الاسم الأول والأخير -->
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="form-label">الاسم الأول</label>
+                                                <input type="text" class="form-control" placeholder="ادخل الاسم الأول"
+                                                    name="first_name" required>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label">الاسم الأخير</label>
+                                                <input type="text" class="form-control" placeholder="ادخل الاسم الأخير"
+                                                    name="last_name" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- الوظيفة -->
+                                        <div class="mb-3">
+                                            <label class="form-label">الوظيفة</label>
+                                            <input type="text" class="form-control" placeholder="ادخل الوظيفة"
+                                                name="job">
+                                        </div>
+
+                                        <!-- الحالة -->
+                                        <div class="mb-3">
+                                            <label class="form-label">الحالة</label>
+                                            <select class="form-select" name="life_status" required>
+                                                <option selected>اختر الحالة</option>
+                                                <option value="alive">على قيد الحياة</option>
+                                                <option value="deceased">متوفي</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- تاريخ الميلاد -->
+                                        <div class="mb-3">
+                                            <label class="form-label">تاريخ الميلاد</label>
+                                            <input type="date" class="form-control" name="birth_date">
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <button type="button"
+                                                class="btn btn-outline-dark rounded-pill w-50 py-3 px-3"
+                                                data-bs-dismiss="modal">لاحقًا</button>
+                                            <button type="button" class="btn btn-custom w-50"
+                                                onclick="goToMotherModal()">استمرار</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- مودال الأم -->
+                    <div class="modal fade" id="motherModal" tabindex="-1" aria-labelledby="motherModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content rounded-4 p-4" style="border-radius: 32px;">
+
+                                <div class="modal-header" style="border: none;">
+                                    <h5 class="modal-title" id="motherModalLabel" style="font-size: 32px;">بيانات
+                                        الأم
+                                    </h5>
+                                    <button type="button" class="btn-close position-absolute start-0 mx-4"
+                                        aria-label="إغلاق"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form id="motherForm">
+                                        <!-- صورة الملف الشخصي -->
+                                        <div class="text-center mb-4">
+                                            <div class="position-relative d-inline-block">
+                                                <img id="previewImage" src="images/image (25).png" width="100"
+                                                    height="100" style="border-radius: 50%; object-fit: cover;">
+                                                <label for="profile_image"
+                                                    class="position-absolute bottom-0 end-0 bg-light border rounded-circle p-1"
+                                                    style="cursor: pointer;">
+                                                    <i class="fa fa-camera text-muted"></i>
+                                                </label>
+                                                <input type="file" name="profile_image" id="profile_image"
+                                                    class="form-control d-none">
+                                            </div>
+                                        </div>
+
+                                        <!-- الاسم الأول والأخير -->
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="form-label">الاسم الأول</label>
+                                                <input type="text" class="form-control" placeholder="ادخل الاسم الأول"
+                                                    name="first_name" required>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label">الاسم الأخير</label>
+                                                <input type="text" class="form-control" placeholder="ادخل الاسم الأخير"
+                                                    name="last_name" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- الوظيفة -->
+                                        <div class="mb-3">
+                                            <label class="form-label">الوظيفة</label>
+                                            <input type="text" class="form-control" placeholder="ادخل الوظيفة"
+                                                name="job">
+                                        </div>
+
+                                        <!-- الحالة -->
+                                        <div class="mb-3">
+                                            <label class="form-label">الحالة</label>
+                                            <select class="form-select" name="life_status" required>
+                                                <option selected>اختر الحالة</option>
+                                                <option value="alive">على قيد الحياة</option>
+                                                <option value="deceased">متوفية</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- تاريخ الميلاد -->
+                                        <div class="mb-3">
+                                            <label class="form-label">تاريخ الميلاد</label>
+                                            <input type="date" class="form-control" name="birth_date">
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <button type="button"
+                                                class="btn btn-outline-dark rounded-pill w-50 py-3 px-3"
+                                                data-bs-dismiss="modal">لاحقًا</button>
+                                            <button type="button" class="btn btn-custom w-50"
+                                                onclick="submitMotherData()">استمرار</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">جاري التحميل...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/start.js"></script>
+    
+    <!-- Additional Dynamic Scripts -->
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to background (subtle)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('body::before');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Add typing effect to title (optional)
+        const treeTitle = document.querySelector('.tree-title');
+        if (treeTitle) {
+            const text = treeTitle.textContent;
+            treeTitle.textContent = '';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    treeTitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            // Uncomment to enable typing effect
+            // setTimeout(typeWriter, 500);
+        }
+
+        // Add confetti effect on success (optional - requires confetti library)
+        function createConfetti() {
+            // Simple confetti effect using CSS
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = ['#D3AB55', '#F4C430', '#FFD700', '#FFA500'][Math.floor(Math.random() * 4)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.borderRadius = '50%';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '9999';
+                confetti.style.animation = `confettiFall ${2 + Math.random() * 2}s linear forwards`;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 4000);
+            }
+        }
+
+        // Listen for success messages to trigger confetti
+        const originalShowSuccess = window.showSuccessMessage;
+        if (originalShowSuccess) {
+            window.showSuccessMessage = function(...args) {
+                createConfetti();
+                return originalShowSuccess.apply(this, args);
+            };
+        }
+    </script>
+    
+    <style>
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+
+</html>

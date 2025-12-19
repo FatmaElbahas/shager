@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار إرسال الرد</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h2>🧪 اختبار إرسال الرد على الرسائل</h2>
+        <p>هذه الأداة لاختبار API إرسال الردود والتأكد من عمله بشكل صحيح</p>
+        
+        <form id="testForm">
+            <div class="form-group">
+                <label for="messageId">معرف الرسالة (Message ID):</label>
+                <input type="text" id="messageId" placeholder="أدخل معرف الرسالة" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="replyText">نص الرد:</label>
+                <textarea id="replyText" placeholder="اكتب رد الإدارة هنا..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="authToken">رمز التوثيق (Auth Token):</label>
+                <input type="text" id="authToken" placeholder="أدخل رمز التوثيق أو اتركه فارغاً لاستخدام المحفوظ">
+            </div>
+            
+            <button type="submit" class="btn" id="submitBtn">
+                📤 إرسال الرد
+            </button>
+        </form>
+        
+        <div id="result" class="result"></div>
+        
+        <hr style="margin: 30px 0;">
+        
+        <h3>📋 معلومات مفيدة:</h3>
+        <div class="info result" style="display: block;">
+            <strong>الرابط المستخدم:</strong> <code>/api/admin/messages/{messageId}/reply</code><br>
+            <strong>الطريقة:</strong> POST<br>
+            <strong>Headers:</strong> Authorization, Content-Type, Accept<br>
+            <strong>Body:</strong> {"admin_reply": "نص الرد"}
+        </div>
+        
+        <button onclick="fillTestData()" class="btn" style="background: #28a745; margin-top: 10px;">
+            🔧 ملء بيانات تجريبية
+        </button>
+        
+        <button onclick="checkStoredToken()" class="btn" style="background: #ffc107; color: #000; margin-top: 10px;">
+            🔍 فحص التوكن المحفوظ
+        </button>
+    </div>
+
+    <script>
+        // ملء بيانات تجريبية
+        function fillTestData() {
+            document.getElementById('messageId').value = '1';
+            document.getElementById('replyText').value = 'شكراً لتواصلك معنا. تم استلام رسالتك وسيتم الرد عليك قريباً.';
+            showResult('تم ملء البيانات التجريبية', 'info');
+        }
+        
+        // فحص التوكن المحفوظ
+        function checkStoredToken() {
+            const token = localStorage.getItem('authToken');
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            if (token) {
+                document.getElementById('authToken').value = token;
+                showResult(`تم العثور على التوكن المحفوظ للمستخدم: ${user.name || 'غير محدد'}`, 'success');
+            } else {
+                showResult('لم يتم العثور على توكن محفوظ. يرجى تسجيل الدخول أولاً.', 'error');
+            }
+        }
+        
+        // عرض النتيجة
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = `result ${type}`;
+            resultDiv.innerHTML = message;
+            resultDiv.style.display = 'block';
+        }
+        
+        // معالجة إرسال النموذج
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const messageId = document.getElementById('messageId').value.trim();
+            const replyText = document.getElementById('replyText').value.trim();
+            let authToken = document.getElementById('authToken').value.trim();
+            
+            // استخدام التوكن المحفوظ إذا لم يتم إدخال واحد
+            if (!authToken) {
+                authToken = localStorage.getItem('authToken');
+            }
+            
+            if (!messageId || !replyText || !authToken) {
+                showResult('يرجى ملء جميع الحقول المطلوبة', 'error');
+                return;
+            }
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '⏳ جاري الإرسال...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch(`/api/admin/messages/${messageId}/reply`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({
+                        admin_reply: replyText
+                    })
+                });
+                
+                const responseText = await response.text();
+                let data;
+                
+                try {
+                    data = JSON.parse(responseText);
+                } catch {
+                    data = { message: responseText };
+                }
+                
+                if (response.ok) {
+                    showResult(`✅ تم إرسال الرد بنجاح!<br><strong>الاستجابة:</strong> ${JSON.stringify(data, null, 2)}`, 'success');
+                } else {
+                    showResult(`❌ فشل في إرسال الرد<br><strong>كود الخطأ:</strong> ${response.status}<br><strong>الرسالة:</strong> ${responseText}`, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                let errorMessage = `❌ خطأ في الاتصال: ${error.message}`;
+                
+                if (error.message.includes('CORS')) {
+                    errorMessage += '<br><strong>نصيحة:</strong> تأكد من أن الخادم يدعم CORS أو استخدم نفس النطاق';
+                } else if (error.message.includes('Failed to fetch')) {
+                    errorMessage += '<br><strong>نصيحة:</strong> تأكد من أن الخادم يعمل على http://127.0.0.1:8000';
+                }
+                
+                showResult(errorMessage, 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // فحص التوكن عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                document.getElementById('authToken').value = token;
+            }
+        });
+    </script>
+</body>
+</html>

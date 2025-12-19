@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظرة عامة</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admindash.css">
+
+    <style>
+        /* Page baseline to match the dashboard feel */
+        html,
+        body {
+            direction: rtl;
+            font-family: "Tajawal", "Cairo", Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        /* Namespaced modal to avoid Bootstrap conflicts */
+        .shaj-modal {
+            position: fixed;
+            inset: 0;
+            /* top:0; right:0; bottom:0; left:0 */
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1055;
+            /* above typical headers; near Bootstrap modal */
+        }
+
+        .shaj-modal-content {
+            background: #fff;
+            width: 450px;
+            max-width: calc(100% - 40px);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .shaj-close {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            /* RTL: close on the visual top-left if desired */
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .shaj-close:hover {
+            color: #000;
+        }
+
+        /* Typography */
+        .shaj-modal-content h2 {
+            margin: 0 0 16px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* Form layout */
+        #notificationForm {
+            display: grid;
+            gap: 12px;
+        }
+
+        #notificationForm label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
+
+        #notificationForm input,
+        #notificationForm textarea,
+        #notificationForm select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            background: #fff;
+        }
+
+        #notificationForm input:focus,
+        #notificationForm textarea:focus,
+        #notificationForm select:focus {
+            border-color: #3b82f6;
+            /* matches primary blue */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Buttons: relies on Bootstrap btn classes, but spacing here */
+        #notificationForm .btn-primary {
+            width: 100%;
+            font-weight: 700;
+        }
+
+        /* Optional: match dashboard card feel */
+        #users {
+            min-height: 44px;
+        }
+
+        /* If Bootstrap is present, ensure our modal beats it */
+        /* Stronger specificity guard */
+        #notificationModal.shaj-modal {
+            display: none;
+        }
+
+        /* default hidden */
+        /* To test style without JS: set display:flex here temporarily */
+        /* #notificationModal.shaj-modal { display: flex; } */
+    </style>
+
+
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset%20141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossaloorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <script src="js/chart.min.js"></script>
+
+
+</head>
+
+<body style="height: 100vh;">
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="active nav-item mt-3">
+                <a href="AdminDashboard.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Dashboard.png" alt="" class="icon">
+                    <span>لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="messages.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/stash_inbox%20(1).png" alt="" class="icon">
+                    <span>الرسائل</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="content.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                    <span>إدارة الاشجار</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="users.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Users%20Icon.png" alt="" class="icon">
+                    <span>المستخدمين</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="invitations.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/tabler_link-plus.png" alt="" class="icon">
+                    <span>الدعوات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reports.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Sales%20Icon.png" alt="" class="icon">
+                    <span>التقارير</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="subscriptions.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                    <span>الإشتراكات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="payments.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/190%20(1).png" alt="" class="icon">
+                    <span>المدفوعات والعروض </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/icon-wrapper%20(1).png" alt="" class="icon">
+                    <span>الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item my-3">
+                <a href="" class="nav-link text-danger d-flex align-items-center gap-2">
+                    <img src="images/Frame%20(3).png" alt="" class="icon">
+                    <span>تسجيل الخروج</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">لوحة التحكم</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+
+
+
+        </nav>
+
+
+        <div class="d-flex flex-row justify-between align-items-center justify-content-between">
+            <h1 class="my-4" style="color: rgba(39, 58, 65, 1); font-size: 30px; font-weight: 700;">
+                لوحة التحكم
+            </h1>
+        </div>
+
+
+
+        <div class="stats-container my-4">
+            <div class="row g-3">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="stat-card d-flex align-items-center gap-3 bg-white py-4 px-3 shadow-sm ">
+                        <span>
+                            <img src="images/Icon%20(8).png" alt="">
+                        </span>
+                        <div>
+                            <p class="text-muted mb-1">عدد المشتركين</p>
+                            <h4 class="mb-0" id="subscriber-count">غير معرف</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="stat-card d-flex align-items-center gap-3 bg-white py-4 px-1 shadow-sm ">
+                        <span>
+                            <img src="images/Icon%20(9).png" alt="">
+                        </span>
+                        <div>
+                            <p class="text-muted mb-1">خطط الاشتراك الحالية</p>
+                            <h4 class="mb-0" id="plans-count">غير معرف</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="stat-card d-flex align-items-center gap-3 bg-white py-4 px-3 shadow-sm ">
+                        <span>
+                            <img src="images/Icon.svg" alt="">
+                        </span>
+                        <div>
+                            <p class="text-muted mb-1">إجمالي الربح</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0" id="revenue-count">غير معرف</h4>
+                                <p id="revenue-change" class="mb-0 fw-bold" style="font-size: 15px;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="stat-card d-flex align-items-center gap-3 bg-white py-4 px-3 shadow-sm ">
+                        <span>
+                            <img src="images/Icon%20(11).png" alt="">
+                        </span>
+                        <div>
+                            <p class="text-muted mb-1">مستخدم جديد</p>
+                            <h4 class="mb-0" id="new-users-count">غير معرف</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <h5>الإيرادات الشهرية</h5>
+                    <p class="total">غير معرف</p>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <div class="card" style="border: none;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">الأعضاء الجدد المشتركين</h5>
+
+                                <select id="filterType" class="form-select mb-3 btn btn-outline-success"
+                                    onchange="fetchEnrollmentData()" style="width: 35%;">
+                                    <option value="7days">آخر 7 أيام</option>
+                                    <option value="1month">آخر شهر</option>
+                                    <option value="6months">آخر 6 أشهر</option>
+                                    <option value="1year">آخر سنة</option>
+                                </select>
+                            </div>
+
+                            <canvas id="enrollmentsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="programmes-table table-responsive">
+            <h1 class="my-4" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                سجل المعاملات
+            </h1>
+            <table class="table table-responsive table-borderless bg-white shadow-sm">
+                <thead class="text-center">
+                    <tr>
+                        <th>رقم العملية </th>
+                        <th>اسم المستخدم </th>
+                        <th>التاريخ</th>
+                        <th>الخطة الحالية </th>
+                        <th>المبلغ </th>
+                        <th>الحالة</th>
+                        <th>طريقة الدفع</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionsTableBody">
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Pagination -->
+        <div class="pagination-controls d-flex justify-content-between align-items-center flex-wrap mt-3">
+            <div class="d-flex align-items-center gap-2">
+                <span id="items-info">عرض 0-0 من 0 معامله</span>
+            </div>
+            <div class="d-flex justify-content-center align-items-center gap-2">
+                <button id="prev-page" class="btn btn-link p-0">
+                    <i class="bi bi-chevron-right" style="color: gold;"></i>
+                </button>
+                <span class="fw-bold" id="current-page">1</span>
+                <span class="text-muted">من <span id="total-pages">1</span> صفحات</span>
+                <button id="next-page" class="btn btn-link p-0">
+                    <i class="bi bi-chevron-left text-muted"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/admindash.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+
+</html>

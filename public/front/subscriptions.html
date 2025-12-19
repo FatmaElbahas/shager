@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> الاشتراكات</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/subscriptions.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body style="height: 100vh;">
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item mt-3">
+                <a href="AdminDashboard.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Dashboard.png" alt="" class="icon">
+                    <span>لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="messages.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/stash_inbox (1).png" alt="" class="icon">
+                    <span>الرسائل</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="content.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                    <span>إدارة الاشجار</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="users.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Users Icon.png" alt="" class="icon">
+                    <span>المستخدمين</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="invitations.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/tabler_link-plus.png" alt="" class="icon">
+                    <span>الدعوات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reports.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/Sales Icon.png" alt="" class="icon">
+                    <span>التقارير</span>
+                </a>
+            </li>
+            <li class="active nav-item">
+                <a href="subscriptions.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                    <span>الإشتراكات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="payments.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/190 (1).png" alt="" class="icon">
+                    <span>المدفوعات والعروض </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link d-flex align-items-center gap-2">
+                    <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                    <span>الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item my-3">
+                <a href="#" class="nav-link text-danger d-flex align-items-center gap-2">
+                    <img src="images/Frame (3).png" alt="" class="icon">
+                    <span>تسجيل الخروج</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold"> الإشتراكات</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+
+            <div class="my-4">
+                <h4 style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                    الإشتراكات
+                </h4>
+            </div>
+            <!-- Subscription Table (Dynamic) -->
+            <div class="programmes-table table-responsive">
+                <table class="table table-responsive table-borderless bg-white shadow-sm">
+                    <thead class="text-center">
+                        <tr>
+                            <th>اسم المستخدم</th>
+                            <th>اسم الشجرة</th>
+                            <th>تاريخ بدء الاشتراك</th>
+                            <th>تاريخ انتهاء الاشتراك</th>
+                            <th>الخطة الحالية</th>
+                            <th>حالة الاشتراك</th>
+                            <!-- <th>تجديد تلقائي</th> -->
+                        </tr>
+                    </thead>
+                    <tbody id="subscriptions-table-body" class="fade-table">
+                        <!-- سيتم تعبئة البيانات هنا بواسطة JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-controls d-flex justify-content-between align-items-center flex-wrap mt-3">
+                <div class="d-flex align-items-center gap-2">
+                    <span id="items-info">عرض 0-0 من 0 اشتراك</span>
+                </div>
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    <button id="prev-page" class="btn btn-link p-0">
+                        <i class="bi bi-chevron-right" style="color: gold;"></i>
+                    </button>
+                    <span class="fw-bold" id="current-page">1</span>
+                    <span class="text-muted">من <span id="total-pages">1</span> صفحات</span>
+                    <button id="next-page" class="btn btn-link p-0">
+                        <i class="bi bi-chevron-left text-muted"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/subscriptions.js"></script>
+</body>
+
+</html>

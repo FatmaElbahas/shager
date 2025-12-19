@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأخبار</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/usernews.css">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    </body>
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body style="height: 100vh;">
+
+    <div class="custom-container mt-4">
+        <div class="d-flex align-items-center bg-white py-3 rounded-pill">
+            <div class="search-bar d-flex align-items-center position-relative">
+                <i class="bi bi-search search-icon px-3 position-absolute"></i> <input type="search" name=""
+                    id="searchInput" class="form-control search-input rounded-pill" placeholder="البحث ..">
+            </div>
+            <div class="d-flex align-items-center gap-3 mx-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.svg" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="usermessages.html" class="nav-link">الرسائل</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="upgrade.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-user-plus icon" style="color: rgba(39, 58, 65, 1);"></i>
+                <a href="requests.html" class="nav-link">طلبات الانضمام</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="#" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">الأخبار</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- header -->
+        <!-- الجزء الخاص بالعنوان والزر -->
+        <!-- زر إضافة مناسبة جديدة -->
+        <div class="d-flex justify-content-between align-items-center p-3 mb-4">
+            <h1 class="fw-bold" style="color: black; font-size: 24px;">الاخبار الحالية</h1>
+            <button class="btn btn-custom rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#addOccasionModal">
+                خبر جديد +
+            </button>
+        </div>
+
+
+        <!-- المودال -->
+        <!-- مودال إضافة مناسبة -->
+        <div class="modal fade" id="addOccasionModal" tabindex="-1" aria-labelledby="addOccasionModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content p-3" style="border-radius: 32px;">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="addOccasionModalLabel">خبر جديدة</h5>
+                        <button type="button" class="btn-close ms-0" data-bs-dismiss="modal"
+                            aria-label="إغلاق"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="occasionForm" enctype="multipart/form-data">
+                            <div class="mb-3 text-center">
+                                <input type="file" name="image" id="occasionImage" class="d-none">
+                                <button type="button" class="btn btn-outline-custom rounded-pill w-100 py-3"
+                                    onclick="document.getElementById('occasionImage').click();">
+                                    + إضافة صورة للخبر
+                                </button>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">اسم الخبر</label>
+                                <input type="text" class="form-control" name="title" placeholder="اسم الخبر" required
+                                    id="title">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">تاريخ الخبر</label>
+                                <input type="date" class="form-control" name="published_at" required id="published_at">
+                            </div>
+                            <div class="mb-3">
+                                <label for="short_description" class="form-label fw-bold">نبذة قصيرة عن الخبر</label>
+                                <textarea class="form-control" name="short_description" id="short_description" rows="2"
+                                    placeholder="اكتب جملة أو فقرتين تلخص الحدث بشكل جذاب وواضح.." required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="full_description" class="form-label fw-bold">التفاصيل الكاملة
+                                    للخبر</label>
+                                <textarea class="form-control" name="full_description" id="full_description" rows="4"
+                                    placeholder="اكتب كافة التفاصيل المهمة عن الخبر : مثل الزمان والمكان والمشاركين وغير ذلك.."
+                                    required></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center g-3">
+                                <button type="submit" id="saveBtn" class="btn btn-custom rounded-pill px-4 w-50">
+                                    <span id="saveText">حفظ</span>
+                                    <span id="saveSpinner" class="d-none">
+                                        <span class="spinner-border spinner-border-sm me-2"></span>
+                                        جاري الحفظ...
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-outline-dark py-3 rounded-pill px-4 w-50"
+                                    data-bs-dismiss="modal">إلغاء</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container-fluid">
+
+            <!-- blogs -->
+
+            <div class="container py-5">
+
+                <!-- البطاقات -->
+                <div class="row" id="newsContainer">
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="text-center container mt-4">
+                    <ul class="pagination custom-pagination justify-content-center"></ul>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/usernews.js"></script>
+</body>
+
+</html>

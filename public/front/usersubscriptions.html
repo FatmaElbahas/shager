@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإشتراكات</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/usersubscriptions.css">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    </body>
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="usermessages.html" class="nav-link">الرسائل</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="usersubscriptions.html" class="nav-link">الإشتراكات</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-user-plus icon" style="color: rgba(39, 58, 65, 1);"></i>
+                <a href="requests.html" class="nav-link">طلبات الانضمام</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="#" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">الإشتراكات</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+
+
+        <!-- ================== الاشتراكات ================== -->
+        <div class="container-fluid">
+            <div class="container py-5">
+                <h2 class="text-end mb-5">الاشتراكات</h2>
+                <!-- Banner العروض الترويجية -->
+                <div class="container-fluid my-4" id="activePromotionsContainer">
+                    <!-- العروض هتتضاف هنا ديناميكياً -->
+                </div>
+
+                <div class="row">
+                    <!-- الخطة الأساسية -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card subscription-card h-100">
+                            <div class="card-header text-dark text-end py-3">
+                                <h4 class="py-4 px-3">الأساسية</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <span class="price">20 <img src="images/Saudi_Riyal_Symbol-1.png" class="img-fluid"
+                                            width="30"></span>
+                                    <span class="period">/شهر</span>
+                                </div>
+                                <ul class="features-list">
+                                    <li>حتى 100 فرد في الشجرة</li>
+                                    <li>رفع سجلات عائلية</li>
+                                    <li>إعدادات خصوصية متقدمة</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                <button class="btn btn-custom" data-plan="primary">الترقية الآن</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الخطة المتقدمة -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card subscription-card h-100">
+                            <div class="card-header text-dark text-end py-3">
+                                <h4 class="py-4 px-3">متقدمة</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <span class="price">50 <img src="images/Saudi_Riyal_Symbol-1.png" class="img-fluid"
+                                            width="30"></span>
+                                    <span class="period">/3 أشهر</span>
+                                </div>
+                                <ul class="features-list">
+                                    <li>حتى 500 فرد في الشجرة</li>
+                                    <li>رفع سجلات عائلية</li>
+                                    <li>إعدادات خصوصية متقدمة</li>
+                                    <li>مشاركة الشجرة مع العائلة</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                <button class="btn btn-custom" data-plan="custom">الترقية الآن</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الخطة المخصصة -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card subscription-card h-100" style="background-color: rgba(39, 58, 65, 1);">
+                            <div class="card-header text-white text-end">
+                                <h4 style="color: rgba(222, 192, 128, 1);" class="py-4 px-3">مخصصة</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <span class="price text-white">30 <img src="images/Saudi_Riyal_Symbol-1.png"
+                                            class="img-fluid" width="30"></span>
+                                    <span class="period">/سنه</span>
+                                </div>
+                                <ul class="features-list text-white">
+                                    <li>حتى 100 فرد في الشجرة</li>
+                                    <li>رفع سجلات عائلية</li>
+                                    <li>إعدادات خصوصية متقدمة</li>
+                                    <li>مشاركة الشجرة مع العائلة</li>
+                                    <li>تعاون مع أفراد العائلة في التعديل</li>
+                                    <li>إضافة معالم خاصة بالعائلة</li>
+                                    <li>إمكانية مقابر خاصة بالعائلة</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                <button class="btn btn-custom" data-plan="advanced">الترقية الآن</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content shadow-lg border-0" style="border-radius: 20px;">
+
+                <div class="modal-header border-0"
+                    style="background: #273a41;border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                    <h1 class="modal-title fw-bold text-end w-100" style="background: #273a41; color: #dec080;">
+                        اكمال عملية الدفع
+                    </h1>
+                    <button type="button" class="btn-close btn-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+
+                <div class="modal-body p-5">
+                    <div class="text-center mb-4">
+                        <h6 class="fw-bold">ملخص الدفع</h6>
+                        <p class="text-muted">راجع تفاصيل المبلغ قبل إتمام العملية</p>
+                    </div>
+
+                    <!-- إدخال الكوبون -->
+                    <div class="mb-3">
+                        <label for="couponCode" class="form-label">هل لديك كوبون خصم؟</label>
+                        <div class="input-group">
+                            <input type="text" id="couponCode" class="form-control" placeholder="ادخل الكود هنا">
+                            <button type="button" class="btn btn-primary" onclick="applyCoupon()">تطبيق</button>
+                        </div>
+                        <small id="couponResult" class="text-success mt-2 d-block"></small>
+
+                    </div>
+
+                    <!-- ملخص الأسعار -->
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>السعر الأصلي:</span>
+                        <span id="originalPrice">0 ريال</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>الخصم:</span>
+                        <span id="discountValue">0 ريال</span>
+                        <p class="text-success fw-bold" id="promotionMessage"></p>
+
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold">
+                        <span>المبلغ المطلوب:</span>
+                        <span id="finalPrice">0 ريال</span>
+                    </div>
+
+                    <!-- نموذج الدفع -->
+                    <div class="mysr-form mt-4"></div>
+                </div>
+
+
+                <!-- Footer -->
+                <div class="modal-footer border-0 d-flex justify-content-between px-4 pb-4">
+                    <small class="text-muted">🔒 الدفع مؤمن بواسطة Moyasar</small>
+                    <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">إلغاء</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moyasar-payment-form@2.1.1/dist/moyasar.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moyasar-payment-form@2.1.1/dist/moyasar.css" />
+    <script src="js/Usersubscriptions.js"></script>
+</body>
+
+</html>

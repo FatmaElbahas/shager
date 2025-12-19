@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرسائل</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/usermessages.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    </body>
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="height: 100vh;">
+
+    <div class="custom-container mt-4">
+        <div class="d-flex align-items-center bg-white py-3 rounded-pill">
+            <div class="search-bar d-flex align-items-center position-relative">
+                <i class="bi bi-search search-icon px-3 position-absolute"></i> <input type="search" name="" id=""
+                    class="form-control search-input rounded-pill" placeholder="البحث ..">
+            </div>
+            <div class="d-flex align-items-center gap-3 mx-4">
+                <span><a href="#"><img src="images/formkit_help.png" class="img-fluid" alt="" width="30"></a></span>
+                <img src="images/ion_notifications-outline.png" alt="" data-bs-toggle="offcanvas"
+                    data-bs-target="#notificationPanel" style="cursor: pointer">
+                <!-- قائمة الإشعارات -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="notificationPanel"
+                    aria-labelledby="offcanvasLabel" dir="rtl">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title fw-bold" id="offcanvasLabel">الإشعارات</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="إغلاق"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <!-- إشعار اليوم -->
+                        <div class="mb-3">
+                            <p class="fw-bold text-muted mb-3">اليوم</p>
+
+                            <div class="border-bottom my-4"></div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <p class="mb-1">تم قبول طلب إنشاء شجرتك.</p>
+                                    <small class="text-muted">منذ ساعتين - 10:30 ص</small>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="mb-1">تمت دعوتك من شجرة بني خالد </p>
+                                    <small class="text-muted">منذ 5 ساعات - 7:00 ص</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- إشعار أمس -->
+                        <div class="mb-3">
+                            <p class="fw-bold text-muted mb-1">أمس</p>
+
+                            <div class="border-bottom my-4"></div>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="mb-1">تم قبول طلب انضمامك إلى شجرة عائلة بني خالد</p>
+                                    <small class="text-muted">منذ يوم - 10:00 ص</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span>
+                    <a href="#"><img src="images/Ellipse 9 (2).png" class="img-fluid rounded-pill" width="40" alt="">
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-lg-flex flex-column" id="sidebar">
+        <div class="logo p-3">
+            <img src="images/Asset 80.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Close Button -->
+        <button id="close" class="btn btn-link sidebar-close">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 mt-3 ">
+                <img src="images/Dashboard.png" alt="" class="icon">
+                <a href="UserDashboard.html" class="nav-link">الرئيسية</a>
+            </li>
+            <li class="active nav-item d-flex align-items-center gap-2">
+                <img src="images/stash_inbox (1).png" alt="" class="icon">
+                <a href="usermessages.html" class="nav-link">الرسائل</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/hugeicons_tree-06.png" alt="" class="icon">
+                <a href="shagertk.html" class="nav-link">شجرتك</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2 ">
+                <img src="images/famicons_map-outline.png" alt="" class="icon">
+                <a href="map.html" class="nav-link">خريطة العائلة</a>
+            </li>
+            <li class=" nav-item d-flex align-items-center gap-2">
+                <img src="images/tabler_link-plus.png" alt="" class="icon">
+                <a href="userevents.html" class="nav-link">المناسبات </a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/iconamoon_news-light.png" alt="" class="icon">
+                <a href="usernews.html" class="nav-link">الاخبار</a>
+            </li>
+              <!-- <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="usersubscriptions.html" class="nav-link">الإشتراكات</a>
+            </li> -->
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/icon-wrapper (1).png" alt="" class="icon">
+                <a href="usersettings.html" class="nav-link">الإعدادات</a>
+            </li>
+        </ul>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item d-flex align-items-center gap-2 my-3">
+                <img src="images/Frame (3).png" alt="" class="icon">
+                <a href="settings.html" class="nav-link text-danger">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">الرسائل</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+
+            <div class="chat-container my-3 mx-3 shadow" style="border-radius: 12px;">
+                <!-- Sidebar -->
+                <div class="chat-sidebar">
+                    <div class="p-3 border-bottom">
+                        <select class="form-select">
+                            <option>كل الرسائل</option>
+                            <option>المقروءة فقط</option>
+                            <option>غير المقروءة</option>
+                        </select>
+                    </div>
+                    <ul class="message-list">
+                        <li>
+                            <img src="https://i.pravatar.cc/35?img=1" alt="">
+                            <div>
+                                <strong>Jennifer Markus</strong>
+                                <p class="text-muted small mb-0">رسالة تجريبية...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://i.pravatar.cc/35?img=2" alt="">
+                            <div>
+                                <strong>Iva Ryan</strong>
+                                <p class="text-muted small mb-0">رسالة تجريبية...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://i.pravatar.cc/35?img=3" alt="">
+                            <div>
+                                <strong>Mary Freund</strong>
+                                <p class="text-muted small mb-0">رسالة تجريبية...</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="sidebar-search">
+                        <input type="text" class="form-control" placeholder="ابحث...">
+                    </div>
+                </div>
+
+                <!-- Chat Area -->
+                <div class="chat-area">
+                    <div class="chat-header">
+                        <div class="info">
+                            <img src="https://i.pravatar.cc/35?img=1" class="rounded-circle" alt="">
+                            <span>Jennifer Markus</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="text" class="form-control form-control-sm" placeholder="بحث...">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle 
+                                shadow-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                    aria-expanded="false" style="background-color: white;">
+                                    ⋮
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="#">حظر المستخدم</a></li>
+                                    <li><a class="dropdown-item" href="#">تعديل الاسم</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="confirmDelete(event)">حذف
+                                            المحادثة</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-body">
+                        <div class="chat-message receiver">
+                            مرحبًا! كيف حالك؟
+                            <small>10:45 ص</small>
+                        </div>
+                        <div class="chat-message user">
+                            تمام الحمد لله، وإنتِ؟
+                            <small>10:46 ص</small>
+                        </div>
+                        <div class="chat-message receiver">
+                            كل شيء تمام، شكراً لسؤالك.
+                            <small>10:47 ص</small>
+                        </div>
+                        <div class="chat-message user">
+                            حبيت أشارك معك تسجيل.
+                            <small>10:48 ص</small>
+                        </div>
+                        <div class="audio-player user">
+                            <audio controls src="sample-audio.mp3"></audio>
+                            <span class="ms-2 text-muted">01:24</span>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <div class="d-flex justify-content-between align-items-center gap-3">
+
+                            <div class="d-flex">
+
+                                <!-- وجه تعبيري -->
+                                <button class="icon-btn">
+                                    <img src="images/Icons (1).png" alt="">
+                                </button>
+
+                                <!-- مربع الكتابة -->
+                                <div class="chat-input-box flex-grow-1">
+                                    <input type="text" placeholder="اكتب رسالتك هنا..." class="form-control w-100"/>
+                                    <span><img src="images/Icons (4).png" alt="" class="btn"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="d-flex">
+                                <!-- زر المايك -->
+                                <button class="icon-btn">
+                                    <img src="images/Icons (2).png" alt="">
+                                </button>
+                                
+                                <!-- زر الإعجاب -->
+                                <button class="icon-btn">
+                                    <img src="images/Icons (3).png" alt="">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/usermessages.js"></script>
+</body>
+
+</html>
