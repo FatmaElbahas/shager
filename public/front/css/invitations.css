@@ -1,0 +1,268 @@
+body {
+    overflow: auto;
+    background-color: rgba(248, 247, 247, 1);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0px 14px 10px rgba(8, 15, 52, 0.06);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+}
+
+.sidebar .logo img {
+    max-width: 152px;
+    height: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.8rem;
+}
+
+.sidebar ul li a {
+    color: rgba(39, 58, 65, 1);
+    text-decoration: none;
+    font-size: 16px;
+    padding: .7rem;
+}
+
+.sidebar ul li.active a {
+    color: #b7924f !important;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #b7924f;
+}
+
+.sidebar .nav-link.active {
+    color: #b7924f;
+}
+
+.sidebar .icon {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul li.active .icon,
+.sidebar ul li:hover .icon {
+    filter: brightness(0) saturate(100%) invert(64%) sepia(29%) saturate(343%) hue-rotate(8deg) brightness(95%) contrast(90%);
+    transform: scale(1.05);
+}
+
+.sidebar .nav-item:hover {
+    background-color: rgba(249, 248, 244, 1);
+    border-radius: 8px;
+}
+
+.sidebar .nav-item.active {
+    background-color: rgba(249, 248, 244, 1);
+    border-radius: 8px;
+}
+
+/* Close Button */
+.sidebar-close {
+    display: none;
+    position: absolute;
+    top: 2%;
+    left: 0;
+    font-size: 2rem;
+    color: black;
+}
+
+/* custom container */
+
+.custom-container {
+    padding: 0 20rem 0 0;
+}
+
+/* navbar */
+.search-bar {
+    padding-right: 1rem;
+    width: 100%;
+}
+
+.search-bar input {
+    background-color: rgba(39, 58, 65, 0.05);
+    border: none;
+    padding: .7rem;
+}
+
+.search-bar input::placeholder {
+    color: rgba(156, 156, 156, 1);
+    font-size: 14px;
+    padding: .5rem;
+}
+
+.search-bar input {
+    background-color: #f7f7f7;
+    border: none;
+    padding-right: 2.5rem;
+}
+
+.search-bar input:focus {
+    box-shadow: none;
+    background-color: #f7f7f7;
+}
+
+.search-bar i {
+    color: rgba(158, 158, 158, 1);
+    font-size: 16px;
+}
+
+/* Content */
+.content {
+    margin-right: 270px;
+    padding: 1rem 3rem;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Table */
+.user-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.active-status p {
+    background-color: rgba(23, 89, 65, 0.2);
+    color: rgba(23, 89, 65, 1);
+    border-radius: 16px;
+    padding: .5rem;
+}
+
+.btn-custom {
+    background-color: rgba(211, 171, 85, 1);
+    color: rgba(248, 247, 247, 1);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+}
+
+.btn-custom:hover {
+    background-color: rgb(211, 160, 51);
+    color: rgba(248, 247, 247, 1);
+}
+
+.modal-body input::placeholder {
+    color: rgba(123, 123, 123, 0.5);
+    font-size: 16px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.modal-body input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="url"],
+select {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.modal-body label {
+    margin-bottom: 1rem;
+}
+
+
+.custom-select {
+    background-position: left 0.75rem center;
+    background-size: 16px 16px;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+[dir="rtl"] .custom-select {
+    background-position: left 1rem center;
+    padding-right: 2.5rem;
+}
+
+
+.form-check-input:checked {
+    background-color: rgb(211, 160, 51);
+    border-color: rgb(211, 160, 51);
+}
+
+
+
+@media (max-width: 767.98px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .programmes-table {
+        font-size: 14px;
+    }
+
+    .pagination-controls select {
+        width: 80px;
+    }
+}
+
+/* Responsive Sidebar */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0%);
+    }
+
+    .sidebar-close {
+        display: block;
+    }
+
+    .content {
+        margin-right: 0 !important;
+        padding: .5rem;
+    }
+
+    .custom-container {
+        padding: 0;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+}
+
+/* Ensure table cells don't wrap unnecessarily */
+.table th,
+.table td {
+    white-space: nowrap;
+}
+
+.table td,
+.table th {
+    padding: 1.2rem;
+}
+
+.table th {
+    color: rgba(63, 63, 63, 1);
+    font-size: 10px;
+}
+
+.table {
+    border-radius: 12px !important;
+}
+
+
+.btn i {
+    font-size: 1.2rem;
+}

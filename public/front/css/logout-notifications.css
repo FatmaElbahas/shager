@@ -1,0 +1,287 @@
+/* نظام الإشعارات المنسق لتسجيل الخروج */
+
+/* حاوية الإشعارات */
+#logoutNotificationContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    font-family: 'Arial', sans-serif;
+    direction: rtl;
+    pointer-events: none;
+}
+
+/* الإشعار الأساسي */
+.logout-notification {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    max-width: 350px;
+    position: relative;
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+/* إظهار الإشعار */
+.logout-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* أنواع الإشعارات */
+.logout-notification.success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.logout-notification.warning {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.logout-notification.info {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.logout-notification.error {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+/* تأثير الضوء العلوي */
+.logout-notification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* رأس الإشعار */
+.logout-notification-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* أيقونة الإشعار */
+.logout-notification-icon {
+    margin-left: 10px;
+    font-size: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* محتوى الإشعار */
+.logout-notification-body {
+    font-size: 14px;
+    line-height: 1.4;
+    opacity: 0.95;
+}
+
+/* شريط التقدم */
+.logout-notification-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 0 0 12px 12px;
+    animation: progress 3s linear;
+}
+
+@keyframes progress {
+    0% { width: 100%; }
+    100% { width: 0%; }
+}
+
+/* مودال التأكيد */
+.logout-confirm-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    direction: rtl;
+    font-family: 'Arial', sans-serif;
+}
+
+/* محتوى المودال */
+.logout-modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    text-align: center;
+}
+
+/* أيقونة المودال */
+.logout-modal-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+/* عنوان المودال */
+.logout-modal-title {
+    margin: 0 0 15px;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* رسالة المودال */
+.logout-modal-message {
+    margin: 0 0 25px;
+    color: #666;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+/* أزرار المودال */
+.logout-modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.logout-modal-btn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+}
+
+.logout-modal-btn.confirm {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.logout-modal-btn.confirm:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.logout-modal-btn.cancel {
+    background: #f8f9fa;
+    color: #666;
+    border: 2px solid #e9ecef;
+}
+
+.logout-modal-btn.cancel:hover {
+    background: #e9ecef;
+    transform: scale(1.02);
+}
+
+/* تأثيرات للأجهزة المحمولة */
+@media (max-width: 768px) {
+    #logoutNotificationContainer {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+    
+    .logout-notification {
+        max-width: none;
+        margin-bottom: 10px;
+    }
+    
+    .logout-modal-content {
+        margin: 20px;
+        width: calc(100% - 40px);
+        padding: 25px;
+    }
+    
+    .logout-modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logout-modal-btn {
+        width: 100%;
+    }
+}
+
+/* تأثيرات إضافية */
+.logout-notification:hover {
+    transform: translateX(-5px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+/* تأثير الاهتزاز للتحذيرات */
+.logout-notification.warning .logout-notification-icon {
+    animation: shake 0.5s infinite alternate;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(3px); }
+}
+
+/* تأثير الدوران للأخطاء */
+.logout-notification.error .logout-notification-icon {
+    animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* تأثير النبض للنجاح */
+.logout-notification.success .logout-notification-icon {
+    animation: successPulse 1s infinite alternate;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.2); filter: brightness(1.3); }
+}

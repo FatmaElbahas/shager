@@ -1,0 +1,636 @@
+body {
+    overflow: auto;
+    background-color: rgba(248, 247, 247, 1);
+}
+
+/* Google Maps Container */
+#map {
+    height: 100vh !important;
+    width: 100% !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسينات لـ Google Maps InfoWindow */
+.gm-style .gm-style-iw-c {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.gm-style .gm-style-iw-t::after {
+    background: linear-gradient(45deg, #fff, #f8f9fa) !important;
+}
+
+/* تحسين أزرار التحكم في الخريطة */
+.gm-bundled-control {
+    margin: 10px !important;
+}
+
+.gm-bundled-control .gm-control-active {
+    background-color: #D3AB55 !important;
+    border-color: #D3AB55 !important;
+}
+
+/* تحسين العلامات المخصصة */
+.custom-marker {
+    background-color: #D3AB55;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* أزرار التحكم في الخريطة */
+.map-controls-container {
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-map-add-location,
+.btn-map-current-location {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #D3AB55, #b7924f);
+    border: none;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(211, 171, 85, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-map-add-location:hover,
+.btn-map-current-location:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(211, 171, 85, 0.4);
+    background: linear-gradient(135deg, #b7924f, #D3AB55);
+    color: white;
+}
+
+.btn-map-current-location {
+    background: linear-gradient(135deg, #4285F4, #1976D2);
+    box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+}
+
+.btn-map-current-location:hover {
+    background: linear-gradient(135deg, #1976D2, #4285F4);
+    box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+    color: white;
+}
+
+/* أنيميشن للزر عند التحميل */
+.btn-loading {
+    animation: pulse-loading 1.5s infinite;
+}
+
+.btn-loading i {
+    animation: spin-icon 1s linear infinite;
+}
+
+@keyframes pulse-loading {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes spin-icon {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+/* تحسينات للأجهزة المحمولة */
+@media (max-width: 768px) {
+    .map-controls-container {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .btn-map-add-location,
+    .btn-map-current-location {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0px 14px 10px rgba(8, 15, 52, 0.06);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+}
+
+.sidebar .logo img {
+    max-width: 152px;
+    height: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.8rem;
+}
+
+.sidebar ul li a {
+    color: rgba(39, 58, 65, 1);
+    text-decoration: none;
+    font-size: 16px;
+    padding: .7rem;
+}
+
+.sidebar ul li.active a {
+    color: #b7924f !important;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #b7924f;
+}
+
+.sidebar .nav-link.active {
+    color: #b7924f;
+}
+
+.sidebar .icon {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul li.active .icon,
+.sidebar ul li:hover .icon {
+    filter: brightness(0) saturate(100%) invert(64%) sepia(29%) saturate(343%) hue-rotate(8deg) brightness(95%) contrast(90%);
+    transform: scale(1.05);
+}
+
+.sidebar .nav-item:hover {
+    background-color: rgba(249, 248, 244, 1);
+    border-radius: 8px;
+}
+
+.sidebar .nav-item.active {
+    background-color: rgba(249, 248, 244, 1);
+    border-radius: 8px;
+}
+
+/* Close Button */
+.sidebar-close {
+    display: none;
+    position: absolute;
+    top: 2%;
+    left: 0;
+    font-size: 2rem;
+    color: black;
+}
+
+/* custom container */
+
+.custom-container {
+    padding: 0 20rem 0 0;
+}
+
+/* navbar */
+.search-bar {
+    padding-right: 1rem;
+    width: 100%;
+}
+
+.search-bar input {
+    background-color: rgba(39, 58, 65, 0.05);
+    border: none;
+    padding: .7rem;
+}
+
+.search-bar input::placeholder {
+    color: rgba(156, 156, 156, 1);
+    font-size: 14px;
+    padding: .5rem;
+}
+
+.search-bar input {
+    background-color: #f7f7f7;
+    border: none;
+    padding-right: 2.5rem;
+}
+
+.search-bar input:focus {
+    box-shadow: none;
+    background-color: #f7f7f7;
+}
+
+.search-bar i {
+    color: rgba(158, 158, 158, 1);
+    font-size: 16px;
+}
+
+/* Content */
+.content {
+    margin-right: 270px;
+    padding: 1rem 2rem;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Table */
+.user-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.active-status p {
+    background-color: rgba(23, 89, 65, 0.2);
+    color: rgba(23, 89, 65, 1);
+    border-radius: 16px;
+    padding: .5rem;
+}
+
+@media (max-width: 767.98px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .programmes-table {
+        font-size: 14px;
+    }
+
+    .pagination-controls select {
+        width: 80px;
+    }
+}
+
+/* Responsive Sidebar */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0%);
+    }
+
+    .sidebar-close {
+        display: block;
+    }
+
+    .content {
+        margin-right: 0 !important;
+        padding: .5rem;
+    }
+
+    .custom-container {
+        padding: 0;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+}
+
+
+/* Map Add Location Button */
+.map-add-btn-container {
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.btn-map-add-location {
+    background: linear-gradient(135deg, rgba(211, 171, 85, 1) 0%, rgba(183, 146, 79, 1) 100%);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-map-add-location:hover {
+    background: linear-gradient(135deg, rgba(183, 146, 79, 1) 0%, rgba(211, 171, 85, 1) 100%);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.btn-map-add-location:focus {
+    box-shadow: 0 0 0 3px rgba(211, 171, 85, 0.3);
+    color: white;
+}
+
+/* Add Location Modal */
+.add-location-modal {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.add-location-modal .modal-header {
+    background: linear-gradient(135deg, rgba(248, 247, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    padding: 2rem 2rem 1rem;
+}
+
+.add-location-modal .modal-title {
+    font-family: "AdorHairlineExtraBold", sans-serif;
+    font-size: 1.5rem;
+    color: rgba(39, 58, 65, 1);
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.add-location-modal .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.add-location-modal .btn-close:hover {
+    opacity: 1;
+}
+
+.add-location-modal .modal-body {
+    padding: 1.5rem 2rem;
+    background: white;
+}
+
+.add-location-modal .form-label {
+    font-weight: 600;
+    color: rgba(39, 58, 65, 1);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.location-input {
+    border: 2px solid rgba(248, 247, 247, 1);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: rgba(248, 247, 247, 0.5);
+}
+
+.location-input:focus {
+    border-color: rgba(211, 171, 85, 1);
+    box-shadow: 0 0 0 0.2rem rgba(211, 171, 85, 0.15);
+    background: white;
+    outline: none;
+}
+
+.location-input::placeholder {
+    color: rgba(156, 156, 156, 1);
+    font-size: 0.9rem;
+}
+
+.location-help-text {
+    background: rgba(211, 171, 85, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    border-left: 4px solid rgba(211, 171, 85, 1);
+}
+
+/* City Suggestions */
+.city-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid rgba(223, 223, 223, 1);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.city-suggestion-item {
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(248, 247, 247, 1);
+    transition: background-color 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.city-suggestion-item:hover {
+    background-color: rgba(211, 171, 85, 0.1);
+}
+
+.city-suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.city-suggestion-name {
+    font-weight: 600;
+    color: rgba(39, 58, 65, 1);
+}
+
+.city-suggestion-country {
+    color: rgba(123, 123, 123, 1);
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+/* Coordinates Display */
+.location-coordinates .alert {
+    border-radius: 10px;
+    border: none;
+    background: rgba(25, 135, 84, 0.1);
+    color: rgba(25, 135, 84, 1);
+    padding: 1rem;
+}
+
+/* Loading State */
+.city-loading {
+    pointer-events: none;
+}
+
+/* Disabled Button State */
+.btn-add-location-submit:disabled {
+    background: rgba(223, 223, 223, 1) !important;
+    color: rgba(123, 123, 123, 1) !important;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.add-location-modal .modal-footer {
+    background: rgba(248, 247, 247, 0.5);
+    padding: 1.5rem 2rem 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 1);
+    color: rgba(123, 123, 123, 1);
+    border: 2px solid rgba(223, 223, 223, 1);
+    padding: 0.7rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.btn-cancel:hover {
+    background: rgba(248, 247, 247, 1);
+    border-color: rgba(211, 171, 85, 1);
+    color: rgba(39, 58, 65, 1);
+}
+
+.btn-add-location-submit {
+    background: linear-gradient(135deg, rgba(211, 171, 85, 1) 0%, rgba(211, 171, 85, 0.8) 100%);
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    box-shadow: 0 4px 15px rgba(211, 171, 85, 0.3);
+}
+
+.btn-add-location-submit:hover {
+    background: linear-gradient(135deg, rgba(211, 171, 85, 0.9) 0%, rgba(211, 171, 85, 0.7) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(211, 171, 85, 0.4);
+    color: white;
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+
+    .add-location-modal .modal-header,
+    .add-location-modal .modal-body,
+    .add-location-modal .modal-footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .add-location-modal .modal-title {
+        font-size: 1.3rem;
+    }
+
+    .map-add-btn-container {
+        top: 15px;
+        right: 15px;
+    }
+
+    .btn-map-add-location {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .city-suggestions {
+        font-size: 0.85rem;
+    }
+
+    .city-suggestion-item {
+        padding: 0.6rem 0.8rem;
+    }
+}
+
+/* Map Container Enhancements */
+#map {
+    border: 2px solid rgba(248, 247, 247, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#map:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Map Popup Styles */
+.leaflet-popup-content-wrapper {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+    padding: 0;
+    font-family: "AdorHairlineExtraBold", sans-serif;
+}
+
+.custom-popup {
+    padding: 1.2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(248, 247, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    border-radius: 15px;
+    min-width: 200px;
+}
+
+.custom-popup strong {
+    color: rgba(39, 58, 65, 1);
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.custom-popup .text-muted {
+    color: rgba(123, 123, 123, 1) !important;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.custom-popup p {
+    color: rgba(39, 58, 65, 0.8);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.leaflet-popup-tip {
+    background: white;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-close-button {
+    color: rgba(123, 123, 123, 1) !important;
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    padding: 0.5rem !important;
+    transition: color 0.3s ease;
+}
+
+.leaflet-popup-close-button:hover {
+    color: rgba(211, 171, 85, 1) !important;
+}
+
+
+/* content */

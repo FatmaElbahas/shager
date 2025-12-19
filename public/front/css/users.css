@@ -1,0 +1,562 @@
+body {
+    overflow: auto;
+    background-color: rgba(248, 247, 247, 1);
+    font-family: 'Playfair Display', serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+    box-shadow: 0px 14px 30px rgba(8, 15, 52, 0.1);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-y: auto;
+    border-radius: 0 0 0 20px;
+}
+
+.sidebar .logo img {
+    max-width: 152px;
+    height: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.8rem;
+}
+
+.sidebar ul li a {
+    color: rgba(39, 58, 65, 1);
+    text-decoration: none;
+    font-size: 16px;
+    padding: .7rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sidebar ul li.active a {
+    color: #b7924f !important;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #b7924f;
+    transform: translateX(-5px);
+}
+
+.sidebar .nav-link.active {
+    color: #b7924f;
+}
+
+.sidebar .icon {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul li.active .icon,
+.sidebar ul li:hover .icon {
+    filter: brightness(0) saturate(100%) invert(64%) sepia(29%) saturate(343%) hue-rotate(8deg) brightness(95%) contrast(90%);
+    transform: scale(1.05);
+}
+
+.sidebar .nav-item:hover {
+    background: linear-gradient(90deg, rgba(183, 146, 79, 0.1) 0%, rgba(183, 146, 79, 0.05) 100%);
+    border-radius: 8px;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-item.active {
+    background: linear-gradient(90deg, rgba(183, 146, 79, 0.2) 0%, rgba(183, 146, 79, 0.1) 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(183, 146, 79, 0.15);
+}
+
+/* Close Button */
+.sidebar-close {
+    display: none;
+    position: absolute;
+    top: 2%;
+    left: 0;
+    font-size: 2rem;
+    color: black;
+}
+
+/* custom container */
+
+.custom-container {
+    padding: 0 20rem 0 0;
+}
+
+/* navbar */
+.search-bar {
+    padding-right: 1rem;
+    width: 100%;
+}
+
+.search-bar input {
+    background-color: rgba(39, 58, 65, 0.05);
+    border: none;
+    padding: .7rem;
+}
+
+.search-bar input::placeholder {
+    color: rgba(156, 156, 156, 1);
+    font-size: 14px;
+    padding: .5rem;
+}
+
+.search-bar input {
+    background-color: #f7f7f7;
+    border: none;
+    padding-right: 2.5rem;
+}
+
+.search-bar input:focus {
+    box-shadow: none;
+    background-color: #f7f7f7;
+}
+
+.search-bar i {
+    color: rgba(158, 158, 158, 1);
+    font-size: 16px;
+}
+
+/* Content */
+.content {
+    margin-right: 270px;
+    padding: 1rem 3rem;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.btn-custom {
+    background-color: rgba(211, 171, 85, 1);
+    color: rgba(248, 247, 247, 1);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+}
+
+.btn-custom:hover {
+    background-color: rgb(211, 160, 51);
+    color: rgba(248, 247, 247, 1);
+}
+
+/* Table */
+.user-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.active-status p {
+    background-color: rgba(23, 89, 65, 0.2);
+    color: rgba(23, 89, 65, 1);
+    border-radius: 16px;
+    padding: .5rem;
+}
+
+@media (max-width: 767.98px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .programmes-table {
+        font-size: 14px;
+    }
+
+    .pagination-controls select {
+        width: 80px;
+    }
+}
+
+/* Responsive Sidebar */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0%);
+    }
+
+    .sidebar-close {
+        display: block;
+    }
+
+    .content {
+        margin-right: 0 !important;
+        padding: .5rem;
+    }
+
+    .custom-container {
+        padding: 0;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+}
+
+/* Ensure table cells don't wrap unnecessarily */
+.table th,
+.table td {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.table td,
+.table th {
+    padding: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.table th {
+    color: rgba(63, 63, 63, 1);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table {
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+
+
+.btn i {
+    font-size: 1.2rem;
+}
+
+.table-hover tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(183, 146, 79, 0.05) !important;
+    transform: scale(1.01);
+}
+
+.table-hover tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+.animate-dropdown.show {
+    animation: slideUp 0.2s ease-out;
+}
+
+.slide-table {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 1s ease;
+}
+
+.slide-table.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* أنيميشن للجدول عند تغيير الصفحة */
+.fade-table {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.fade-table.show {
+    opacity: 1;
+}
+
+.user-card {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.user-card:hover {
+    background-color: rgba(183, 146, 79, 0.05);
+}
+
+.avatar-img {
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.avatar-img:hover {
+    border-color: #b7924f;
+}
+
+/* تخصيص القوائم المنسدلة الفرعية */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: -100%;
+    margin-top: -1px;
+    display: none;
+    position: absolute;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+/* تحسين شكل عناصر القائمة */
+.dropdown-menu .dropdown-item {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: rgba(183, 146, 79, 0.1);
+    transform: translateX(5px);
+}
+
+.badge {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.pagination-btn {
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover {
+    transform: scale(1.1);
+    color: #b7924f !important;
+}
+
+/* Sliding Animation for User Details */
+#user-details-section {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 10;
+}
+
+#user-details-section.slide-down {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* User Details Page Styles */
+.user-detail-card {
+    transition: all 0.3s ease;
+}
+
+.statistic-icon {
+    transition: all 0.2s ease;
+}
+
+.card:hover .statistic-icon {
+    background-color: rgba(183, 146, 79, 0.1) !important;
+}
+
+.btn-action {
+    transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+    transition: all 0.2s ease;
+}
+
+.header-title {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.detail-header {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.detail-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.search-container {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Modern KPI Cards */
+.kpi-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    /* rounded-2xl */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* shadow-md */
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    min-height: 160px;
+}
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.kpi-icon-container {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: rgba(255, 193, 7, 0.1);
+    /* soft gold background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.kpi-icon {
+    color: #ffc107;
+    /* warm yellow */
+    font-size: 1.75rem;
+}
+
+.kpi-label {
+    color: #6b7280;
+    /* gray-500 */
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.kpi-value {
+    color: #111827;
+    /* gray-900 */
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+/* User profile icons */
+.user-profile-icon {
+    font-size: 1.25rem;
+    width: 1.25rem;
+    text-align: center;
+}
+
+.user-info-item {
+    margin-bottom: 1rem;
+}
+
+.user-info-item .small {
+    font-size: 0.875rem;
+}
+
+.user-info-item .fw-medium {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Responsive adjustments for KPI cards */
+@media (max-width: 1199px) {
+    .kpi-card {
+        padding: 1.5rem;
+        min-height: 140px;
+    }
+
+    .kpi-icon-container {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .kpi-icon {
+        font-size: 1.5rem;
+    }
+
+    .kpi-label {
+        font-size: 0.875rem;
+    }
+
+    .kpi-value {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .kpi-card {
+        padding: 2rem;
+        text-align: center;
+        min-height: 160px;
+    }
+
+    .kpi-icon-container {
+        width: 4rem;
+        height: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .kpi-icon {
+        font-size: 1.75rem;
+    }
+
+    .kpi-label {
+        font-size: 0.875rem;
+    }
+
+    .kpi-value {
+        font-size: 1.5rem;
+    }
+}

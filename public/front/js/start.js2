@@ -1,0 +1,591 @@
+const token = localStorage.getItem("authToken");
+const user = JSON.parse(localStorage.getItem("user"));
+// تعريف الـ USER_ID هنا
+window.USER_ID = user.id;
+
+// ===============================
+// دوال الرسائل المحسنة - Start Page
+// ===============================
+
+function showCustomAlert(message, type = 'info', title = '', duration = 4000) {
+  // إزالة أي رسائل موجودة مسبقاً
+  const existingAlerts = document.querySelectorAll('.custom-alert');
+  existingAlerts.forEach(alert => {
+    alert.classList.add('hiding');
+    setTimeout(() => alert.remove(), 300);
+  });
+
+  // تحديد الأيقونة والعنوان حسب النوع
+  let icon, defaultTitle;
+  switch(type) {
+    case 'success':
+      icon = '✅';
+      defaultTitle = 'تم بنجاح!';
+      break;
+    case 'error':
+      icon = '❌';
+      defaultTitle = 'حدث خطأ!';
+      break;
+    case 'warning':
+      icon = '⚠️';
+      defaultTitle = 'تنبيه!';
+      break;
+    case 'info':
+    default:
+      icon = 'ℹ️';
+      defaultTitle = 'معلومة';
+      break;
+  }
+
+  // إنشاء عنصر الرسالة
+  const alertElement = document.createElement('div');
+  alertElement.className = `custom-alert ${type}`;
+  
+  alertElement.innerHTML = `
+    <div class="alert-header">
+      <span class="alert-icon">${icon}</span>
+      <h4 class="alert-title">${title || defaultTitle}</h4>
+      <button class="alert-close" onclick="this.closest('.custom-alert').classList.add('hiding'); setTimeout(() => this.closest('.custom-alert').remove(), 300);">×</button>
+    </div>
+    <p class="alert-message">${message}</p>
+    <div class="alert-progress"></div>
+  `;
+
+  // إضافة الرسالة للصفحة
+  document.body.appendChild(alertElement);
+
+  // إزالة الرسالة تلقائياً بعد المدة المحددة
+  setTimeout(() => {
+    if (alertElement && alertElement.parentNode) {
+      alertElement.classList.add('hiding');
+      setTimeout(() => {
+        if (alertElement && alertElement.parentNode) {
+          alertElement.remove();
+        }
+      }, 300);
+    }
+  }, duration);
+
+  return alertElement;
+}
+
+// دوال مخصصة لكل نوع رسالة
+function showSuccessMessage(message, title = 'تم بنجاح! 🎉', duration = 4000) {
+  return showCustomAlert(message, 'success', title, duration);
+}
+
+function showErrorMessage(message, title = 'حدث خطأ! ⚠️', duration = 5000) {
+  return showCustomAlert(message, 'error', title, duration);
+}
+
+function showWarningMessage(message, title = 'تنبيه! ⚠️', duration = 4000) {
+  return showCustomAlert(message, 'warning', title, duration);
+}
+
+function showInfoMessage(message, title = 'معلومة ℹ️', duration = 4000) {
+  return showCustomAlert(message, 'info', title, duration);
+}
+document.addEventListener("DOMContentLoaded", function () {
+  if (!token || !user || user.role !== "tree_creator") {
+    showErrorMessage("لا يمكنك الوصول إلى هذه الصفحة. سيتم توجيهك للصفحة الرئيسية.", "غير مسموح! 🚫");
+    setTimeout(() => {
+      window.location.href = "shagertk.html";
+    }, 2000);
+    return;
+  }
+  
+  // عرض رسالة ترحيب
+  setTimeout(() => {
+    showInfoMessage(`مرحباً ${user.name || 'بك'}! ابدأ بإنشاء شجرة عائلتك الآن.`, "أهلاً وسهلاً! 👋");
+  }, 1000);
+
+  // Sidebar toggle
+  const sidebar = document.getElementById("sidebar");
+  const toggler = document.querySelector(".navbar-toggler");
+  const closeBtn = document.getElementById("close");
+
+  toggler?.addEventListener("click", () => {
+    sidebar.classList.toggle("show");
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    sidebar.classList.remove("show");
+  });
+
+  // تفعيل الـ active class للأصناف في الشريط الجانبي
+  document.querySelectorAll(".sidebar li").forEach((li) => {
+    li.addEventListener("click", () => {
+      document
+        .querySelectorAll(".sidebar li")
+        .forEach((item) => item.classList.remove("active"));
+      li.classList.add("active");
+    });
+  });
+
+  // ** كود تسجيل الخروج خارج اللوب **
+  document
+    .querySelector(".nav-link.text-danger")
+    .addEventListener("click", async function (e) {
+      e.preventDefault();
+
+      if (!token) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      try {
+        const response = await fetch("/api/logout", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("user");
+          window.location.href = "login.html";
+        } else {
+          showErrorMessage("فشل في تسجيل الخروج. يرجى المحاولة مرة أخرى.", "خطأ في تسجيل الخروج! 🚪");
+        }
+      } catch (error) {
+        showErrorMessage("تعذر الاتصال بالخادم. يرجى التحقق من اتصال الإنترنت.", "خطأ في الشبكة! 🌐");
+      }
+    });
+});
+
+document
+  .getElementById("profile_image")
+  .addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    const previewImage = document.getElementById("previewImage");
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        previewImage.src = e.target.result;
+        previewImage.classList.remove("d-none");
+        showSuccessMessage("تم اختيار صورتك الشخصية بنجاح!", "الصورة الشخصية 📸", 2000);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  });
+function goToFatherModal() {
+  console.log("بدء عملية حفظ بيانات المستخدم...");
+  
+  // التحقق من وجود المتغيرات الأساسية
+  if (!token) {
+    showErrorMessage("لم يتم العثور على رمز المصادقة. يرجى تسجيل الدخول مرة أخرى.", "خطأ في المصادقة! 🔐");
+    return;
+  }
+  
+  if (!USER_ID) {
+    showErrorMessage("لم يتم العثور على معرف المستخدم. يرجى إعادة تحميل الصفحة.", "خطأ في المعرف! 👤");
+    return;
+  }
+  
+  const firstModal = bootstrap.Modal.getInstance(
+    document.getElementById("addUserModal")
+  );
+  
+  if (firstModal) {
+    firstModal.hide();
+  } else {
+    console.warn("لم يتم العثور على النموذج المفتوح");
+  }
+
+  const form = document.getElementById("userForm");
+  
+  if (!form) {
+    showErrorMessage("لم يتم العثور على النموذج. يرجى إعادة تحميل الصفحة.", "خطأ في النموذج! 📋");
+    return;
+  }
+  
+  const formData = new FormData(form);
+  formData.append("user_id", USER_ID);
+
+  console.log("USER_ID:", USER_ID);
+  console.log("Form data being sent:");
+  for (let pair of formData.entries()) {
+    console.log(pair[0] + ': ' + pair[1]);
+  }
+
+  const imageInput = document.getElementById("profile_image");
+  if (imageInput && imageInput.files[0]) {
+    formData.append("profile_image", imageInput.files[0]);
+    console.log("صورة شخصية مرفقة:", imageInput.files[0].name);
+  }
+
+  // العثور على زر الاستمرار وتفعيل حالة التحميل
+  const continueBtn = document.querySelector('button[onclick="goToFatherModal()"]');
+  const originalBtnText = continueBtn ? continueBtn.innerHTML : '';
+  
+  if (continueBtn) {
+    continueBtn.disabled = true;
+    continueBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>جاري الحفظ...';
+    continueBtn.classList.add('btn-loading');
+  }
+
+  fetch("/api/tree_creator/user-profiles", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  })
+    .then((res) => {
+      console.log("Response status:", res.status);
+      console.log("Response ok:", res.ok);
+      console.log("Response headers:", res.headers);
+      
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status} - ${res.statusText}`);
+      }
+      
+      // التحقق من نوع المحتوى
+      const contentType = res.headers.get('content-type');
+      console.log("Content-Type:", contentType);
+      
+      if (!contentType || !contentType.includes('application/json')) {
+        console.warn("الاستجابة ليست JSON، محاولة قراءة النص...");
+        return res.text().then(text => {
+          console.log("Response text:", text);
+          try {
+            return JSON.parse(text);
+          } catch (e) {
+            // إذا لم يكن JSON صالح، نعتبر العملية ناجحة إذا كان status 200
+            return { success: true, message: "تم حفظ البيانات بنجاح" };
+          }
+        });
+      }
+      
+      return res.json();
+    })
+    .then((data) => {
+      console.log("تم حفظ بيانات المستخدم:", data);
+      console.log("نوع البيانات المستلمة:", typeof data);
+      console.log("خصائص البيانات:", Object.keys(data));
+      
+      // التحقق من نجاح العملية - تبسيط الشرط
+      const isSuccess = data && (
+        data.success === true || 
+        data.status === 'success' || 
+        data.id || 
+        data.user_id ||
+        (data.message && !data.error)
+      );
+      
+      console.log("هل العملية ناجحة؟", isSuccess);
+      
+      if (isSuccess) {
+        // تحديث زر الاستمرار لحالة النجاح
+        if (continueBtn) {
+          continueBtn.innerHTML = '<i class="fas fa-check me-2"></i>تم الحفظ!';
+          continueBtn.classList.remove('btn-loading');
+          continueBtn.classList.add('btn-success-state');
+        }
+        
+        // عرض رسالة النجاح بدون التوجيه التلقائي
+        const alertElement = showSuccessMessage("تم حفظ بيانات المستخدم بنجاح! يمكنك الآن الضغط على 'ابدأ الآن' للانتقال لإنشاء شجرة العائلة.", "تم الحفظ! 👤", 6000);
+        
+        // تفعيل زر "ابدأ الآن" بعد حفظ البيانات
+        const startNowBtn = document.getElementById('saveTreeBtn');
+        if (startNowBtn) {
+          // إزالة event listener القديم وإضافة الجديد
+          startNowBtn.removeEventListener('click', startNowBtn._originalHandler);
+          
+          // تحديث مظهر الزر
+          startNowBtn.disabled = false;
+          startNowBtn.classList.remove('btn-secondary');
+          startNowBtn.classList.add('btn-success');
+          startNowBtn.innerHTML = '<i class="fas fa-rocket me-2"></i>ابدأ الآن - انتقل للشجرة';
+          
+          // إضافة تأثير بصري للفت الانتباه
+          startNowBtn.style.animation = 'pulse 2s infinite';
+          startNowBtn.style.boxShadow = '0 0 20px rgba(40, 167, 69, 0.5)';
+          
+          // إضافة event listener جديد للتوجيه
+          const newHandler = (e) => {
+            e.preventDefault();
+            redirectToShagertk();
+          };
+          startNowBtn.addEventListener('click', newHandler);
+          startNowBtn._newHandler = newHandler;
+        }
+      } else {
+        // إعادة تعيين زر الاستمرار في حالة فشل العملية
+        if (continueBtn) {
+          continueBtn.disabled = false;
+          continueBtn.innerHTML = originalBtnText;
+          continueBtn.classList.remove('btn-loading', 'btn-success-state');
+        }
+        throw new Error(data.message || "فشل في حفظ البيانات");
+      }
+    })
+    .catch((err) => {
+      console.error("خطأ في حفظ البيانات:", err);
+      showErrorMessage(`فشل في حفظ بيانات المستخدم: ${err.message}. يرجى المحاولة مرة أخرى.`, "خطأ في الحفظ! 💾");
+      
+      // إعادة تعيين زر الاستمرار في حالة الخطأ
+      if (continueBtn) {
+        continueBtn.disabled = false;
+        continueBtn.innerHTML = originalBtnText;
+        continueBtn.classList.remove('btn-loading', 'btn-success-state');
+      }
+    });
+}
+
+// دالة التوجيه لصفحة shagertk.html عند الضغط على "ابدأ الآن"
+function redirectToShagertk() {
+  console.log("🚀 الضغط على زر 'ابدأ الآن' - بدء التوجيه");
+  
+  // العثور على الزر وتحديث حالته
+  const startBtn = document.getElementById('saveTreeBtn');
+  if (startBtn) {
+    startBtn.disabled = true;
+    startBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>جاري التوجيه...';
+    startBtn.classList.remove('btn-success');
+    startBtn.classList.add('btn-info');
+    startBtn.style.animation = 'none';
+    startBtn.style.boxShadow = 'none';
+  }
+  
+  // عرض رسالة التوجيه
+  showInfoMessage("جاري توجيهك لإنشاء شجرة العائلة...", "التوجيه 🚀", 2000);
+  
+  // التوجيه مع عدة محاولات
+  setTimeout(() => {
+    try {
+      console.log("🔄 محاولة التوجيه إلى shagertk.html");
+      
+      // المحاولة الأولى: window.location.href
+      window.location.href = "shagertk.html";
+      
+      // المحاولة الثانية: window.location.replace (بعد 300ms)
+      setTimeout(() => {
+        if (window.location.pathname.includes('start.html')) {
+          console.log("🔄 المحاولة الثانية: استخدام window.location.replace");
+          window.location.replace("shagertk.html");
+        }
+      }, 300);
+      
+      // المحاولة الثالثة: window.location.assign (بعد 600ms)
+      setTimeout(() => {
+        if (window.location.pathname.includes('start.html')) {
+          console.log("🔄 المحاولة الثالثة: استخدام window.location.assign");
+          window.location.assign("shagertk.html");
+        }
+      }, 600);
+      
+    } catch (error) {
+      console.error("❌ خطأ في التوجيه:", error);
+      
+      // المحاولة الأخيرة: window.open
+      try {
+        window.open("shagertk.html", "_self");
+      } catch (finalError) {
+        console.error("❌ فشل في جميع محاولات التوجيه:", finalError);
+        
+        // إعادة تفعيل الزر وإظهار رسالة خطأ
+        if (startBtn) {
+          startBtn.disabled = false;
+          startBtn.innerHTML = '<i class="fas fa-rocket me-2"></i>ابدأ الآن';
+          startBtn.classList.remove('btn-info');
+          startBtn.classList.add('btn-success');
+        }
+        
+        // إظهار رسالة للمستخدم مع رابط يدوي
+        showErrorMessage(
+          'تعذر التوجيه التلقائي. يرجى <a href="shagertk.html" style="color: #fff; text-decoration: underline; font-weight: bold;">الضغط هنا للانتقال يدوياً</a>',
+          "مشكلة في التوجيه! 🔄",
+          8000
+        );
+      }
+    }
+  }, 1000);
+}
+
+const urlParams = new URLSearchParams(window.location.search);
+const treeId = urlParams.get("template_id");
+
+async function loadTree() {
+  try {
+    const response = await fetch(
+      `/api/family-trees/${treeId}`,
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+
+    if (response.ok) {
+      const templateId = data.template_id;
+      renderTree(templateId, data.members); // نمرر التمبليت + بيانات الأعضاء
+    } else {
+      showErrorMessage("فشل في تحميل بيانات الشجرة. يرجى المحاولة مرة أخرى.", "خطأ في التحميل! 📊");
+    }
+  } catch (error) {
+    console.error("خطأ في جلب بيانات الشجرة:", error);
+  }
+}
+
+// form
+
+let selectedTemplateId = null;
+
+document.querySelectorAll(".choose-template").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    selectedTemplateId = this.dataset.templateId;
+
+    // إزالة التحديد من جميع الأزرار
+    document.querySelectorAll(".choose-template").forEach((b) => {
+      b.classList.remove("selected");
+      b.innerHTML = "اختر"; // النص الأصلي
+    });
+
+    // تمييز الزر المختار
+    this.classList.add("selected");
+    this.innerHTML =
+      '<i class="fas fa-check" style="color: rgba(162, 124, 42, 1);"></i> تم اختيار القالب';
+    
+    // عرض رسالة تأكيد
+    showSuccessMessage(`تم اختيار القالب رقم ${selectedTemplateId} بنجاح!`, "تم الاختيار! ✨");
+  });
+});
+
+// حفظ المرجع للـ event listener الأصلي
+const originalSaveTreeHandler = async function () {
+    const saveBtn = this;
+    const originalText = saveBtn.innerHTML;
+    
+    const treeName = document.getElementById("treeName").value;
+    const logoImage = document.getElementById("logoInput").files[0];
+    const coverImage = document.getElementById("coverInput").files[0];
+    
+    // التحقق من إدخال اسم الشجرة
+    if (!treeName || treeName.trim() === "") {
+      showWarningMessage("يرجى إدخال اسم شجرة العائلة قبل الحفظ.", "اسم الشجرة مطلوب! 📝");
+      document.getElementById("treeName").focus();
+      return;
+    }
+    
+    // التحقق من اختيار القالب
+    if (!selectedTemplateId) {
+      showWarningMessage("يرجى اختيار قالب لشجرة العائلة قبل الحفظ.", "اختيار القالب مطلوب! 🎨");
+      return;
+    }
+
+    // تفعيل حالة التحميل
+    saveBtn.disabled = true;
+    saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>جاري الإنشاء...';
+    saveBtn.classList.add('btn-loading');
+
+    // نجهز الفورم داتا
+    const formData = new FormData();
+    formData.append("tree_name", treeName);
+    if (selectedTemplateId) {
+      formData.append("template_id", selectedTemplateId);
+    }
+    if (logoImage) {
+      formData.append("logo_image", logoImage);
+    }
+    if (coverImage) {
+      formData.append("cover_image", coverImage);
+    }
+
+    try {
+      const response = await fetch(
+        "/api/tree_creator/family-trees",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        showSuccessMessage("تم إنشاء شجرة العائلة بنجاح! سيتم توجيهك لإدارة الشجرة الآن.", "تم الإنشاء! 🌳");
+        
+        // تحديث الزر لحالة النجاح
+        saveBtn.innerHTML = '<i class="fas fa-check me-2"></i>تم الإنشاء!';
+        saveBtn.classList.remove('btn-loading');
+        saveBtn.classList.add('btn-success-state');
+        
+        // إعادة توجيه المستخدم إلى صفحة الشجرة الجديدة
+        setTimeout(() => {
+          window.location.href = `shagertk.html?tree_id=${data.tree_id}`;
+        }, 2000);
+        console.log(data);
+      } else {
+        showErrorMessage(
+          "حدث خطأ أثناء إنشاء الشجرة: " + (data.message || "يرجى التحقق من البيانات المدخلة"),
+          "خطأ في الإنشاء! 🌳"
+        );
+        console.error(data);
+        
+        // إعادة تعيين الزر في حالة الخطأ
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = originalText;
+        saveBtn.classList.remove('btn-loading', 'btn-success-state');
+      }
+    } catch (error) {
+      showErrorMessage("تعذر الاتصال بالخادم. يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.", "خطأ في الشبكة! 🌐");
+      console.error(error);
+      
+      // إعادة تعيين الزر في حالة الخطأ
+      saveBtn.disabled = false;
+      saveBtn.innerHTML = originalText;
+      saveBtn.classList.remove('btn-loading', 'btn-success-state');
+    }
+};
+
+// إضافة event listener للزر عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", function() {
+  const saveTreeBtn = document.getElementById("saveTreeBtn");
+  if (saveTreeBtn) {
+    saveTreeBtn.addEventListener("click", originalSaveTreeHandler);
+    saveTreeBtn._originalHandler = originalSaveTreeHandler;
+  }
+});
+
+// زرار يفتح اختيار ملف الغلاف
+document.getElementById("coverBtn").addEventListener("click", function () {
+  document.getElementById("coverInput").click();
+});
+
+// Preview لصورة الغلاف
+document.getElementById("coverInput").addEventListener("change", function (e) {
+  if (e.target.files && e.target.files[0]) {
+    document.getElementById("coverPreview").src = URL.createObjectURL(
+      e.target.files[0]
+    );
+    showSuccessMessage("تم اختيار صورة الغلاف بنجاح!", "صورة الغلاف 🖼️", 2000);
+  }
+});
+
+// زرار يفتح اختيار ملف الشعار
+document.getElementById("logoBtn").addEventListener("click", function () {
+  document.getElementById("logoInput").click();
+});
+
+// Preview لشعار العائلة
+document.getElementById("logoInput").addEventListener("change", function (e) {
+  if (e.target.files && e.target.files[0]) {
+    document.getElementById("logoPreview").src = URL.createObjectURL(
+      e.target.files[0]
+    );
+    showSuccessMessage("تم اختيار شعار العائلة بنجاح!", "شعار العائلة 🏠", 2000);
+  }
+});

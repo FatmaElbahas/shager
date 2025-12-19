@@ -1,0 +1,2284 @@
+@font-face {
+    font-family: "AdorHairlineExtraBold";
+    src: url("../fonnts.com-212185/fonts/fonnts.com-Ador_Hairline_ExtraBold.otf") format("opentype");
+}
+
+body {
+    overflow: auto;
+    background-color: rgba(248, 247, 247, 1);
+}
+
+/* navbar */
+
+.navbar-nav {
+    /* background-color: rgba(248, 247, 247, 1); */
+    padding: 20px 20px;
+}
+
+.offcanvas {
+    width: 350px;
+    border-radius: 10px 0 0 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: rgba(156, 156, 156, 1);
+    font-size: 18px;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.nav-link.active {
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    color: rgba(211, 171, 85, 1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(211, 171, 85, 1) !important;
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: rgb(216, 162, 47);
+    color: rgba(248, 247, 247, 1);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+}
+
+.btn-outline-custom {
+    background-color: rgba(248, 247, 247, 1);
+    color: rgba(211, 171, 85, 1);
+    border: rgba(211, 171, 85, 1) 1px solid;
+    padding: 15px 22px;
+    border-radius: 50px;
+}
+
+.btn-custom:hover {
+    background-color: rgb(207, 145, 10);
+    color: rgba(248, 247, 247, 1);
+}
+
+.btn-outline-custom:hover {
+    background-color: rgba(211, 171, 85, 1);
+    color: rgba(248, 247, 247, 1);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    /* color: #333; */
+}
+
+.user-bar {
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+}
+
+.user-bar img.profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.user-bar .icon {
+    font-size: 18px;
+    color: #555;
+    cursor: pointer;
+}
+
+.search-box {
+    background-color: #eee;
+    border-radius: 25px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+.search-box i {
+    color: #999;
+}
+
+@media (max-width: 576px) {
+    .user-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 990px) {
+    .navbar-nav .nav-link {
+        display: inline-block;
+        width: auto;
+    }
+
+    .nav-link.active {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+    }
+}
+
+
+/* content */
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #6c757d;
+}
+
+.breadcrumb li {
+    margin-left: .5rem;
+}
+
+.breadcrumb .active {
+    color: #212529;
+}
+
+.btn-outline-custom:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.custom-bottom {
+    top: 80%;
+}
+
+/* Occacions */
+
+.occacions {
+    margin-top: 10rem;
+}
+
+.occacions h2 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 48px;
+    font-weight: bolder !important;
+}
+
+.occacions p {
+    font-size: 18px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+    margin-top: 1.5rem;
+}
+
+.photo-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+
+.photo-title {
+    font-size: 25px !important;
+    font-weight: 400;
+    color: rgba(39, 58, 65, 1) !important;
+}
+
+.photo-date {
+    font-size: 16px;
+    color: rgba(123, 123, 123, 1) !important;
+}
+
+.body {
+    padding: 30px;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px);
+    transition: transform .5s ease;
+    cursor: pointer;
+}
+
+.blog-title {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 32px;
+    font-weight: bolder !important;
+}
+
+.blog-des {
+    margin: 1.5rem;
+    font-size: 18px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+
+button.btn-outline-warning {
+    font-size: 0.85rem;
+    padding: 4px 14px;
+}
+
+.followBtn {
+    background-color: rgba(211, 171, 85, 0.2);
+    color: rgba(162, 124, 42, 1);
+}
+
+.modal-body input::placeholder {
+    color: rgba(123, 123, 123, 0.5);
+    font-size: 16px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.modal-body input[type="text"],
+input[type="date"],
+input[type="tel"],
+select {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.modal-body label {
+    margin-bottom: 1rem;
+}
+
+
+.form-check-input:checked {
+    background-color: rgb(211, 160, 51);
+    border-color: rgb(211, 160, 51);
+}
+
+
+/* footer */
+
+.hero {
+    position: relative;
+    background: url('images/1e62528a145e980386e7758f8a281587e5714810.jpg') center bottom/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* طبقة غامقة */
+}
+
+.hero h1,
+.hero p,
+.hero a {
+    position: relative;
+    z-index: 1;
+}
+
+
+.hero h1 {
+    font-size: 3rem;
+    color: rgba(248, 247, 247, 1);
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-weight: bolder !important;
+    margin-bottom: 2rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-weight: bolder !important;
+    margin-bottom: 2rem;
+    color: rgba(248, 247, 247, 1);
+}
+
+footer {
+    padding: 70px 20px 20px;
+    direction: ltr;
+    text-align: end;
+}
+
+.footer-column h6 {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: rgba(39, 58, 65, 1);
+    font-size: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: rgba(156, 156, 156, 1);
+    font-size: 16px;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons img {
+    margin-left: 10px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Modern Family Header */
+.family-header-modern {
+    margin-bottom: 3rem;
+}
+
+.header-top {
+    margin-bottom: 2rem;
+}
+
+.family-badge {
+    background: rgba(211, 171, 85, 1);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.family-title-main {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-size: 2.5rem;
+    color: rgba(39, 58, 65, 1);
+    font-weight: bold;
+    margin: 0;
+}
+
+.breadcrumb-simple {
+    font-size: 0.9rem;
+    color: rgba(123, 123, 123, 1);
+}
+
+.breadcrumb-item {
+    color: rgba(123, 123, 123, 1);
+}
+
+.breadcrumb-item.active {
+    color: rgba(39, 58, 65, 1);
+    font-weight: 500;
+}
+
+.breadcrumb-separator {
+    margin: 0 0.5rem;
+    color: rgba(211, 171, 85, 1);
+}
+
+/* Cover Section */
+.cover-section {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.cover-image-wrapper {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.cover-image-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Family Info Overlay */
+.family-info-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+}
+
+.family-logo-section {
+    position: relative;
+}
+
+.btn-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+}
+
+.btn-outline-custom {
+    background: white;
+    color: rgba(211, 171, 85, 1);
+    border: 2px solid rgba(211, 171, 85, 1);
+    font-weight: 700;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-custom:hover {
+    background: rgba(211, 171, 85, 1);
+    color: white;
+    border-color: rgba(211, 171, 85, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline-custom img {
+    width: 20px;
+    height: 20px;
+}
+
+.family-logo-main {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.family-name-section {
+    color: white;
+}
+
+.family-name-overlay {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Action Buttons Overlay */
+.family-actions-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 1rem;
+    z-index: 2;
+}
+
+.btn-action-primary {
+    background: rgba(211, 171, 85, 1);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.btn-action-primary:hover {
+    background: rgba(211, 171, 85, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 171, 85, 0.3);
+    color: white;
+}
+
+.btn-action-secondary {
+    background: rgba(255, 255, 255, 0.9);
+    color: rgba(39, 58, 65, 1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.btn-action-secondary:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: rgba(39, 58, 65, 1);
+}
+
+.btn-action-primary i,
+.btn-action-secondary i {
+    margin-right: 0.5rem;
+}
+
+/* Family Tree Container */
+.family-tree-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tree-image-display {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 10px;
+}
+
+/* Responsive Design for Header */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .family-title-main {
+        font-size: 2rem;
+    }
+
+    .family-info-overlay {
+        flex-direction: column;
+        text-align: center;
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .family-actions-overlay {
+        flex-direction: column;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+
+    .cover-image-wrapper {
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .family-title-main {
+        font-size: 1.8rem;
+    }
+
+    .family-badge {
+        font-size: 0.8rem;
+        padding: 0.5rem 1.2rem;
+    }
+
+    .btn-action-primary,
+    .btn-action-secondary {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .family-logo-main {
+        width: 60px;
+        height: 60px;
+    }
+
+    .family-name-overlay {
+        font-size: 1.4rem;
+    }
+
+    .cover-image-wrapper {
+        height: 250px;
+    }
+}
+
+/* Enhanced Sections Styles */
+.occasions-section-enhanced,
+.news-section-enhanced {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 247, 247, 0.9) 100%);
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.occasions-section-enhanced::before,
+.news-section-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23d3ab55" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+}
+
+/* Modern Section Headers */
+.section-header-modern {
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, rgba(211, 171, 85, 0.15) 0%, rgba(211, 171, 85, 0.25) 100%);
+    color: rgba(211, 171, 85, 1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(211, 171, 85, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.section-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(211, 171, 85, 0.2);
+}
+
+.section-badge i {
+    font-size: 1.1rem;
+}
+
+.section-title-modern {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-size: 2.8rem;
+    color: rgba(39, 58, 65, 1);
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, rgba(39, 58, 65, 1) 0%, rgba(211, 171, 85, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.section-description-modern {
+    font-size: 1.2rem;
+    color: rgba(88, 88, 88, 1);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    font-weight: 400;
+}
+
+.section-line {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(135deg, rgba(211, 171, 85, 1) 0%, rgba(211, 171, 85, 0.5) 100%);
+    border-radius: 2px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.section-line::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: rgba(211, 171, 85, 1);
+    border-radius: 50%;
+}
+
+/* Enhanced Grids */
+.occasions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    position: relative;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    position: relative;
+}
+
+/* Loading States */
+.loading-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(211, 171, 85, 0.2);
+}
+
+.loading-state .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.3em;
+    color: rgba(211, 171, 85, 1) !important;
+}
+
+/* Enhanced Photo Cards */
+.photo-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    position: relative;
+    transform: translateY(0);
+    max-width: 100%;
+}
+
+.photo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, rgba(211, 171, 85, 1) 0%, rgba(211, 171, 85, 0.6) 100%);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    z-index: 2;
+}
+
+.photo-card:hover::before {
+    transform: scaleX(1);
+}
+
+.photo-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-color: rgba(211, 171, 85, 0.4);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.08);
+}
+
+.photo-card .body {
+    padding: 1.2rem;
+    position: relative;
+}
+
+.photo-title {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 600;
+    color: rgba(39, 58, 65, 1) !important;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.photo-card:hover .photo-title {
+    color: rgba(211, 171, 85, 1) !important;
+}
+
+.photo-date {
+    font-size: 0.85rem;
+    color: rgba(123, 123, 123, 1) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+}
+
+.photo-date img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.photo-card:hover .photo-date img {
+    opacity: 1;
+}
+
+/* Enhanced News Cards */
+.news-card-modern {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.news-card-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, rgba(211, 171, 85, 1) 0%, rgba(211, 171, 85, 0.6) 100%);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    z-index: 2;
+}
+
+.news-card-modern:hover::before {
+    transform: scaleX(1);
+}
+
+.news-card-modern:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(211, 171, 85, 0.4);
+}
+
+.news-image-modern {
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+}
+
+.news-image-modern img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.news-card-modern:hover .news-image-modern img {
+    transform: scale(1.08);
+}
+
+.news-content-modern {
+    padding: 1.3rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-meta-modern {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: rgba(123, 123, 123, 1);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.news-meta-modern i {
+    color: rgba(211, 171, 85, 1);
+    font-size: 1rem;
+}
+
+.news-title-modern {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(39, 58, 65, 1);
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-card-modern:hover .news-title-modern {
+    color: rgba(211, 171, 85, 1);
+}
+
+.news-excerpt-modern {
+    color: rgba(88, 88, 88, 1);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-card-modern .btn {
+    align-self: flex-start;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    border: 2px solid rgba(211, 171, 85, 1);
+    color: rgba(211, 171, 85, 1);
+    background: transparent;
+    font-size: 0.9rem;
+}
+
+.news-card-modern .btn:hover {
+    background: rgba(211, 171, 85, 1);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(211, 171, 85, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .occasions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .occasions-section-enhanced,
+    .news-section-enhanced {
+        padding: 3rem 0;
+        margin: 2rem 0;
+    }
+
+    .section-title-modern {
+        font-size: 2.2rem;
+    }
+
+    .section-description-modern {
+        font-size: 1.1rem;
+    }
+
+    .occasions-grid,
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .photo-card .body {
+        padding: 1rem;
+    }
+
+    .news-content-modern {
+        padding: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title-modern {
+        font-size: 1.8rem;
+    }
+
+    .section-badge {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .photo-card .body {
+        padding: 0.8rem;
+    }
+
+    .news-content-modern {
+        padding: 0.9rem;
+    }
+
+    .photo-title {
+        font-size: 1rem !important;
+    }
+
+    .news-title-modern {
+        font-size: 1.1rem !important;
+    }
+
+    .photo-card img {
+        height: 140px;
+    }
+
+    .news-image-modern {
+        height: 130px;
+    }
+
+    .occasions-grid {
+        gap: 0.8rem;
+    }
+}
+
+/* Join Request Modal Styles */
+#joinRequestModal .modal-content {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+#joinRequestModal .modal-header {
+    border-radius: 20px 20px 0 0;
+    padding: 1.5rem 2rem 1rem 2rem;
+    background-color: none !important;
+}
+
+#joinRequestModal .modal-title {
+    color: rgba(39, 58, 65, 1);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#joinRequestModal .form-label {
+    color: rgba(39, 58, 65, 1);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+#joinRequestModal .form-control {
+    border: 2px solid rgba(223, 223, 223, 0.8);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: rgba(248, 247, 247, 0.3);
+}
+
+#joinRequestModal .form-control:focus {
+    border-color: rgba(211, 171, 85, 1);
+    box-shadow: 0 0 0 0.2rem rgba(211, 171, 85, 0.25);
+    background: white;
+}
+
+#joinRequestModal .form-control::placeholder {
+    color: rgba(123, 123, 123, 0.7);
+    font-size: 0.9rem;
+}
+
+#joinRequestModal .form-check-input:checked {
+    background-color: rgba(211, 171, 85, 1);
+    border-color: rgba(211, 171, 85, 1);
+}
+
+#joinRequestModal .form-check-label {
+    color: rgba(39, 58, 65, 1);
+    font-weight: 500;
+}
+
+#joinRequestModal textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#joinRequestModal .btn-custom {
+    background: linear-gradient(135deg, rgba(211, 171, 85, 1) 0%, rgba(183, 146, 79, 1) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+#joinRequestModal .btn-custom:hover {
+    background: linear-gradient(135deg, rgba(183, 146, 79, 1) 0%, rgba(211, 171, 85, 1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(211, 171, 85, 0.4);
+    color: white;
+}
+
+#joinRequestModal .btn-custom:disabled {
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+#joinRequestModal .btn-outline-secondary {
+    border: 2px solid rgba(123, 123, 123, 0.3);
+    color: rgba(123, 123, 123, 1);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.3s ease;
+}
+
+#joinRequestModal .btn-outline-secondary:hover {
+    background-color: rgba(123, 123, 123, 0.1);
+    border-color: rgba(123, 123, 123, 0.5);
+    color: rgba(123, 123, 123, 1);
+}
+
+/* Modal Animation */
+#joinRequestModal.fade .modal-dialog {
+    transform: translate(0, -50px);
+    transition: transform 0.3s ease-out;
+}
+
+#joinRequestModal.show .modal-dialog {
+    transform: translate(0, 0);
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    #joinRequestModal .modal-dialog {
+        margin: 1rem;
+    }
+
+    #joinRequestModal .modal-header {
+        padding: 1rem 1.5rem 0.5rem 1.5rem;
+    }
+
+    #joinRequestModal .modal-body {
+        padding: 1rem 1.5rem;
+    }
+
+    #joinRequestModal .modal-title {
+        font-size: 1.3rem;
+    }
+
+    #joinRequestModal .btn-custom,
+    #joinRequestModal .btn-outline-secondary {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Message Creator Modal Styles */
+#messageCreatorModal .modal-content {
+    border-radius: 32px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+#messageCreatorModal .modal-header {
+    border-radius: 32px 32px 0 0;
+    padding: 1.5rem 2rem 1rem 2rem;
+    background-color: transparent;
+}
+
+#messageCreatorModal .modal-title {
+    color: black;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: right;
+}
+
+#messageCreatorModal .form-label {
+    color: rgba(39, 58, 65, 1);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+#messageCreatorModal .form-control,
+#messageCreatorModal .form-select {
+    border: 2px solid rgba(223, 223, 223, 0.8);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: rgba(248, 247, 247, 0.3);
+}
+
+#messageCreatorModal .form-control:focus,
+#messageCreatorModal .form-select:focus {
+    border-color: rgba(211, 171, 85, 1);
+    box-shadow: 0 0 0 0.2rem rgba(211, 171, 85, 0.25);
+    background: white;
+}
+
+#messageCreatorModal .form-control::placeholder {
+    color: rgba(123, 123, 123, 0.7);
+    font-size: 0.9rem;
+}
+
+#messageCreatorModal textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#messageCreatorModal .btn-custom {
+    background: linear-gradient(135deg, rgba(211, 171, 85, 1) 0%, rgba(183, 146, 79, 1) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+#messageCreatorModal .btn-custom:hover {
+    background: linear-gradient(135deg, rgba(183, 146, 79, 1) 0%, rgba(211, 171, 85, 1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(211, 171, 85, 0.4);
+    color: white;
+}
+
+#messageCreatorModal .btn-custom:disabled {
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+#messageCreatorModal .btn-outline-secondary {
+    border: 2px solid rgba(123, 123, 123, 0.3);
+    color: rgba(123, 123, 123, 1);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.3s ease;
+}
+
+#messageCreatorModal .btn-outline-secondary:hover {
+    background-color: rgba(123, 123, 123, 0.1);
+    border-color: rgba(123, 123, 123, 0.5);
+    color: rgba(123, 123, 123, 1);
+}
+
+/* Modal Animation for Message Creator */
+#messageCreatorModal.fade .modal-dialog {
+    transform: translate(0, -50px);
+    transition: transform 0.3s ease-out;
+}
+
+#messageCreatorModal.show .modal-dialog {
+    transform: translate(0, 0);
+}
+
+/* Responsive Message Creator Modal */
+@media (max-width: 768px) {
+    #messageCreatorModal .modal-dialog {
+        margin: 1rem;
+    }
+
+    #messageCreatorModal .modal-header {
+        padding: 1rem 1.5rem 0.5rem 1.5rem;
+    }
+
+    #messageCreatorModal .modal-body {
+        padding: 1rem 1.5rem;
+    }
+
+    #messageCreatorModal .modal-title {
+        font-size: 24px;
+    }
+
+    #messageCreatorModal .btn-custom,
+    #messageCreatorModal .btn-outline-secondary {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-overlay {
+        bottom: 15px;
+        left: 15px;
+    }
+
+    .btn-outline-custom {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+
+#tree {
+    width: 100%;
+    height: 100%;
+    border: none !important;
+}
+
+/* ======================= زر طلب الانضمام في حالة الانتظار ======================= */
+.btn-pending {
+    background-color: rgba(211, 171, 85, 1) !important;
+    border-color: rgba(211, 171, 85, 1) !important;
+    color: white !important;
+    opacity: 0.8;
+    cursor: not-allowed !important;
+    transition: all 0.3s ease;
+}
+
+.btn-pending:hover {
+    background-color: rgb(212, 155, 30) !important;
+    border-color: rgb(212, 155, 30) !important;
+    color: white !important;
+    opacity: 0.8;
+    transform: none !important;
+}
+
+.btn-pending .bi-clock-history {
+    animation: clockTick .5s infinite;
+    color: white;
+}
+
+@keyframes clockTick {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* تحسين tooltip للزر في حالة الانتظار */
+.tooltip-inner {
+    background-color: rgba(52, 58, 64, 0.95);
+    color: white;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* حاوية الشجرة مع التوسيط والمساحة المقللة */
+.background {
+    width: 100%;
+    height: 900px;
+    position: relative;
+    margin: 4rem auto;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    display: block;
+    /* ضمان التوسيط المثالي */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.background .slope {
+    position: absolute;
+    bottom: 0;
+}
+
+.slope {
+    background: rgba(148, 105, 74, 1);
+    width: 100%;
+    height: 150px;
+    border-radius: 50% 50% 0px 0px / 100% 100% 0px 0px;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.slope:before {
+    content: "";
+    background: rgba(148, 105, 74, 1);
+    border-radius: 50%;
+    width: 160px;
+    height: 60px;
+    position: absolute;
+    left: 50%;
+    margin-left: -80px;
+    top: -10px;
+}
+
+.tree {
+    width: 5px;
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+    border-bottom: 600px solid rgba(148, 105, 74, 1);
+    position: absolute;
+    left: 50%;
+    transform-origin: 50% 600px;
+    bottom: 150px;
+    margin-left: -20px;
+}
+
+.branch {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    border-bottom: 10px solid rgba(148, 105, 74, 1);
+}
+
+.branch:before,
+.branch:after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border: inherit;
+    border-radius: inherit;
+    z-index: 0;
+}
+
+.branch:before {
+    transform: rotate(1deg);
+}
+
+.branch:after {
+    transform: rotate(2deg);
+}
+
+.branch.left,
+.branch.left:before,
+.branch.left:after {
+    transform-origin: 100% 100%;
+}
+
+.branch.right,
+.branch.right:before,
+.branch.right:after {
+    transform-origin: 0% 100%;
+}
+
+.branch.left {
+    border-bottom-left-radius: 100% 100%;
+}
+
+.branch.right {
+    border-bottom-right-radius: 100% 100%;
+    margin-left: 1px;
+}
+
+.tree>.branch.left {
+    transform: rotate(5deg);
+}
+
+.tree>.branch.right {
+    transform: rotate(-5deg);
+}
+
+.leaf {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(46, 125, 50, 1);
+    border-radius: 20% 80%;
+    z-index: 1;
+    transform-origin: 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    padding: .5rem;
+    text-align: center;
+    line-height: 1.1;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.leaf .name-text {
+    display: block;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.2;
+    text-align: center;
+    font-size: inherit;
+    white-space: normal;
+    max-width: 100%;
+}
+
+/* تصحيح اتجاه النص ليكون أفقي بالنسبة للصفحة */
+.branch.left .leaf1 .name-text {
+    transform: rotate(145deg);
+}
+
+.branch.left .leaf2 .name-text {
+    transform: rotate(70deg);
+}
+
+.branch.left .leaf3 .name-text {
+    transform: rotate(145deg);
+}
+
+.branch.right .leaf1 .name-text {
+    transform: rotate(-30deg);
+}
+
+.branch.right .leaf2 .name-text {
+    transform: rotate(30deg);
+}
+
+.branch.right .leaf3 .name-text {
+    transform: rotate(-50deg);
+}
+
+.branch.left .branch-inner1 .leaf1 .name-text {
+    transform: rotate(145deg);
+}
+
+.branch.left .branch-inner1 .leaf2 .name-text {
+    transform: rotate(70deg);
+}
+
+.branch.left .branch-inner1 .leaf3 .name-text {
+    transform: rotate(145deg);
+}
+
+.branch.left .branch-inner2 .leaf1 .name-text {
+    transform: rotate(10deg);
+}
+
+.branch.left .branch-inner2 .leaf2 .name-text {
+    transform: rotate(160deg);
+}
+
+.branch.left .branch-inner2 .leaf3 .name-text {
+    transform: rotate(10deg);
+}
+
+.branch.left .branch-inner3 .leaf1 .name-text {
+    transform: rotate(145deg);
+}
+
+.branch.left .branch-inner3 .leaf2 .name-text {
+    transform: rotate(40deg);
+}
+
+.branch.right .branch-inner1 .leaf1 .name-text {
+    transform: rotate(-30deg);
+}
+
+.branch.right .branch-inner1 .leaf2 .name-text {
+    transform: rotate(-40deg);
+}
+
+.branch.right .branch-inner1 .leaf3 .name-text {
+    transform: rotate(-30deg);
+}
+
+.branch.right .branch-inner2 .leaf1 .name-text {
+    transform: rotate(20deg);
+}
+
+.branch.right .branch-inner2 .leaf2 .name-text {
+    transform: rotate(60deg);
+}
+
+.branch.right .branch-inner2 .leaf3 .name-text {
+    transform: rotate(40deg);
+}
+
+.branch.right .branch-inner3 .leaf1 .name-text {
+    transform: rotate(0deg);
+}
+
+.branch.right .branch-inner3 .leaf2 .name-text {
+    transform: rotate(120deg);
+}
+
+.branch.right .branch-inner3 .leaf3 .name-text {
+    transform: rotate(50deg);
+}
+
+.branch.right .branch-inner4 .leaf1 .name-text {
+    transform: rotate(-30deg);
+}
+
+.branch3>.leaf1 .name-text {
+    transform: rotate(-20deg);
+}
+
+.branch3>.leaf2 .name-text {
+    transform: rotate(-40deg);
+}
+
+.tree>.leaf1 .name-text {
+    transform: rotate(145deg);
+}
+
+.tree>.leaf2 .name-text {
+    transform: rotate(100deg);
+}
+
+/* اسم الأب على الفرع */
+.parent-name {
+    position: absolute;
+    background: linear-gradient(to top, rgba(230, 81, 0, 1), rgba(255, 235, 59, 1));
+    border: 2px solid none;
+    border-radius: 50%;
+    min-width: 45px;
+    min-height: 45px;
+    width: auto;
+    height: auto;
+    max-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    line-height: 1.2;
+    padding: 8px 10px;
+    z-index: 3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.branch.left>.parent-name {
+    right: -10px;
+    bottom: -10px;
+}
+
+.branch.right>.parent-name {
+    left: -10px;
+    bottom: -10px;
+}
+
+.branch .branch:after {
+    content: none;
+}
+
+.tree>.leaf1 {
+    width: 35px;
+    height: 35px;
+    transform: rotate(-150deg);
+    font-size: 9px;
+}
+
+.tree>.leaf2 {
+    width: 35px;
+    height: 35px;
+    transform: rotate(-100deg);
+    font-size: 9px;
+}
+
+.branch1 {
+    top: 360px;
+    right: 0;
+}
+
+.branch1 .branch-inner1 {
+    width: 120px;
+    height: 70px;
+    transform: rotate(35deg);
+    border-bottom-left-radius: 100% 70%;
+    left: 100px;
+    top: 0px;
+    border-width: 8px;
+}
+
+.branch1 .branch-inner2 {
+    width: 100px;
+    height: 45px;
+    transform: rotate(-40deg);
+    border-bottom-left-radius: 100% 70%;
+    left: 52px;
+    top: 25px;
+    border-width: 7px;
+}
+
+.branch1 .branch-inner3 {
+    width: 45px;
+    height: 22px;
+    transform: rotate(40deg);
+    border-bottom-left-radius: 100% 70%;
+    left: 32px;
+    top: 28px;
+    border-width: 5px;
+}
+
+.branch1 .branch-inner1 .leaf1 {
+    transform: rotate(-150deg);
+    top: 68px;
+    left: 90px;
+}
+
+.branch1 .branch-inner1 .leaf2 {
+    width: 45px;
+    height: 45px;
+    transform: rotate(110deg);
+    top: 68px;
+    left: 48px;
+    font-size: 10px;
+}
+
+.branch1 .branch-inner1 .leaf3 {
+    width: 45px;
+    height: 45px;
+    transform: rotate(-150deg);
+    top: 54px;
+    left: 18px;
+    font-size: 10px;
+}
+
+.branch1 .branch-inner2 .leaf1 {
+    transform: rotate(80deg);
+    left: 82px;
+    top: 46px;
+}
+
+.branch1 .branch-inner2 .leaf2 {
+    width: 48px;
+    height: 48px;
+    transform: rotate(-160deg);
+    left: 54px;
+    top: 38px;
+    font-size: 10px;
+}
+
+.branch1 .branch-inner2 .leaf3 {
+    width: 45px;
+    height: 45px;
+    transform: rotate(100deg);
+    left: 18px;
+    top: 34px;
+    font-size: 10px;
+}
+
+.branch1 .branch-inner3 .leaf1 {
+    width: 38px;
+    height: 38px;
+    transform: rotate(-150deg);
+    left: 37px;
+    top: 20px;
+    font-size: 9px;
+}
+
+.branch1 .branch-inner3 .leaf2 {
+    width: 38px;
+    height: 38px;
+    transform: rotate(130deg);
+    left: 17px;
+    top: 22px;
+    font-size: 9px;
+}
+
+.branch2 {
+    height: 110px;
+    top: 240px;
+    left: 0;
+}
+
+.branch2 .branch-inner1 {
+    width: 120px;
+    height: 130px;
+    transform: rotate(90deg);
+    border-bottom-left-radius: 100% 70%;
+    left: -52px;
+    top: -26px;
+    border-width: 8px;
+}
+
+.branch2 .branch-inner2 {
+    width: 120px;
+    height: 145px;
+    transform: rotate(60deg);
+    border-bottom-right-radius: 100% 70%;
+    left: 110px;
+    top: -52px;
+    border-width: 7px;
+}
+
+.branch2 .branch-inner3 {
+    width: 80px;
+    height: 58px;
+    transform: rotate(30deg);
+    border-bottom-right-radius: 100% 100%;
+    left: 220px;
+    top: 19px;
+    border-width: 5px;
+}
+
+.branch2 .branch-inner4 {
+    width: 40px;
+    height: 28px;
+    transform: rotate(180deg);
+    border-bottom-left-radius: 100% 100%;
+    left: 0px;
+    top: 16px;
+    border-width: 4px;
+}
+
+.branch2 .branch-inner1 .leaf1 {
+    transform: rotate(120deg);
+    top: 138px;
+    left: 88px;
+}
+
+.branch2 .branch-inner1 .leaf2 {
+    transform: rotate(220deg);
+    top: 118px;
+    left: 56px;
+    width: 48px;
+    height: 48px;
+    font-size: 10px;
+}
+
+.branch2 .branch-inner1 .leaf3 {
+    transform: rotate(150deg);
+    top: 112px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch2 .branch-inner2 .leaf1 {
+    transform: rotate(-20deg);
+    top: 157px;
+    left: 24px;
+}
+
+.branch2 .branch-inner2 .leaf2 {
+    transform: rotate(-120deg);
+    top: 137px;
+    left: 52px;
+    width: 48px;
+    height: 48px;
+    font-size: 10px;
+}
+
+.branch2 .branch-inner2 .leaf3 {
+    transform: rotate(-40deg);
+    top: 121px;
+    left: 90px;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch2 .branch-inner3>.leaf1 {
+    transform: rotate(0deg);
+    top: 63px;
+    left: 24px;
+    width: 48px;
+    height: 48px;
+    font-size: 10px;
+}
+
+.branch2 .branch-inner3 .leaf2 {
+    transform: rotate(-120deg);
+    top: 49px;
+    left: 44px;
+    width: 48px;
+    height: 48px;
+    font-size: 10px;
+}
+
+.branch2 .branch-inner3 .leaf3 {
+    transform: rotate(-50deg);
+    top: 26px;
+    left: 78px;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch2 .branch-inner4>.leaf1 {
+    transform: rotate(150deg);
+    top: 27px;
+    left: 11px;
+    width: 35px;
+    height: 35px;
+    font-size: 9px;
+}
+
+.branch3 {
+    top: 135px;
+    right: 0;
+    width: 300px;
+    height: 130px;
+}
+
+.branch3 .branch-inner1 {
+    width: 120px;
+    height: 80px;
+    transform: rotate(-80deg);
+    border-bottom-right-radius: 100% 100%;
+    left: 150px;
+    top: 29px;
+    border-width: 7px;
+}
+
+.branch3 .branch-inner2 {
+    width: 120px;
+    height: 115px;
+    transform: rotate(-40deg);
+    border-bottom-left-radius: 100% 70%;
+    left: 70px;
+    top: 10px;
+    border-width: 7px;
+}
+
+.branch3 .branch-inner1 .leaf1 {
+    transform: rotate(-30deg);
+    top: 84px;
+    left: 29px;
+}
+
+.branch3 .branch-inner1 .leaf2 {
+    width: 45px;
+    height: 45px;
+    transform: rotate(-95deg);
+    top: 66px;
+    left: 45px;
+    font-size: 10px;
+}
+
+.branch3 .branch-inner1 .leaf3 {
+    width: 45px;
+    height: 45px;
+    transform: rotate(-50deg);
+    top: 61px;
+    left: 87px;
+    font-size: 10px;
+}
+
+.branch3 .branch-inner2 .leaf1 {
+    transform: rotate(80deg);
+    left: 98px;
+    top: 120px;
+}
+
+.branch3 .branch-inner2 .leaf2 {
+    width: 48px;
+    height: 48px;
+    transform: rotate(-160deg);
+    left: 69px;
+    top: 105px;
+    font-size: 10px;
+}
+
+.branch3 .branch-inner2 .leaf3 {
+    width: 45px;
+    height: 45px;
+    transform: rotate(100deg);
+    left: 32px;
+    top: 94px;
+    font-size: 10px;
+}
+
+.branch3>.leaf1 {
+    right: 60px;
+    transform: rotate(200deg);
+    bottom: -33px;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch3>.leaf2 {
+    right: 218px;
+    transform: rotate(220deg);
+    bottom: 19px;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch4 {
+    width: 230px;
+    height: 70px;
+    top: 95px;
+    left: 0;
+}
+
+.branch4 .branch-inner1 {
+    width: 100px;
+    height: 115px;
+    transform: rotate(90deg);
+    border-bottom-left-radius: 100% 70%;
+    left: -52px;
+    top: -49px;
+    border-width: 8px;
+}
+
+.branch4 .branch-inner2 {
+    width: 100px;
+    height: 130px;
+    transform: rotate(60deg);
+    border-bottom-right-radius: 100% 70%;
+    left: 110px;
+    top: -69px;
+    border-width: 7px;
+}
+
+.branch4 .branch-inner1 .leaf1 {
+    transform: rotate(120deg);
+    top: 121px;
+    left: 82px;
+}
+
+.branch4 .branch-inner1 .leaf2 {
+    transform: rotate(220deg);
+    top: 107px;
+    left: 59px;
+    width: 48px;
+    height: 48px;
+    font-size: 10px;
+}
+
+.branch4 .branch-inner1 .leaf3 {
+    transform: rotate(150deg);
+    top: 101px;
+    left: 26px;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch4 .branch-inner2 .leaf1 {
+    transform: rotate(-20deg);
+    top: 138px;
+    left: 19px;
+}
+
+.branch4 .branch-inner2 .leaf2 {
+    transform: rotate(-120deg);
+    top: 121px;
+    left: 39px;
+    width: 48px;
+    height: 48px;
+    font-size: 10px;
+}
+
+.branch4 .branch-inner2 .leaf3 {
+    transform: rotate(-40deg);
+    top: 112px;
+    left: 69px;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch5 {
+    top: 40px;
+    right: 0;
+    width: 170px;
+    height: 58px;
+}
+
+.branch5 .branch-inner1 {
+    width: 60px;
+    height: 60px;
+    border-bottom-right-radius: 100% 100%;
+    left: 98px;
+    top: -10px;
+    border-width: 7px;
+    transform: rotate(-60deg);
+}
+
+.branch5 .branch-inner2 {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-50deg);
+    border-bottom-left-radius: 100% 80%;
+    left: 52px;
+    top: -20px;
+    border-width: 7px;
+}
+
+.branch5 .branch-inner1 .leaf1 {
+    transform: rotate(-20deg);
+    left: 20%;
+    bottom: -70%;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch5 .branch-inner1 .leaf2 {
+    width: 40px;
+    height: 40px;
+    transform: rotate(-120deg);
+    top: 85%;
+    left: 40%;
+    font-size: 9px;
+}
+
+.branch5 .branch-inner1 .leaf3 {
+    width: 35px;
+    height: 35px;
+    transform: rotate(-50deg);
+    top: 65%;
+    left: 80%;
+    font-size: 9px;
+}
+
+.branch5 .branch-inner2 .leaf1 {
+    transform: rotate(80deg);
+    left: 70%;
+    top: 110%;
+    width: 45px;
+    height: 45px;
+    font-size: 10px;
+}
+
+.branch5 .branch-inner2 .leaf2 {
+    width: 40px;
+    height: 40px;
+    transform: rotate(-140deg);
+    left: 43%;
+    top: 85%;
+    font-size: 9px;
+}
+
+.branch5 .branch-inner2 .leaf3 {
+    width: 35px;
+    height: 35px;
+    transform: rotate(100deg);
+    left: 20%;
+    top: 75%;
+    font-size: 9px;
+}
+
+/* تحسينات للتصميم المتجاوب مع الأحجام المقللة */
+@media (max-width: 1000px) {
+    .background {
+        width: 800px;
+        height: 800px;
+        margin: 15px auto;
+    }
+
+    .tree {
+        border-bottom-width: 480px;
+        bottom: 120px;
+        transform-origin: 50% 480px;
+    }
+
+    .slope {
+        height: 120px;
+    }
+}
+
+@media (max-width: 900px) {
+    .background {
+        width: 700px;
+        height: 700px;
+        margin: 15px auto;
+    }
+
+    .tree {
+        border-bottom-width: 420px;
+        bottom: 110px;
+        transform-origin: 50% 420px;
+    }
+
+    .slope {
+        height: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .background {
+        width: 100%;
+        max-width: 600px;
+        height: 600px;
+        margin: 10px auto;
+    }
+
+    .tree {
+        border-bottom-width: 360px;
+        bottom: 100px;
+        transform-origin: 50% 360px;
+    }
+
+    .slope {
+        height: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .background {
+        max-width: 500px;
+        height: 500px;
+        margin: 10px auto;
+    }
+
+    .tree {
+        border-bottom-width: 280px;
+        bottom: 90px;
+    }
+
+    .slope {
+        height: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .background {
+        max-width: 400px;
+        height: 400px;
+        margin: 10px auto;
+    }
+
+    .tree {
+        border-bottom-width: 220px;
+        bottom: 80px;
+    }
+
+    .slope {
+        height: 80px;
+    }
+}

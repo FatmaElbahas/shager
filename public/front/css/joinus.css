@@ -1,0 +1,651 @@
+@font-face {
+    font-family: "AdorHairlineExtraBold";
+    src: url("../fonnts.com-212185/fonts/fonnts.com-Ador_Hairline_ExtraBold.otf") format("opentype");
+}
+
+body {
+    overflow: auto;
+    background-color: rgba(248, 247, 247, 1);
+}
+
+/* Alert Styles */
+.alert {
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    font-family: "AdorHairlineExtraBold", sans-serif;
+    font-size: 16px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: slideInDown 0.3s ease-out;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.alert-error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* navbar */
+
+.navbar-nav {
+    /* background-color: rgba(248, 247, 247, 1); */
+    padding: 20px 20px;
+}
+
+.offcanvas {
+    width: 350px;
+    border-radius: 10px 0 0 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: rgba(156, 156, 156, 1);
+    font-size: 18px;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.nav-link.active {
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    color: rgba(211, 171, 85, 1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(211, 171, 85, 1) !important;
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: rgb(216, 162, 47);
+    color: rgba(248, 247, 247, 1);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+}
+
+.btn-outline-custom {
+    background-color: rgba(248, 247, 247, 1);
+    color: rgba(211, 171, 85, 1);
+    border: rgba(211, 171, 85, 1) 1px solid;
+    padding: 15px 22px;
+    border-radius: 50px;
+}
+
+.btn-custom:hover {
+    background-color: rgb(207, 145, 10);
+    color: rgba(248, 247, 247, 1);
+}
+
+.btn-outline-custom:hover {
+    background-color: rgba(211, 171, 85, 1);
+    color: rgba(248, 247, 247, 1);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    /* color: #333; */
+}
+
+.user-bar {
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+}
+
+.user-bar img.profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.user-bar .icon {
+    font-size: 18px;
+    color: #555;
+    cursor: pointer;
+}
+
+.search-box {
+    background-color: #eee;
+    border-radius: 25px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+.search-box i {
+    color: #999;
+}
+
+@media (max-width: 576px) {
+    .user-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 990px) {
+    .navbar-nav .nav-link {
+        display: inline-block;
+        width: auto;
+    }
+
+    .nav-link.active {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+    }
+}
+
+
+/* header */
+
+header .content {
+    position: relative;
+    background: url("images/ecc6189080028ce54b13b329d640214095dfabed.jpg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    min-height: 50vh;
+    padding: 20px;
+    color: white;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+/* الطبقة الغامقة */
+header .content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+header .text-content {
+    max-width: 50%;
+    margin: auto 20px;
+    line-height: 2;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .text-content,
+    .image-content {
+        max-width: 100%;
+    }
+}
+
+header .navbar-brand {
+    color: #fff !important;
+}
+
+/* content */
+
+.form-container {
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.form-container h3 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 32px;
+    font-weight: bolder !important;
+}
+
+.form-container p {
+    font-size: 18px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+    max-width: 700px;
+}
+
+.form-title {
+    color: black;
+    margin-bottom: 20px;
+    color: 32px;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        margin: 20px;
+        padding: 15px;
+    }
+}
+
+.form-container input,
+.form-container textarea {
+    background-color: rgba(235, 235, 235, 1);
+    padding: 2rem;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.form-container select {
+    background-color: rgba(235, 235, 235, 1);
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.custom-select {
+    padding-right: 2.5rem;
+    background-position: left 0.75rem center;
+    background-size: 16px 16px;
+}
+
+/* footer */
+
+.hero {
+    background: url('images/1e62528a145e980386e7758f8a281587e5714810.jpg') center bottom/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+    filter: brightness(95%);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+footer {
+    padding: 70px 20px 20px;
+    direction: ltr;
+    text-align: end;
+}
+
+.footer-column h6 {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: rgba(39, 58, 65, 1);
+    font-size: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: rgba(156, 156, 156, 1);
+    font-size: 16px;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons img {
+    margin-left: 10px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+#after {
+    display: none;
+}
+
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+    text-align: center;
+    display: none;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.subscription-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: none;
+    position: relative;
+}
+
+.btn-custom {
+    background-color: rgba(211, 171, 85, 1);
+    color: rgba(248, 247, 247, 1);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    width: 100%;
+}
+
+.btn-custom:hover {
+    background-color: rgb(211, 160, 51);
+    color: rgba(248, 247, 247, 1);
+}
+
+.card-footer {
+    border-top: none;
+}
+
+
+.subscription-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-header {
+    border-bottom: none;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.period {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-header {
+    background-color: transparent;
+}
+
+.features-list li {
+    padding: 10px 0;
+    text-align: right;
+    position: relative;
+    padding-right: 25px;
+}
+
+.features-list li:before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    color: rgba(211, 171, 85, 1);
+    font-weight: bold;
+}
+
+.btn-subscribe {
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-subscribe:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.popular-plan:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+@media (max-width: 768px) {
+    .popular-plan {
+        transform: scale(1);
+    }
+
+    .popular-plan:hover {
+        transform: scale(1) translateY(-10px);
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+
+    .btn-subscribe {
+        padding: 8px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .subscription-card {
+        margin-bottom: 30px;
+    }
+
+    .features-list li {
+        padding: 8px 0;
+        padding-right: 20px;
+        font-size: 0.9rem;
+    }
+}
+
+.modal-content {
+    background: #fff;
+}
+
+.mysr-form {
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 20px;
+    background: #fafafa;
+}
+
+/* تعديل الحواف والpadding في المودال */
+#joinFormModal .modal-content {
+    border-radius: 20px;
+    /* قللناها من 32px */
+    padding-top: 20px;
+    /* تقليل المسافة العليا */
+    padding-bottom: 20px;
+    /* تقليل المسافة السفلى */
+}
+
+#joinFormModal .modal-body {
+    padding-top: 10px;
+    /* تقليل المسافة العليا داخل المودال */
+    padding-bottom: 10px;
+    /* تقليل المسافة السفلى داخل المودال */
+}
+
+#joinFormModal .form-title {
+    margin-top: 0;
+    /* إزالة المسافة العليا للعنوان */
+}
+
+#joinFormModal .modal-header {
+    padding: 1rem 1.5rem;
+    /* تقليل المسافة حول الزر */
+}
+
+#joinFormModal .btn-close {
+    margin-left: 0;
+    /* للتأكد أن الزر على الشمال */
+}
+
+#joinFormModal .modal-header {
+    padding: 1rem 1.5rem;
+    /* تقليل المسافة حول الزر */
+}
+
+#joinFormModal .btn-close {
+    margin-left: 0;
+    /* للتأكد أن الزر على الشمال */
+}
+
+/* تعديل الحواف والpadding في المودال */
+#joinFormModal .modal-content {
+    border-radius: 20px;
+    /* قللناها من 32px */
+    padding-top: 20px;
+    /* تقليل المسافة العليا */
+    padding-bottom: 20px;
+    /* تقليل المسافة السفلى */
+}
+
+#joinFormModal .modal-body {
+    padding-top: 10px;
+    /* تقليل المسافة العليا داخل المودال */
+    padding-bottom: 10px;
+    /* تقليل المسافة السفلى داخل المودال */
+}
+
+#joinFormModal .form-title {
+    margin-top: 0;
+    /* إزالة المسافة العليا للعنوان */
+}
+
+/* تنسيق الحاوية العامة للفورم */
+.payment-container {
+    display: none;
+    /* هنظهرها فقط عند الضغط على زر الترقية */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+}
+
+/* الكارت اللي فيه الفورم */
+.payment-card {
+    background: #1e1e1e;
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    animation: fadeInUp 0.5s ease;
+}
+
+/* زر الإغلاق */
+.close-btn {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #d4af37;
+}
+
+/* تأثير الدخول */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

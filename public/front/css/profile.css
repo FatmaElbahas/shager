@@ -1,0 +1,287 @@
+@font-face {
+    font-family: "AdorHairlineExtraBold";
+    src: url("../fonnts.com-212185/fonts/fonnts.com-Ador_Hairline_ExtraBold.otf") format("opentype");
+}
+
+body {
+    overflow: auto;
+    background-color: rgba(248, 247, 247, 1);
+}
+
+/* navbar */
+
+.navbar-nav {
+    /* background-color: rgba(248, 247, 247, 1); */
+    padding: 20px 20px;
+}
+
+.offcanvas {
+    width: 350px;
+    border-radius: 10px 0 0 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: rgba(156, 156, 156, 1);
+    font-size: 18px;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.nav-link.active {
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    color: rgba(211, 171, 85, 1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(211, 171, 85, 1) !important;
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: rgb(216, 162, 47);
+    color: rgba(248, 247, 247, 1);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+}
+
+.btn-outline-custom {
+    background-color: rgba(248, 247, 247, 1);
+    color: rgba(211, 171, 85, 1);
+    border: rgba(211, 171, 85, 1) 1px solid;
+    padding: 15px 22px;
+    border-radius: 50px;
+}
+
+.btn-custom:hover {
+    background-color: rgb(207, 145, 10);
+    color: rgba(248, 247, 247, 1);
+}
+
+.btn-outline-custom:hover {
+    background-color: rgba(211, 171, 85, 1);
+    color: rgba(248, 247, 247, 1);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    /* color: #333; */
+}
+
+.user-bar {
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+}
+
+.user-bar img.profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.user-bar .icon {
+    font-size: 18px;
+    color: #555;
+    cursor: pointer;
+}
+
+.search-box {
+    background-color: #eee;
+    border-radius: 25px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+.search-box i {
+    color: #999;
+}
+
+@media (max-width: 576px) {
+    .user-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 990px) {
+    .navbar-nav .nav-link {
+        display: inline-block;
+        width: auto;
+    }
+
+    .nav-link.active {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+    }
+}
+
+/* content */
+
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    font-size: 18px;
+}
+
+.profile-img {
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #a27c2a;
+}
+
+.btn-gold {
+    background-color: #d3ab55;
+    color: white;
+}
+
+.btn-gold:hover {
+    background-color: #c39a45;
+}
+
+form input::placeholder {
+    color: rgba(123, 123, 123, 0.5);
+    font-size: 16px;
+    font-weight: 400;
+    text-align: right;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="tel"],
+form select {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+form label {
+    margin-bottom: 1rem;
+}
+
+form .form-check-input:checked {
+    background-color: rgb(211, 160, 51);
+    border-color: rgb(211, 160, 51);
+}
+
+form label[for="imageUpload"] img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(52%) saturate(759%) hue-rotate(14deg) brightness(93%) contrast(88%);
+}
+
+.container a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container button:hover img {
+    filter: brightness(0) invert(1);
+}
+
+/* footer */
+
+.hero {
+    background: url('images/1e62528a145e980386e7758f8a281587e5714810.jpg') center bottom/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+    filter: brightness(95%);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+footer {
+    padding: 70px 20px 20px;
+    direction: ltr;
+    text-align: end;
+}
+
+.footer-column h6 {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: rgba(39, 58, 65, 1);
+    font-size: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: rgba(156, 156, 156, 1);
+    font-size: 16px;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons img {
+    margin-left: 10px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الدفع الإلكتروني</title>
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #4caf50;
+            --accent-color: #ff9800;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .payment-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .plans-section {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .payment-section {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-card.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(44, 90, 160, 0.05);
+        }
+
+        .plan-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: var(--dark-color);
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .plan-description {
+            color: #666;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-custom:hover {
+            background-color: #1e3d72;
+        }
+
+        .payment-form-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+        }
+
+        .payment-info {
+            background-color: rgba(44, 90, 160, 0.05);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .selected-plan-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .selected-plan-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .mysr-form {
+            margin-top: 20px;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+
+        .payment-method i {
+            margin-left: 5px;
+            color: var(--primary-color);
+        }
+
+        .security-notice {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .security-notice i {
+            color: var(--secondary-color);
+            margin-left: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .payment-container {
+                flex-direction: column;
+            }
+
+            .plans-section,
+            .payment-section {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>نظام الدفع الإلكتروني الآمن</h1>
+            <p>اختر الباقة المناسبة لك وأكمل عملية الدفع بكل أمان</p>
+        </header>
+
+        <div class="payment-container">
+            <div class="plans-section">
+                <h2 class="section-title">الباقات المتاحة</h2>
+                <div class="plans-grid">
+                    <div class="plan-card" data-plan="primary">
+                        <div class="plan-name">الباقة الأساسية</div>
+                        <div class="plan-price">20 <span>ريال/شهرياً</span></div>
+                        <div class="plan-description">هذه الباقة مناسبة للأفراد والمشاريع الصغيرة، توفر لك الميزات
+                            الأساسية للبدء</div>
+                        <button class="btn-custom" data-plan="primary">اختيار الباقة</button>
+                    </div>
+
+                    <div class="plan-card" data-plan="advanced">
+                        <div class="plan-name">الباقة المتقدمة</div>
+                        <div class="plan-price">30 <span>ريال/شهرياً</span></div>
+                        <div class="plan-description">باقة متكاملة للمشاريع المتوسطة، مع ميزات إضافية ودعم فني أسرع
+                        </div>
+                        <button class="btn-custom" data-plan="advanced">اختيار الباقة</button>
+                    </div>
+
+                    <div class="plan-card" data-plan="custom">
+                        <div class="plan-name">الباقة المميزة</div>
+                        <div class="plan-price">50 <span>ريال/شهرياً</span></div>
+                        <div class="plan-description">الباقة الشاملة للمشاريع الكبيرة، مع جميع الميزات المتقدمة وأولوية
+                            الدعم</div>
+                        <button class="btn-custom" data-plan="custom">اختيار الباقة</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <h2 class="section-title">إتمام الدفع</h2>
+                <div class="payment-form-container">
+                    <div class="payment-info">
+                        <p>الباقة المحددة: <span class="selected-plan-name">لم يتم اختيار باقة بعد</span></p>
+                        <p class="selected-plan-price">0.00 ريال</p>
+                        <p>الدفع آمن ومشفر بالكامل</p>
+                    </div>
+
+                    <div class="mysr-form">
+                        <!-- ستظهر بوابة الدفع هنا بعد اختيار الباقة -->
+                        <div class="placeholder">
+                            <i class="fas fa-credit-card"
+                                style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+                            <p>يرجى اختيار إحدى الباقات أعلاه لتفعيل بوابة الدفع</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <i class="fab fa-cc-visa"></i>
+                            <span>فيزا</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fab fa-cc-mastercard"></i>
+                            <span>ماستركارد</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-credit-card"></i>
+                            <span>مدى</span>
+                        </div>
+                    </div>
+
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>جميع عمليات الدفع مشفرة وآمنة. نحن لا نخزن أي بيانات بطاقتك.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 جميع الحقوق محفوظة | نظام الدفع الإلكتروني الآمن</p>
+            <p>للأسئلة والاستفسارات: support@example.com | هاتف: 8001234567</p>
+        </footer>
+    </div>
+
+    <script>
+        // بيانات الباقات
+        const plans = {
+            primary: { amount: 2000, description: "الاشتراك الأساسي" },
+            custom: { amount: 5000, description: "الاشتراك المتقدم" },
+            advanced: { amount: 3000, description: "الاشتراك المخصص" },
+        };
+
+        // عناصر DOM
+        const planCards = document.querySelectorAll('.plan-card');
+        const selectedPlanName = document.querySelector('.selected-plan-name');
+        const selectedPlanPrice = document.querySelector('.selected-plan-price');
+        const mysrForm = document.querySelector('.mysr-form');
+
+        // إضافة مستمعي الأحداث لزر اختيار الباقة
+        document.querySelectorAll(".btn-custom").forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                let planKey = this.dataset.plan;
+                selectPlan(planKey);
+                initializeMoyasar(planKey);
+            });
+        });
+
+        // إضافة مستمعي الأحداث لبطاقات الباقات
+        planCards.forEach(card => {
+            card.addEventListener('click', function () {
+                let planKey = this.dataset.plan;
+                selectPlan(planKey);
+                initializeMoyasar(planKey);
+            });
+        });
+
+        // وظيفة اختيار الباقة
+        function selectPlan(planKey) {
+            // إزالة التحديد من جميع البطاقات
+            planCards.forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // إضافة التحديد للبطاقة المختارة
+            document.querySelector(`.plan-card[data-plan="${planKey}"]`).classList.add('selected');
+
+            // تحديث معلومات الباقة المختارة
+            const plan = plans[planKey];
+            selectedPlanName.textContent = plan.description;
+            selectedPlanPrice.textContent = (plan.amount / 100).toFixed(2) + ' ريال';
+        }
+
+        // وظيفة تهيئة Moyasar
+        function initializeMoyasar(planKey) {
+            let plan = plans[planKey];
+
+            // مسح النموذج الحالي
+            mysrForm.innerHTML = '';
+
+            // في بيئة الإنتاج الحقيقية، سيتم تهيئة Moyasar هنا
+            // Moyasar.init({
+            //     element: ".mysr-form",
+            //     amount: plan.amount,
+            //     currency: "SAR",
+            //     description: plan.description,
+            //     publishable_api_key: "pk_test_WeLyc8N5AuE4Nya2kab2nhmjLPnDts4mZvYAsF7Y",
+            //     callback_url: "/api/payment/callback",
+            //     supported_networks: ["visa", "mastercard", "mada"],
+            //     methods: ["creditcard"],
+            //     on_completed: async function (payment) {
+            //         await savePaymentOnBackend(payment, planKey);
+            //     },
+            // });
+
+            // لمثال العرض، سنعرض نموذج دفع وهمي
+            displayMockPaymentForm(plan);
+        }
+
+        // عرض نموذج دفع وهمي (لأغراض العرض فقط)
+        function displayMockPaymentForm(plan) {
+            const formHTML = `
+                <div class="mock-payment-form">
+                    <h3 style="margin-bottom: 20px; text-align: center; color: var(--primary-color);">نموذج الدفع (وهمي للعرض)</h3>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <p><strong>الباقة:</strong> ${plan.description}</p>
+                        <p><strong>المبلغ:</strong> ${(plan.amount / 100).toFixed(2)} ريال</p>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px;">اسم حامل البطاقة</label>
+                        <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="اسم حامل البطاقة">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px;">رقم البطاقة</label>
+                        <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label style="display: block; margin-bottom: 5px;">تاريخ الانتهاء</label>
+                            <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label style="display: block; margin-bottom: 5px;">رمز الأمان (CVV)</label>
+                            <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="123">
+                        </div>
+                    </div>
+                    <button class="btn-custom" style="margin-top: 10px;" onclick="processMockPayment()">إتمام الدفع</button>
+                </div>
+            `;
+
+            mysrForm.innerHTML = formHTML;
+        }
+
+        // معالجة الدفع الوهمي (لأغراض العرض فقط)
+        function processMockPayment() {
+            alert('في التطبيق الحقيقي، سيتم معالجة الدفع عبر بوابة Moyasar. هذا مجرد نموذج وهمي للعرض.');
+        }
+
+        // في التطبيق الحقيقي، ستكون هذه الوظيفة موجودة
+        async function savePaymentOnBackend(payment, planKey) {
+            // حفظ بيانات الدفع في الخادم
+            console.log('تم حفظ بيانات الدفع:', payment, planKey);
+        }
+    </script>
+</body>
+
+</html>

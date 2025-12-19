@@ -1,0 +1,389 @@
+@font-face {
+    font-family: "AdorHairlineExtraBold";
+    src: url("../fonnts.com-212185/fonts/fonnts.com-Ador_Hairline_ExtraBold.otf") format("opentype");
+}
+
+body {
+    overflow: auto;
+    background-color: rgba(248, 247, 247, 1);
+}
+
+/* navbar */
+
+.navbar-nav {
+    /* background-color: rgba(248, 247, 247, 1); */
+    padding: 20px 20px;
+}
+
+.offcanvas {
+    width: 350px;
+    border-radius: 10px 0 0 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: rgba(156, 156, 156, 1);
+    font-size: 18px;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.nav-link.active {
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    color: rgba(211, 171, 85, 1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(211, 171, 85, 1) !important;
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: rgb(216, 162, 47);
+    color: rgba(248, 247, 247, 1);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+}
+
+.btn-outline-custom {
+    background-color: rgba(248, 247, 247, 1);
+    color: rgba(211, 171, 85, 1);
+    border: rgba(211, 171, 85, 1) 1px solid;
+    padding: 15px 22px;
+    border-radius: 50px;
+}
+
+.btn-custom:hover {
+    background-color: rgb(207, 145, 10);
+    color: rgba(248, 247, 247, 1);
+}
+
+.btn-outline-custom:hover {
+    background-color: rgba(211, 171, 85, 1);
+    color: rgba(248, 247, 247, 1);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    /* color: #333; */
+}
+
+.user-bar {
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+}
+
+.user-bar img.profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.user-bar .icon {
+    font-size: 18px;
+    color: #555;
+    cursor: pointer;
+}
+
+.search-box {
+    background-color: #eee;
+    border-radius: 25px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+.search-box i {
+    color: #999;
+}
+
+@media (max-width: 576px) {
+    .user-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 990px) {
+    .navbar-nav .nav-link {
+        display: inline-block;
+        width: auto;
+    }
+
+    .nav-link.active {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+    }
+}
+
+/* header */
+
+header .content {
+    position: relative;
+    background: url("images/000f8842856c20d795fcbcc15fb9584bc2215aef.jpg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    min-height: 50vh;
+    padding: 20px;
+    color: white;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+/* الطبقة الغامقة */
+header .content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+header .text-content {
+    max-width: 50%;
+    margin: auto 20px;
+    line-height: 2;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .text-content,
+    .image-content {
+        max-width: 100%;
+    }
+}
+
+header .navbar-brand {
+    color: #fff !important;
+}
+
+/* blogs */
+
+.card-img-top {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.articles-section h3 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 40px;
+    font-weight: bolder !important;
+}
+
+.articles-section p {
+    font-size: 16px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+.photo-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+
+.photo-title {
+    font-size: 25px !important;
+    font-weight: 400;
+    color: rgba(39, 58, 65, 1) !important;
+}
+
+.photo-date {
+    font-size: 16px;
+    color: rgba(123, 123, 123, 1) !important;
+}
+
+
+
+.card {
+    border-radius: 16px;
+}
+
+h6 {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.card a {
+    color: rgba(211, 171, 85, 1);
+}
+
+
+/* تخصيص شكل الباجينيشن */
+.custom-pagination .page-link {
+    border: none;
+    border-radius: 50px;
+    padding: 10px 5;
+    text-align: center;
+    margin: auto 1rem;
+    color: black;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.custom-pagination .page-link:hover {
+    background-color: rgba(211, 171, 85, 1);
+    color: white;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: rgba(211, 171, 85, 1);
+    color: white;
+    font-weight: bold;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+    background-color: transparent;
+    color: #aaa;
+    border: none;
+    cursor: default;
+}
+
+/* footer */
+
+.hero {
+    position: relative;
+    background: url('images/1e62528a145e980386e7758f8a281587e5714810.jpg') center bottom/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* طبقة غامقة */
+}
+
+.hero h1,
+.hero p,
+.hero a {
+    position: relative;
+    z-index: 1;
+}
+
+
+.hero h1 {
+    font-size: 3rem;
+    color: rgba(248, 247, 247, 1);
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-weight: bolder !important;
+    margin-bottom: 2rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-weight: bolder !important;
+    margin-bottom: 2rem;
+    color: rgba(248, 247, 247, 1);
+}
+
+footer {
+    padding: 70px 20px 20px;
+    direction: ltr;
+    text-align: end;
+}
+
+.footer-column h6 {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: rgba(39, 58, 65, 1);
+    font-size: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: rgba(156, 156, 156, 1);
+    font-size: 16px;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons img {
+    margin-left: 10px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
