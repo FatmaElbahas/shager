@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شجرتك </title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/usertree.css">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- tab image -->
+    <link rel="icon" type="image/png" href="images/Asset 141.png">
+
+    <!-- googlefont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+
+    <!-- CSS TreeAnt -->
+    <script src="https://balkan.app/js/familytree.js"></script>
+
+</head>
+
+<body style="height: 100vh; background: #f8f9fa;">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-2">
+                <div class="sidebar d-lg-flex flex-column" id="sidebar">
+                    <div class="logo p-3"> <img src="images/Asset 80.svg" alt="Logo" class="img-fluid"> </div>
+                    <!-- Close Button --> <button id="close" class="btn btn-link sidebar-close"> <i
+                            class="fas fa-times fa-lg"></i> </button>
+                    <ul class="nav flex-column px-3">
+                        <li class="nav-item d-flex align-items-center gap-2 mt-3 "> <img src="images/Dashboard.png"
+                                alt="" class="icon"> <a href="UserDashboard.html" class="nav-link">الرئيسية</a> </li>
+                        <!-- <li class="nav-item d-flex align-items-center gap-2"> <img src="images/stash_inbox (1).png"
+                                alt="" class="icon"> <a href="usermessages.html" class="nav-link">الرسائل</a> </li> -->
+                        <li class="active nav-item d-flex align-items-center gap-2"> <img
+                                src="images/hugeicons_tree-06.png" alt="" class="icon"> <a href="shagertk.html"
+                                class="nav-link">شجرتك</a> </li>
+                        <li class=" nav-item d-flex align-items-center gap-2 "> <img
+                                src="images/famicons_map-outline.png" alt="" class="icon"> <a href="map.html"
+                                class="nav-link">خريطة العائلة</a> </li>
+                        <li class="nav-item d-flex align-items-center gap-2"> <img src="images/tabler_link-plus.png"
+                                alt="" class="icon"> <a href="userevents.html" class="nav-link">المناسبات </a> </li>
+                        <li class=" nav-item d-flex align-items-center gap-2"> <img
+                                src="images/iconamoon_news-light.png" alt="" class="icon"> <a href="usernews.html"
+                                class="nav-link">الاخبار</a> </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+                <img src="images/eos-icons_subscriptions-created-outlined.png" alt="" class="icon">
+                <a href="upgrade.html" class="nav-link">الإشتراكات</a>
+            </li>
+                        <li class=" nav-item d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-user-plus icon" style="color: rgba(39, 58, 65, 1);"></i>
+                            <a href="requests.html" class="nav-link">طلبات الانضمام</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center gap-2"> <img src="images/icon-wrapper (1).png"
+                                alt="" class="icon"> <a href="usersettings.html" class="nav-link">الإعدادات</a> </li>
+                    </ul>
+                    <ul class="nav flex-column px-3">
+                        <li class="nav-item d-flex align-items-center gap-2 my-3"> <img src="images/Frame (3).png"
+                                alt="" class="icon"> <a href="" class="nav-link text-danger">تسجيل
+                                الخروج</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar for mobile -->
+        <nav class="navbar my-3 d-lg-none">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bold">شجرتك </span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-dark"></i>
+                </button>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+
+            <div class="cover-container position-relative mt-2">
+                <img id="cover-image" src="" alt="صورة الغلاف" class="img-fluid shadow-sm rounded-4 w-100"
+                    style="height: 500px; object-fit: cover;">
+
+                <!-- زر تعديل صورة الغلاف -->
+                <button id="edit-cover-btn"
+                    class="btn btn-custom rounded-pill py-2 px-3 position-absolute top-0 start-0 m-2 d-flex align-items-center gap-2"
+                    style="width: auto;">
+                    <i class="bi bi-camera"></i> تعديل صورة الغلاف
+                </button>
+                <input type="file" id="cover-input" accept="image/*" style="display:none">
+            </div>
+
+
+            <div class="cover-info w-100 my-3">
+                <div class="container">
+                    <div class="row align-items-center g-1">
+                        <!-- اللوجو -->
+                        <div class="col-auto position-relative" style="width: 120px; height: 120px;">
+                            <img id="family-logo" src="" alt="شعار العائلة" class="img-fluid rounded-pill"
+                                style="width: 120px; height: 120px; display: block;">
+
+                            <!-- زر تعديل شعار العائلة -->
+                            <img id="edit-logo-btn" src="images/Frame 1410126142.png" alt="زر تعديل"
+                                style="position: absolute; bottom: 5px; right: 5px; width: 30px; height: 30px; cursor: pointer;">
+                            <input type="file" id="logo-input" accept="image/*" style="display:none">
+                        </div>
+
+                        <!-- السيرش -->
+                        <div class="col">
+                            <div id="family-name" class="family-name rounded-pill py-3 px-3 text-muted fw-bold"
+                                style="font-size: 32px; white-space: nowrap; color: rgba(39, 58, 65, 1);">
+                            </div>
+                            <div class="search-bar d-flex align-items-center position-relative w-100">
+                                <i class="bi bi-search search-icon px-3 position-absolute"></i>
+                                <input type="search" class="form-control search-input rounded-pill ps-5"
+                                    placeholder="البحث ..">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- family tree -->
+            <div class="bg-white rounded-4 p-4 my-5 text-center " style="overflow: hidden !important;">
+                <div id="tree">
+                </div>
+            </div>
+
+
+            <div class="background">
+                <div class="slope"></div>
+                <div class="tree">
+                    <div class="leaf leaf1"><span class="name-text">...</span></div>
+                    <div class="leaf leaf2"><span class="name-text">...</span></div>
+
+                    <div class="branch left branch1">
+                        <div class="parent-name">...</div>
+                        <div class="branch left branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch left branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch left branch-inner3">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                        </div>
+                    </div>
+
+                    <div class="branch right branch2">
+                        <div class="parent-name">...</div>
+                        <div class="branch left branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch right branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch right branch-inner3">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                            <div class="branch left branch-inner4">
+                                <div class="parent-name">...</div>
+                                <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="branch left branch3">
+                        <div class="parent-name">...</div>
+                        <div class="branch right branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch left branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="leaf leaf1"><span class="name-text">...</span></div>
+                        <div class="leaf leaf2"><span class="name-text">...</span></div>
+                    </div>
+
+                    <div class="branch right branch4">
+                        <div class="parent-name">...</div>
+                        <div class="branch left branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch right branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                    </div>
+
+                    <div class="branch left branch5">
+                        <div class="parent-name">...</div>
+                        <div class="branch right branch-inner1">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                        <div class="branch left branch-inner2">
+                            <div class="parent-name">...</div>
+                            <div class="leaf leaf1"><span class="name-text">...</span></div>
+                            <div class="leaf leaf2"><span class="name-text">...</span></div>
+                            <div class="leaf leaf3"><span class="name-text">...</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="d-flex align-items-center justify-content-between">
+            <h1 class="my-4" style="color: rgba(39, 58, 65, 1); font-size: 24px;">
+                افراد العائلة
+            </h1>
+            <div>
+                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#addUserModal">اضف
+                    فرد</button>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="programmes-table table-responsive">
+            <!-- Modal لإضافة بياناتك -->
+            <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-md">
+                    <div class="modal-content rounded-4 p-4" style="border-radius: 32px;">
+
+                        <!-- رأس المودال -->
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title text-end" id="addUserModalLabel" style="font-size: 32px;">أضف
+                                بيانات الفرد</h5>
+                            <button type="button" class="btn-close position-absolute start-0 mx-4"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <!-- جسم المودال -->
+                        <div class="modal-body">
+                            <form id="userForm" enctype="multipart/form-data">
+                                <!-- صورة الملف الشخصي -->
+                                <div class="text-center mb-4">
+                                    <div class="position-relative d-inline-block">
+                                        <img id="previewImage" src="images/image (25).png" width="100" height="100"
+                                            style="border-radius: 50%; object-fit: cover;">
+                                        <label for="profile_picture"
+                                            class="position-absolute bottom-0 end-0 bg-light border rounded-circle p-1"
+                                            style="cursor: pointer;">
+                                            <i class="fa fa-camera text-muted"></i>
+                                        </label>
+                                        <input type="file" name="profile_picture" id="profile_picture"
+                                            class="form-control d-none">
+                                    </div>
+                                </div>
+
+                                <!-- الاسم -->
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label class="form-label">الاسم </label>
+                                        <input type="text" class="form-control" placeholder="ادخل الاسم الأول"
+                                            name="name" required id="name">
+                                    </div>
+                                </div>
+
+                                <!-- صلة القرابة -->
+                                <div class="mb-3">
+                                    <label class="form-label d-block"> صلة القرابة</label>
+                                    <select class="form-select" name="relation" id="relation" required>
+                                        <option selected disabled>اختر صلة القرابة</option>
+                                        <option value="father">أب</option>
+                                        <option value="mother">أم</option>
+                                        <option value="son">ابن</option>
+                                        <option value="daughter">ابنة</option>
+                                    </select>
+                                </div>
+
+                                <!-- اختيار الأب -->
+                                <div class="mb-3" id="fatherBox" style="display: none;">
+                                    <label class="form-label">اختر الأب (اختياري)</label>
+                                    <select class="form-select" name="father_id" id="father_id">
+                                        <option value="">لا يوجد أب</option>
+                                    </select>
+                                </div>
+
+                                <!-- اختيار الأم -->
+                                <div class="mb-3" id="motherBox" style="display: none;">
+                                    <label class="form-label">اختر الأم (اختياري)</label>
+                                    <select class="form-select" name="mother_id" id="mother_id">
+                                        <option value="">لا توجد أم</option>
+                                    </select>
+                                </div>
+
+
+                                <!-- الوظيفة -->
+                                <div class="mb-3">
+                                    <label class="form-label">الوظيفة</label>
+                                    <input type="text" class="form-control" placeholder="ادخل الوظيفة" name="job"
+                                        id="job">
+                                </div>
+
+                                <!-- الحالة -->
+                                <div class="mb-3">
+                                    <label class="form-label">الحالة</label>
+                                    <select class="form-select" name="status" id="status" required>
+                                        <option selected>اختر الحالة</option>
+                                        <option value="alive">على قيد الحياة</option>
+                                        <option value="deceased">متوفي/ة</option>
+                                    </select>
+                                </div>
+
+                                <!-- تاريخ الميلاد -->
+                                <div class="mb-3">
+                                    <label class="form-label">تاريخ الميلاد</label>
+                                    <input type="date" class="form-control" name="birth_date" id="birth_date">
+                                </div>
+
+                                <!-- الحالة الاجتماعية -->
+                                <div class="mb-3">
+                                    <label class="form-label d-block">الحالة الاجتماعية</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="marital_status"
+                                            id="marital_status" value="single" checked>
+                                        <label class="form-check-label" for="single">أعزب / عزباء</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="marital_status"
+                                            id="marital_status" value="married">
+                                        <label class="form-check-label" for="married">متزوج / متزوجة</label>
+                                    </div>
+                                </div>
+
+                                <!-- الايميل -->
+                                <div class="mb-4">
+                                    <label class="form-label">البريد الإلكتروني</label>
+                                    <input type="email" class="form-control" placeholder="ادخل البريد الإلكتروني"
+                                        name="email" id="email">
+                                </div>
+
+                                <!-- الرقم السري -->
+                                <div class="mb-4">
+                                    <label class="form-label">الرقم السري</label>
+                                    <input type="password" class="form-control" placeholder="ادخل الرقم السري"
+                                        name="password" id="password">
+                                </div>
+
+                                <!-- رقم الجوال -->
+                                <div class="mb-4">
+                                    <label class="form-label">رقم الجوال</label>
+                                    <input type="text" class="form-control" placeholder="ادخل رقم الجوال"
+                                        name="phone_number" id="phone_number">
+                                </div>
+
+                                <!-- أزرار الإجراءات -->
+                                <div class="d-flex justify-content-between">
+                                    <button type="submit" class="btn btn-custom w-100" id="submitBtn">
+                                        <div class="d-flex align-items-center justify-content-center gap-2">
+                                            <span class="btn-text">حفظ بيانات الفرد</span>
+                                            <span class="spinner-border spinner-border-sm d-none" role="status"
+                                                aria-hidden="true"></span>
+                                            <span class="loading-text d-none">جاري الحفظ...</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <table class="table table-responsive table-borderless bg-white shadow-sm">
+                <thead class="text-center">
+                    <tr>
+                        <th>رقم</th>
+                        <th>الاسم</th>
+                        <th>صلة القرابة</th>
+                        <!-- <th>رقم الجوال</th>
+                            <th>الحالة</th>
+                            <th>الوظيفة</th>
+                            <th>الحالة الاجتماعية</th>
+                            <th>تاريخ الميلاد</th> -->
+                        <th>تاريخ الاضافة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionsTableBody">
+                    <!-- الصفوف هتتم إضافتها ديناميكيًا -->
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Pagination -->
+        <div class="pagination-controls d-flex justify-content-between align-items-center flex-wrap mt-3">
+            <div class="d-flex align-items-center gap-2">
+                <span id="items-info">عرض 0-0 من 0 افراد</span>
+            </div>
+            <div class="d-flex justify-content-center align-items-center gap-2">
+                <button id="prev-page" class="btn btn-link p-0">
+                    <i class="bi bi-chevron-right" style="color: gold;"></i>
+                </button>
+                <span class="fw-bold" id="current-page">1</span>
+                <span class="text-muted">من <span id="total-pages">1</span> صفحات</span>
+                <button id="next-page" class="btn btn-link p-0">
+                    <i class="bi bi-chevron-left text-muted"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Libraries -->
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/notify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdn.balkan.app/orgchart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scenejs/1.3.0/scene.min.js"></script>
+    <script src="js/treeuser.js"></script>
+</body>
+
+</html>
