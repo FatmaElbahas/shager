@@ -1,0 +1,658 @@
+@font-face {
+    font-family: "AdorHairlineExtraBold";
+    src: url("../fonnts.com-212185/fonts/fonnts.com-Ador_Hairline_ExtraBold.otf") format("opentype");
+}
+
+body {
+    overflow: auto;
+    background-color: rgba(248, 247, 247, 1);
+}
+
+/* navbar */
+
+.navbar-nav {
+    /* background-color: rgba(248, 247, 247, 1); */
+    padding: 20px 20px;
+}
+
+.offcanvas {
+    width: 350px;
+    border-radius: 10px 0 0 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: rgba(156, 156, 156, 1);
+    font-size: 18px;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.nav-link.active {
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    color: rgba(211, 171, 85, 1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(211, 171, 85, 1) !important;
+    border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: rgb(216, 162, 47);
+    color: rgba(248, 247, 247, 1);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+}
+
+.btn-outline-custom {
+    background-color: rgba(248, 247, 247, 1);
+    color: rgba(211, 171, 85, 1);
+    border: rgba(211, 171, 85, 1) 1px solid;
+    padding: 15px 22px;
+    border-radius: 50px;
+}
+
+.btn-custom:hover {
+    background-color: rgb(207, 145, 10);
+    color: rgba(248, 247, 247, 1);
+}
+
+.btn-outline-custom:hover {
+    background-color: rgba(211, 171, 85, 1);
+    color: rgba(248, 247, 247, 1);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    /* color: #333; */
+}
+
+.user-bar {
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+}
+
+.user-bar img.profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.user-bar .icon {
+    font-size: 18px;
+    color: #555;
+    cursor: pointer;
+}
+
+.search-box {
+    background-color: #eee;
+    border-radius: 25px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+.search-box i {
+    color: #999;
+}
+
+@media (max-width: 576px) {
+    .user-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 990px) {
+    .navbar-nav .nav-link {
+        display: inline-block;
+        width: auto;
+    }
+
+    .nav-link.active {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1) !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+        border-bottom: 1.5px solid rgba(211, 171, 85, 1);
+    }
+}
+
+
+/* header-section */
+header {
+    background-color: rgba(39, 58, 65, 0.1);
+}
+
+header h1 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 48px;
+    font-weight: bolder !important;
+}
+
+header p {
+    font-size: 18px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+    max-width: 700px;
+}
+
+.content {
+    line-height: 2;
+    padding: 0 2rem;
+}
+
+.family-memories {
+    margin: 5rem 1rem;
+}
+
+.family-memories h1 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 40px;
+    font-weight: bolder !important;
+}
+
+.family-memories p {
+    font-size: 18px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+    max-width: 700px;
+}
+
+/* Occacions */
+
+.occacions {
+    margin-top: 7rem;
+}
+
+.occacions h2 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 40px;
+    font-weight: bolder !important;
+}
+
+.occacions p {
+    font-size: 16px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+.photo-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+
+.photo-title {
+    font-size: 25px !important;
+    font-weight: 400;
+    color: rgba(39, 58, 65, 1) !important;
+}
+
+.photo-date {
+    font-size: 16px;
+    color: rgba(123, 123, 123, 1) !important;
+}
+
+.body {
+    padding: 30px;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px);
+    transition: transform .5s ease;
+    cursor: pointer;
+}
+
+/* Blogs */
+
+.blogs {
+    margin-top: 7rem;
+}
+
+.blogs h2 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 40px;
+    font-weight: bolder !important;
+}
+
+.blogs h5 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: rgba(39, 58, 65, 1);
+    font-size: 22px;
+    font-weight: 500 !important;
+}
+
+.blogs p {
+    font-size: 16px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+    max-width: 700px;
+}
+
+/* map */
+#map {
+    height: 600px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* .map {
+    margin: 10rem 3rem;
+} */
+
+.blogs h1 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 32px;
+    font-weight: bolder !important;
+}
+
+/* contact */
+.contact-box {
+    background-color: rgba(39, 58, 65, 1);
+    color: white;
+    padding: 50px;
+    border-radius: 12px;
+}
+
+.contact-box h5 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 30px;
+    margin-bottom: 15px;
+}
+
+.contact h4 {
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    color: black;
+    font-size: 40px;
+    font-weight: 700 !important;
+}
+
+.contact p {
+    font-size: 16px;
+    color: rgba(88, 88, 88, 1);
+    font-weight: 500;
+    font-style: normal;
+    max-width: 700px;
+}
+
+.contact-box p {
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    font-style: normal;
+    max-width: 700px;
+}
+
+.form-control,
+.form-select {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.custom-select {
+    padding-right: 2.5rem;
+    background-position: left 0.75rem center;
+    background-size: 16px 16px;
+}
+
+[dir="rtl"] .custom-select {
+    background-position: left 1rem center;
+    padding-right: 2.5rem;
+}
+
+/* footer */
+
+.hero {
+    position: relative;
+    background: url('images/1e62528a145e980386e7758f8a281587e5714810.jpg') center bottom/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* طبقة غامقة */
+}
+
+.hero h1,
+.hero p,
+.hero a {
+    position: relative;
+    z-index: 1;
+}
+
+
+.hero h1 {
+    font-size: 3rem;
+    color: rgba(248, 247, 247, 1);
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-weight: bolder !important;
+    margin-bottom: 2rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    font-family: "AdorHairlineExtraBold", sans-serif !important;
+    font-weight: bolder !important;
+    margin-bottom: 2rem;
+    color: rgba(248, 247, 247, 1);
+}
+
+.btn-gold {
+    background-color: #d5a94e;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 30px;
+    border: none;
+}
+
+.btn-gold:hover {
+    background-color: #c2983c;
+}
+
+footer {
+    padding: 70px 20px 20px;
+    direction: ltr;
+    text-align: end;
+}
+
+.footer-column h6 {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: rgba(39, 58, 65, 1);
+    font-size: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: rgba(156, 156, 156, 1);
+    font-size: 16px;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons img {
+    margin-left: 10px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.success-icon {
+    font-size: 60px;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+.success-message h2 {
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.success-message p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.btn-back {
+    display: inline-block;
+    background: #4a6fa5;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-back:hover {
+    background: #3a5a80;
+}
+
+#after {
+    display: none;
+}
+
+.card-img-top {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* توحيد مقاسات الكاردات في صفحة Home */
+
+/* تحسين قسم المناسبات - 3 كاردات في الصف */
+#occasionsContainer {
+    display: block;
+    /* استخدام Bootstrap Grid بدلاً من Flexbox */
+}
+
+#occasionsContainer .col-md-4 {
+    display: flex;
+    margin-bottom: 30px;
+    padding: 0 15px;
+    /* مسافات Bootstrap */
+}
+
+#occasionsContainer .photo-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white;
+}
+
+#occasionsContainer .photo-card img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+#occasionsContainer .photo-card .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* ضمان عرض 3 كاردات في الصف */
+#occasionsContainer .col-md-4.col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+/* إزالة المسافات الإضافية من Bootstrap */
+#occasionsContainer .col-md-4 .my-3 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* تحسين التوزيع */
+#occasionsContainer.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+/* تحسين قسم الأخبار - كاردات متساوية */
+.blogs .container .row.align-items-center {
+    display: flex;
+    align-items: stretch;
+}
+
+.blogs .container .row.align-items-center .col-md-4 {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.blogs .container .row.align-items-center .photo-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+}
+
+.blogs .container .row.align-items-center .photo-card img {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.blogs .container .row.align-items-center .photo-card .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* تحسين النصوص */
+.photo-title {
+    font-size: 18px !important;
+    line-height: 1.4;
+    margin: 10px 0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    /* إضافة الخاصية القياسية للتوافق */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.photo-date {
+    font-size: 14px !important;
+    color: #666 !important;
+    margin-top: auto;
+}
+
+/* تحسين الاستجابة للموبايل */
+@media (max-width: 768px) {
+    #occasionsContainer .photo-card {
+        min-height: 350px;
+    }
+
+    #occasionsContainer .col-md-4.col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .blogs .container .row.align-items-center .photo-card {
+        min-height: 350px;
+    }
+
+    .blogs .container .row.align-items-center .col-md-4 {
+        margin-bottom: 20px;
+    }
+}
+
+/* تحسين للتابلت */
+@media (min-width: 769px) and (max-width: 991px) {
+    #occasionsContainer .col-md-4.col-lg-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* تحسين للشاشات الكبيرة */
+@media (min-width: 992px) {
+    #occasionsContainer .col-md-4.col-lg-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
